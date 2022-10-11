@@ -1,0 +1,67 @@
+﻿<Page x:Class="PR6_MDK01_01.Pages.RegistrationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PR6_MDK01_01.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="800"
+      Title="RegistrationPage">
+    <Grid>
+        <StackPanel>
+            <StackPanel>
+                <TextBlock HorizontalAlignment="Center" Text="Регистрация"/>
+                <RadioButton Name="rbStudent" Checked="rbStudent_Checked">Студент</RadioButton>
+                <RadioButton Name="rbTeacher" Checked="rbTeacher_Checked">Преподаватель</RadioButton>
+            </StackPanel>
+            <StackPanel Visibility="Collapsed" Name="CommonData">
+                <GroupBox Header="Фамилия">
+                    <TextBox Name="tbSurname"/>
+                </GroupBox>
+                <GroupBox Header="Имя">
+                    <TextBox Name="tbName"/>
+                </GroupBox>
+                <GroupBox Header="Отчество">
+                    <TextBox Name="tbPatronymic"/>
+                </GroupBox>
+                <GroupBox Header="Дата рождения">
+                    <DatePicker Name="dtBirthday"/>
+                </GroupBox>
+                <GroupBox Header="Пол">
+                    <StackPanel>
+                        <RadioButton Name="rbMan">Мужской</RadioButton>
+                        <RadioButton Name="rbWoman">Женский</RadioButton>
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+            <StackPanel Visibility="Collapsed" Name="TeacherData">
+                <GroupBox Header="Кафедра">
+                    <ComboBox Name="cbDepartmnet" IsEnabled="True" IsReadOnly="True"/>
+                </GroupBox>
+            </StackPanel>
+            <StackPanel Visibility="Collapsed" Name="StudentData">
+                <GroupBox Header="Специальность">
+                    <ComboBox Name="cbSpecialization" IsEnabled="True" IsReadOnly="True"/>
+                </GroupBox>
+                <GroupBox Header="Курс">
+                    <ComboBox Name="cbKurs" IsEnabled="True" IsReadOnly="True"/>
+                </GroupBox>
+                <GroupBox Header="Форма обучения">
+                    <ComboBox Name="cbFormOfTraining" IsEnabled="True" IsReadOnly="True"/>
+                </GroupBox>
+                <GroupBox Header="Группа">
+                    <ComboBox Name="cbGroup" IsEnabled="True" IsReadOnly="True"/>
+                </GroupBox>
+            </StackPanel>
+            <StackPanel Visibility="Collapsed"  Name="Logined">
+                <GroupBox Header="Логин">
+                    <TextBox Name="tbLogin"/>
+                </GroupBox>
+                <GroupBox Header="Пароль">
+                    <PasswordBox Name="pswPassword"/>
+                </GroupBox>
+            </StackPanel>
+            <Button Visibility="Collapsed" Name="btnReg" Width="180" Content="Зарегистрироваться" Click="btnReg_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>

@@ -1,0 +1,1689 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Departments">
+          <Key>
+            <PropertyRef Name="IdDepartment" />
+          </Key>
+          <Property Name="IdDepartment" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Department" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdFaculty" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Disciplines">
+          <Key>
+            <PropertyRef Name="IdDiscipline" />
+          </Key>
+          <Property Name="IdDiscipline" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Discipline" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Facultes">
+          <Key>
+            <PropertyRef Name="IdFaculty" />
+          </Key>
+          <Property Name="IdFaculty" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Faculty" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FormOfTrainings">
+          <Key>
+            <PropertyRef Name="IdFormOfTraining" />
+          </Key>
+          <Property Name="IdFormOfTraining" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FormOfTraining" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Genders">
+          <Key>
+            <PropertyRef Name="IdGender" />
+          </Key>
+          <Property Name="IdGender" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Groups">
+          <Key>
+            <PropertyRef Name="IdGroup" />
+          </Key>
+          <Property Name="IdGroup" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameGroup" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdSpecialization" Type="int" Nullable="false" />
+          <Property Name="IdKurs" Type="int" Nullable="false" />
+          <Property Name="IdFormOfTraining" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kurses">
+          <Key>
+            <PropertyRef Name="IdKurs" />
+          </Key>
+          <Property Name="IdKurs" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kurs" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Lessons">
+          <Key>
+            <PropertyRef Name="IdLesson" />
+          </Key>
+          <Property Name="IdLesson" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdGroup" Type="int" Nullable="false" />
+          <Property Name="IdDiscipline" Type="int" Nullable="false" />
+          <Property Name="IdTypeOfLesson" Type="int" Nullable="false" />
+          <Property Name="IdTeacher" Type="int" Nullable="false" />
+          <Property Name="DateLesson" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Logined">
+          <Key>
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="IdUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoginUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PasswordUser" Type="int" Nullable="false" />
+          <Property Name="IdRole" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Marks">
+          <Key>
+            <PropertyRef Name="IdMark" />
+          </Key>
+          <Property Name="IdMark" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Mark" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdTypeOfReporting" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MarkStudents">
+          <Key>
+            <PropertyRef Name="IdEntry" />
+          </Key>
+          <Property Name="IdEntry" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdStudent" Type="int" Nullable="false" />
+          <Property Name="IdDiscipline" Type="int" Nullable="false" />
+          <Property Name="IdTypeOfReporting" Type="int" Nullable="false" />
+          <Property Name="DateReporting" Type="date" Nullable="false" />
+          <Property Name="General" Type="int" Nullable="false" />
+          <Property Name="IdMark" Type="int" Nullable="false" />
+          <Property Name="IdTeacher" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="IdRole" />
+          </Key>
+          <Property Name="IdRole" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Specializations">
+          <Key>
+            <PropertyRef Name="IdSpecialization" />
+          </Key>
+          <Property Name="IdSpecialization" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Specialization" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdFaculty" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Students">
+          <Key>
+            <PropertyRef Name="IdStudent" />
+          </Key>
+          <Property Name="IdStudent" Type="int" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NameStudent" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Birthday" Type="date" Nullable="false" />
+          <Property Name="IdGender" Type="int" Nullable="false" />
+          <Property Name="IdSpecialization" Type="int" Nullable="false" />
+          <Property Name="IdKurs" Type="int" Nullable="false" />
+          <Property Name="IdFormOfTraining" Type="int" Nullable="false" />
+          <Property Name="IdGroup" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudyPlan">
+          <Key>
+            <PropertyRef Name="IdEntry" />
+          </Key>
+          <Property Name="IdEntry" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdSpecialization" Type="int" Nullable="false" />
+          <Property Name="IdKurs" Type="int" Nullable="false" />
+          <Property Name="IdFormOfTraining" Type="int" Nullable="false" />
+          <Property Name="IdGroup" Type="int" Nullable="false" />
+          <Property Name="IdDiscipline" Type="int" Nullable="false" />
+          <Property Name="Lecture" Type="int" Nullable="false" />
+          <Property Name="Practice" Type="int" Nullable="false" />
+          <Property Name="IdTypeOfReporting" Type="int" Nullable="false" />
+          <Property Name="Reporting" Type="float" Nullable="false" />
+          <Property Name="General" Type="float" Nullable="false" />
+          <Property Name="IdTeacher" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Teachers">
+          <Key>
+            <PropertyRef Name="IdTeacher" />
+          </Key>
+          <Property Name="IdTeacher" Type="int" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NameTeacher" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Birthday" Type="date" Nullable="false" />
+          <Property Name="IdGender" Type="int" Nullable="false" />
+          <Property Name="IdDepartment" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypesOfLesson">
+          <Key>
+            <PropertyRef Name="IdTypeOfLesson" />
+          </Key>
+          <Property Name="IdTypeOfLesson" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeOfLesson" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypesOfReporting">
+          <Key>
+            <PropertyRef Name="IdTypeOfReporting" />
+          </Key>
+          <Property Name="IdTypeOfReporting" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeOfReporting" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Departmen__IdFac__3E52440B">
+          <End Role="Facultes" Type="Self.Facultes" Multiplicity="1" />
+          <End Role="Departments" Type="Self.Departments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facultes">
+              <PropertyRef Name="IdFaculty" />
+            </Principal>
+            <Dependent Role="Departments">
+              <PropertyRef Name="IdFaculty" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Groups__IdFormOf__49C3F6B7">
+          <End Role="FormOfTrainings" Type="Self.FormOfTrainings" Multiplicity="1" />
+          <End Role="Groups" Type="Self.Groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FormOfTrainings">
+              <PropertyRef Name="IdFormOfTraining" />
+            </Principal>
+            <Dependent Role="Groups">
+              <PropertyRef Name="IdFormOfTraining" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Groups__IdKurs__48CFD27E">
+          <End Role="Kurses" Type="Self.Kurses" Multiplicity="1" />
+          <End Role="Groups" Type="Self.Groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kurses">
+              <PropertyRef Name="IdKurs" />
+            </Principal>
+            <Dependent Role="Groups">
+              <PropertyRef Name="IdKurs" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Groups__IdSpecia__47DBAE45">
+          <End Role="Specializations" Type="Self.Specializations" Multiplicity="1" />
+          <End Role="Groups" Type="Self.Groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Specializations">
+              <PropertyRef Name="IdSpecialization" />
+            </Principal>
+            <Dependent Role="Groups">
+              <PropertyRef Name="IdSpecialization" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Lessons__IdDisci__03F0984C">
+          <End Role="Disciplines" Type="Self.Disciplines" Multiplicity="1" />
+          <End Role="Lessons" Type="Self.Lessons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disciplines">
+              <PropertyRef Name="IdDiscipline" />
+            </Principal>
+            <Dependent Role="Lessons">
+              <PropertyRef Name="IdDiscipline" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Lessons__IdGroup__02FC7413">
+          <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
+          <End Role="Lessons" Type="Self.Lessons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="IdGroup" />
+            </Principal>
+            <Dependent Role="Lessons">
+              <PropertyRef Name="IdGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Lessons__IdTeach__05D8E0BE">
+          <End Role="Teachers" Type="Self.Teachers" Multiplicity="1" />
+          <End Role="Lessons" Type="Self.Lessons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teachers">
+              <PropertyRef Name="IdTeacher" />
+            </Principal>
+            <Dependent Role="Lessons">
+              <PropertyRef Name="IdTeacher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Lessons__IdTypeO__04E4BC85">
+          <End Role="TypesOfLesson" Type="Self.TypesOfLesson" Multiplicity="1" />
+          <End Role="Lessons" Type="Self.Lessons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypesOfLesson">
+              <PropertyRef Name="IdTypeOfLesson" />
+            </Principal>
+            <Dependent Role="Lessons">
+              <PropertyRef Name="IdTypeOfLesson" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Logined__IdRole__398D8EEE">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Logined" Type="Self.Logined" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="IdRole" />
+            </Principal>
+            <Dependent Role="Logined">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Marks__IdTypeOfR__73BA3083">
+          <End Role="TypesOfReporting" Type="Self.TypesOfReporting" Multiplicity="1" />
+          <End Role="Marks" Type="Self.Marks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypesOfReporting">
+              <PropertyRef Name="IdTypeOfReporting" />
+            </Principal>
+            <Dependent Role="Marks">
+              <PropertyRef Name="IdTypeOfReporting" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MarkStude__IdDis__09A971A2">
+          <End Role="Disciplines" Type="Self.Disciplines" Multiplicity="1" />
+          <End Role="MarkStudents" Type="Self.MarkStudents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disciplines">
+              <PropertyRef Name="IdDiscipline" />
+            </Principal>
+            <Dependent Role="MarkStudents">
+              <PropertyRef Name="IdDiscipline" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MarkStude__IdMar__0B91BA14">
+          <End Role="Marks" Type="Self.Marks" Multiplicity="1" />
+          <End Role="MarkStudents" Type="Self.MarkStudents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marks">
+              <PropertyRef Name="IdMark" />
+            </Principal>
+            <Dependent Role="MarkStudents">
+              <PropertyRef Name="IdMark" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MarkStude__IdStu__08B54D69">
+          <End Role="Students" Type="Self.Students" Multiplicity="1" />
+          <End Role="MarkStudents" Type="Self.MarkStudents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="IdStudent" />
+            </Principal>
+            <Dependent Role="MarkStudents">
+              <PropertyRef Name="IdStudent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MarkStude__IdTea__0C85DE4D">
+          <End Role="Teachers" Type="Self.Teachers" Multiplicity="1" />
+          <End Role="MarkStudents" Type="Self.MarkStudents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teachers">
+              <PropertyRef Name="IdTeacher" />
+            </Principal>
+            <Dependent Role="MarkStudents">
+              <PropertyRef Name="IdTeacher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MarkStude__IdTyp__0A9D95DB">
+          <End Role="TypesOfReporting" Type="Self.TypesOfReporting" Multiplicity="1" />
+          <End Role="MarkStudents" Type="Self.MarkStudents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypesOfReporting">
+              <PropertyRef Name="IdTypeOfReporting" />
+            </Principal>
+            <Dependent Role="MarkStudents">
+              <PropertyRef Name="IdTypeOfReporting" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Specializ__IdFac__412EB0B6">
+          <End Role="Facultes" Type="Self.Facultes" Multiplicity="1" />
+          <End Role="Specializations" Type="Self.Specializations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facultes">
+              <PropertyRef Name="IdFaculty" />
+            </Principal>
+            <Dependent Role="Specializations">
+              <PropertyRef Name="IdFaculty" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Students__IdForm__68487DD7">
+          <End Role="FormOfTrainings" Type="Self.FormOfTrainings" Multiplicity="1" />
+          <End Role="Students" Type="Self.Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FormOfTrainings">
+              <PropertyRef Name="IdFormOfTraining" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="IdFormOfTraining" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Students__IdGend__656C112C">
+          <End Role="Genders" Type="Self.Genders" Multiplicity="1" />
+          <End Role="Students" Type="Self.Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genders">
+              <PropertyRef Name="IdGender" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="IdGender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Students__IdGrou__693CA210">
+          <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
+          <End Role="Students" Type="Self.Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="IdGroup" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="IdGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Students__IdKurs__6754599E">
+          <End Role="Kurses" Type="Self.Kurses" Multiplicity="1" />
+          <End Role="Students" Type="Self.Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kurses">
+              <PropertyRef Name="IdKurs" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="IdKurs" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Students__IdSpec__66603565">
+          <End Role="Specializations" Type="Self.Specializations" Multiplicity="1" />
+          <End Role="Students" Type="Self.Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Specializations">
+              <PropertyRef Name="IdSpecialization" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="IdSpecialization" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudyPlan__IdDis__7E37BEF6">
+          <End Role="Disciplines" Type="Self.Disciplines" Multiplicity="1" />
+          <End Role="StudyPlan" Type="Self.StudyPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disciplines">
+              <PropertyRef Name="IdDiscipline" />
+            </Principal>
+            <Dependent Role="StudyPlan">
+              <PropertyRef Name="IdDiscipline" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudyPlan__IdFor__7C4F7684">
+          <End Role="FormOfTrainings" Type="Self.FormOfTrainings" Multiplicity="1" />
+          <End Role="StudyPlan" Type="Self.StudyPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FormOfTrainings">
+              <PropertyRef Name="IdFormOfTraining" />
+            </Principal>
+            <Dependent Role="StudyPlan">
+              <PropertyRef Name="IdFormOfTraining" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudyPlan__IdGro__7D439ABD">
+          <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
+          <End Role="StudyPlan" Type="Self.StudyPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="IdGroup" />
+            </Principal>
+            <Dependent Role="StudyPlan">
+              <PropertyRef Name="IdGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudyPlan__IdKur__7B5B524B">
+          <End Role="Kurses" Type="Self.Kurses" Multiplicity="1" />
+          <End Role="StudyPlan" Type="Self.StudyPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kurses">
+              <PropertyRef Name="IdKurs" />
+            </Principal>
+            <Dependent Role="StudyPlan">
+              <PropertyRef Name="IdKurs" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudyPlan__IdSpe__7A672E12">
+          <End Role="Specializations" Type="Self.Specializations" Multiplicity="1" />
+          <End Role="StudyPlan" Type="Self.StudyPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Specializations">
+              <PropertyRef Name="IdSpecialization" />
+            </Principal>
+            <Dependent Role="StudyPlan">
+              <PropertyRef Name="IdSpecialization" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudyPlan__IdTea__00200768">
+          <End Role="Teachers" Type="Self.Teachers" Multiplicity="1" />
+          <End Role="StudyPlan" Type="Self.StudyPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teachers">
+              <PropertyRef Name="IdTeacher" />
+            </Principal>
+            <Dependent Role="StudyPlan">
+              <PropertyRef Name="IdTeacher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudyPlan__IdTyp__7F2BE32F">
+          <End Role="TypesOfReporting" Type="Self.TypesOfReporting" Multiplicity="1" />
+          <End Role="StudyPlan" Type="Self.StudyPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypesOfReporting">
+              <PropertyRef Name="IdTypeOfReporting" />
+            </Principal>
+            <Dependent Role="StudyPlan">
+              <PropertyRef Name="IdTypeOfReporting" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Teachers__IdDepa__6D0D32F4">
+          <End Role="Departments" Type="Self.Departments" Multiplicity="1" />
+          <End Role="Teachers" Type="Self.Teachers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departments">
+              <PropertyRef Name="IdDepartment" />
+            </Principal>
+            <Dependent Role="Teachers">
+              <PropertyRef Name="IdDepartment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Teachers__IdGend__6C190EBB">
+          <End Role="Genders" Type="Self.Genders" Multiplicity="1" />
+          <End Role="Teachers" Type="Self.Teachers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genders">
+              <PropertyRef Name="IdGender" />
+            </Principal>
+            <Dependent Role="Teachers">
+              <PropertyRef Name="IdGender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Students_Logined">
+          <End Role="Logined" Type="Self.Logined" Multiplicity="1" />
+          <End Role="Students" Type="Self.Students" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Logined">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="IdStudent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Teachers_Logined">
+          <End Role="Logined" Type="Self.Logined" Multiplicity="1" />
+          <End Role="Teachers" Type="Self.Teachers" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Logined">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="Teachers">
+              <PropertyRef Name="IdTeacher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище ModelContainer">
+          <EntitySet Name="Departments" EntityType="Self.Departments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Disciplines" EntityType="Self.Disciplines" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Facultes" EntityType="Self.Facultes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FormOfTrainings" EntityType="Self.FormOfTrainings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Genders" EntityType="Self.Genders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Groups" EntityType="Self.Groups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kurses" EntityType="Self.Kurses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lessons" EntityType="Self.Lessons" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Logined" EntityType="Self.Logined" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Marks" EntityType="Self.Marks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MarkStudents" EntityType="Self.MarkStudents" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Specializations" EntityType="Self.Specializations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudyPlan" EntityType="Self.StudyPlan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Teachers" EntityType="Self.Teachers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypesOfLesson" EntityType="Self.TypesOfLesson" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypesOfReporting" EntityType="Self.TypesOfReporting" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Departmen__IdFac__3E52440B" Association="Self.FK__Departmen__IdFac__3E52440B">
+            <End Role="Facultes" EntitySet="Facultes" />
+            <End Role="Departments" EntitySet="Departments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Groups__IdFormOf__49C3F6B7" Association="Self.FK__Groups__IdFormOf__49C3F6B7">
+            <End Role="FormOfTrainings" EntitySet="FormOfTrainings" />
+            <End Role="Groups" EntitySet="Groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Groups__IdKurs__48CFD27E" Association="Self.FK__Groups__IdKurs__48CFD27E">
+            <End Role="Kurses" EntitySet="Kurses" />
+            <End Role="Groups" EntitySet="Groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Groups__IdSpecia__47DBAE45" Association="Self.FK__Groups__IdSpecia__47DBAE45">
+            <End Role="Specializations" EntitySet="Specializations" />
+            <End Role="Groups" EntitySet="Groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Lessons__IdDisci__03F0984C" Association="Self.FK__Lessons__IdDisci__03F0984C">
+            <End Role="Disciplines" EntitySet="Disciplines" />
+            <End Role="Lessons" EntitySet="Lessons" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Lessons__IdGroup__02FC7413" Association="Self.FK__Lessons__IdGroup__02FC7413">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="Lessons" EntitySet="Lessons" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Lessons__IdTeach__05D8E0BE" Association="Self.FK__Lessons__IdTeach__05D8E0BE">
+            <End Role="Teachers" EntitySet="Teachers" />
+            <End Role="Lessons" EntitySet="Lessons" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Lessons__IdTypeO__04E4BC85" Association="Self.FK__Lessons__IdTypeO__04E4BC85">
+            <End Role="TypesOfLesson" EntitySet="TypesOfLesson" />
+            <End Role="Lessons" EntitySet="Lessons" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Logined__IdRole__398D8EEE" Association="Self.FK__Logined__IdRole__398D8EEE">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Logined" EntitySet="Logined" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Marks__IdTypeOfR__73BA3083" Association="Self.FK__Marks__IdTypeOfR__73BA3083">
+            <End Role="TypesOfReporting" EntitySet="TypesOfReporting" />
+            <End Role="Marks" EntitySet="Marks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MarkStude__IdDis__09A971A2" Association="Self.FK__MarkStude__IdDis__09A971A2">
+            <End Role="Disciplines" EntitySet="Disciplines" />
+            <End Role="MarkStudents" EntitySet="MarkStudents" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MarkStude__IdMar__0B91BA14" Association="Self.FK__MarkStude__IdMar__0B91BA14">
+            <End Role="Marks" EntitySet="Marks" />
+            <End Role="MarkStudents" EntitySet="MarkStudents" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MarkStude__IdStu__08B54D69" Association="Self.FK__MarkStude__IdStu__08B54D69">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="MarkStudents" EntitySet="MarkStudents" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MarkStude__IdTea__0C85DE4D" Association="Self.FK__MarkStude__IdTea__0C85DE4D">
+            <End Role="Teachers" EntitySet="Teachers" />
+            <End Role="MarkStudents" EntitySet="MarkStudents" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MarkStude__IdTyp__0A9D95DB" Association="Self.FK__MarkStude__IdTyp__0A9D95DB">
+            <End Role="TypesOfReporting" EntitySet="TypesOfReporting" />
+            <End Role="MarkStudents" EntitySet="MarkStudents" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Specializ__IdFac__412EB0B6" Association="Self.FK__Specializ__IdFac__412EB0B6">
+            <End Role="Facultes" EntitySet="Facultes" />
+            <End Role="Specializations" EntitySet="Specializations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Students__IdForm__68487DD7" Association="Self.FK__Students__IdForm__68487DD7">
+            <End Role="FormOfTrainings" EntitySet="FormOfTrainings" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Students__IdGend__656C112C" Association="Self.FK__Students__IdGend__656C112C">
+            <End Role="Genders" EntitySet="Genders" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Students__IdGrou__693CA210" Association="Self.FK__Students__IdGrou__693CA210">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Students__IdKurs__6754599E" Association="Self.FK__Students__IdKurs__6754599E">
+            <End Role="Kurses" EntitySet="Kurses" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Students__IdSpec__66603565" Association="Self.FK__Students__IdSpec__66603565">
+            <End Role="Specializations" EntitySet="Specializations" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudyPlan__IdDis__7E37BEF6" Association="Self.FK__StudyPlan__IdDis__7E37BEF6">
+            <End Role="Disciplines" EntitySet="Disciplines" />
+            <End Role="StudyPlan" EntitySet="StudyPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudyPlan__IdFor__7C4F7684" Association="Self.FK__StudyPlan__IdFor__7C4F7684">
+            <End Role="FormOfTrainings" EntitySet="FormOfTrainings" />
+            <End Role="StudyPlan" EntitySet="StudyPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudyPlan__IdGro__7D439ABD" Association="Self.FK__StudyPlan__IdGro__7D439ABD">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="StudyPlan" EntitySet="StudyPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudyPlan__IdKur__7B5B524B" Association="Self.FK__StudyPlan__IdKur__7B5B524B">
+            <End Role="Kurses" EntitySet="Kurses" />
+            <End Role="StudyPlan" EntitySet="StudyPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudyPlan__IdSpe__7A672E12" Association="Self.FK__StudyPlan__IdSpe__7A672E12">
+            <End Role="Specializations" EntitySet="Specializations" />
+            <End Role="StudyPlan" EntitySet="StudyPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudyPlan__IdTea__00200768" Association="Self.FK__StudyPlan__IdTea__00200768">
+            <End Role="Teachers" EntitySet="Teachers" />
+            <End Role="StudyPlan" EntitySet="StudyPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudyPlan__IdTyp__7F2BE32F" Association="Self.FK__StudyPlan__IdTyp__7F2BE32F">
+            <End Role="TypesOfReporting" EntitySet="TypesOfReporting" />
+            <End Role="StudyPlan" EntitySet="StudyPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Teachers__IdDepa__6D0D32F4" Association="Self.FK__Teachers__IdDepa__6D0D32F4">
+            <End Role="Departments" EntitySet="Departments" />
+            <End Role="Teachers" EntitySet="Teachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Teachers__IdGend__6C190EBB" Association="Self.FK__Teachers__IdGend__6C190EBB">
+            <End Role="Genders" EntitySet="Genders" />
+            <End Role="Teachers" EntitySet="Teachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Students_Logined" Association="Self.FK_Students_Logined">
+            <End Role="Logined" EntitySet="Logined" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teachers_Logined" Association="Self.FK_Teachers_Logined">
+            <End Role="Logined" EntitySet="Logined" />
+            <End Role="Teachers" EntitySet="Teachers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Departments">
+          <Key>
+            <PropertyRef Name="IdDepartment" />
+          </Key>
+          <Property Name="IdDepartment" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Department" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdFaculty" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Facultes" Relationship="Self.FK__Departmen__IdFac__3E52440B" FromRole="Departments" ToRole="Facultes" />
+          <NavigationProperty Name="Teachers" Relationship="Self.FK__Teachers__IdDepa__6D0D32F4" FromRole="Departments" ToRole="Teachers" />
+        </EntityType>
+        <EntityType Name="Disciplines">
+          <Key>
+            <PropertyRef Name="IdDiscipline" />
+          </Key>
+          <Property Name="IdDiscipline" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Discipline" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Lessons" Relationship="Self.FK__Lessons__IdDisci__03F0984C" FromRole="Disciplines" ToRole="Lessons" />
+          <NavigationProperty Name="MarkStudents" Relationship="Self.FK__MarkStude__IdDis__09A971A2" FromRole="Disciplines" ToRole="MarkStudents" />
+          <NavigationProperty Name="StudyPlan" Relationship="Self.FK__StudyPlan__IdDis__7E37BEF6" FromRole="Disciplines" ToRole="StudyPlan" />
+        </EntityType>
+        <EntityType Name="Facultes">
+          <Key>
+            <PropertyRef Name="IdFaculty" />
+          </Key>
+          <Property Name="IdFaculty" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Faculty" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Departments" Relationship="Self.FK__Departmen__IdFac__3E52440B" FromRole="Facultes" ToRole="Departments" />
+          <NavigationProperty Name="Specializations" Relationship="Self.FK__Specializ__IdFac__412EB0B6" FromRole="Facultes" ToRole="Specializations" />
+        </EntityType>
+        <EntityType Name="FormOfTrainings">
+          <Key>
+            <PropertyRef Name="IdFormOfTraining" />
+          </Key>
+          <Property Name="IdFormOfTraining" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FormOfTraining" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Groups" Relationship="Self.FK__Groups__IdFormOf__49C3F6B7" FromRole="FormOfTrainings" ToRole="Groups" />
+          <NavigationProperty Name="Students" Relationship="Self.FK__Students__IdForm__68487DD7" FromRole="FormOfTrainings" ToRole="Students" />
+          <NavigationProperty Name="StudyPlan" Relationship="Self.FK__StudyPlan__IdFor__7C4F7684" FromRole="FormOfTrainings" ToRole="StudyPlan" />
+        </EntityType>
+        <EntityType Name="Genders">
+          <Key>
+            <PropertyRef Name="IdGender" />
+          </Key>
+          <Property Name="IdGender" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Students" Relationship="Self.FK__Students__IdGend__656C112C" FromRole="Genders" ToRole="Students" />
+          <NavigationProperty Name="Teachers" Relationship="Self.FK__Teachers__IdGend__6C190EBB" FromRole="Genders" ToRole="Teachers" />
+        </EntityType>
+        <EntityType Name="Groups">
+          <Key>
+            <PropertyRef Name="IdGroup" />
+          </Key>
+          <Property Name="IdGroup" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdSpecialization" Type="Int32" Nullable="false" />
+          <Property Name="IdKurs" Type="Int32" Nullable="false" />
+          <Property Name="IdFormOfTraining" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="FormOfTrainings" Relationship="Self.FK__Groups__IdFormOf__49C3F6B7" FromRole="Groups" ToRole="FormOfTrainings" />
+          <NavigationProperty Name="Kurses" Relationship="Self.FK__Groups__IdKurs__48CFD27E" FromRole="Groups" ToRole="Kurses" />
+          <NavigationProperty Name="Specializations" Relationship="Self.FK__Groups__IdSpecia__47DBAE45" FromRole="Groups" ToRole="Specializations" />
+          <NavigationProperty Name="Lessons" Relationship="Self.FK__Lessons__IdGroup__02FC7413" FromRole="Groups" ToRole="Lessons" />
+          <NavigationProperty Name="Students" Relationship="Self.FK__Students__IdGrou__693CA210" FromRole="Groups" ToRole="Students" />
+          <NavigationProperty Name="StudyPlan" Relationship="Self.FK__StudyPlan__IdGro__7D439ABD" FromRole="Groups" ToRole="StudyPlan" />
+        </EntityType>
+        <EntityType Name="Kurses">
+          <Key>
+            <PropertyRef Name="IdKurs" />
+          </Key>
+          <Property Name="IdKurs" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kurs" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Groups" Relationship="Self.FK__Groups__IdKurs__48CFD27E" FromRole="Kurses" ToRole="Groups" />
+          <NavigationProperty Name="Students" Relationship="Self.FK__Students__IdKurs__6754599E" FromRole="Kurses" ToRole="Students" />
+          <NavigationProperty Name="StudyPlan" Relationship="Self.FK__StudyPlan__IdKur__7B5B524B" FromRole="Kurses" ToRole="StudyPlan" />
+        </EntityType>
+        <EntityType Name="Lessons">
+          <Key>
+            <PropertyRef Name="IdLesson" />
+          </Key>
+          <Property Name="IdLesson" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdGroup" Type="Int32" Nullable="false" />
+          <Property Name="IdDiscipline" Type="Int32" Nullable="false" />
+          <Property Name="IdTypeOfLesson" Type="Int32" Nullable="false" />
+          <Property Name="IdTeacher" Type="Int32" Nullable="false" />
+          <Property Name="DateLesson" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Disciplines" Relationship="Self.FK__Lessons__IdDisci__03F0984C" FromRole="Lessons" ToRole="Disciplines" />
+          <NavigationProperty Name="Groups" Relationship="Self.FK__Lessons__IdGroup__02FC7413" FromRole="Lessons" ToRole="Groups" />
+          <NavigationProperty Name="Teachers" Relationship="Self.FK__Lessons__IdTeach__05D8E0BE" FromRole="Lessons" ToRole="Teachers" />
+          <NavigationProperty Name="TypesOfLesson" Relationship="Self.FK__Lessons__IdTypeO__04E4BC85" FromRole="Lessons" ToRole="TypesOfLesson" />
+        </EntityType>
+        <EntityType Name="Logined">
+          <Key>
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="IdUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoginUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasswordUser" Type="Int32" Nullable="false" />
+          <Property Name="IdRole" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Roles" Relationship="Self.FK__Logined__IdRole__398D8EEE" FromRole="Logined" ToRole="Roles" />
+          <NavigationProperty Name="Students" Relationship="Self.FK_Students_Logined" FromRole="Logined" ToRole="Students" />
+          <NavigationProperty Name="Teachers" Relationship="Self.FK_Teachers_Logined" FromRole="Logined" ToRole="Teachers" />
+        </EntityType>
+        <EntityType Name="Marks">
+          <Key>
+            <PropertyRef Name="IdMark" />
+          </Key>
+          <Property Name="IdMark" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Mark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdTypeOfReporting" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TypesOfReporting" Relationship="Self.FK__Marks__IdTypeOfR__73BA3083" FromRole="Marks" ToRole="TypesOfReporting" />
+          <NavigationProperty Name="MarkStudents" Relationship="Self.FK__MarkStude__IdMar__0B91BA14" FromRole="Marks" ToRole="MarkStudents" />
+        </EntityType>
+        <EntityType Name="MarkStudents">
+          <Key>
+            <PropertyRef Name="IdEntry" />
+          </Key>
+          <Property Name="IdEntry" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdStudent" Type="Int32" Nullable="false" />
+          <Property Name="IdDiscipline" Type="Int32" Nullable="false" />
+          <Property Name="IdTypeOfReporting" Type="Int32" Nullable="false" />
+          <Property Name="DateReporting" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="General" Type="Int32" Nullable="false" />
+          <Property Name="IdMark" Type="Int32" Nullable="false" />
+          <Property Name="IdTeacher" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Disciplines" Relationship="Self.FK__MarkStude__IdDis__09A971A2" FromRole="MarkStudents" ToRole="Disciplines" />
+          <NavigationProperty Name="Marks" Relationship="Self.FK__MarkStude__IdMar__0B91BA14" FromRole="MarkStudents" ToRole="Marks" />
+          <NavigationProperty Name="Students" Relationship="Self.FK__MarkStude__IdStu__08B54D69" FromRole="MarkStudents" ToRole="Students" />
+          <NavigationProperty Name="Teachers" Relationship="Self.FK__MarkStude__IdTea__0C85DE4D" FromRole="MarkStudents" ToRole="Teachers" />
+          <NavigationProperty Name="TypesOfReporting" Relationship="Self.FK__MarkStude__IdTyp__0A9D95DB" FromRole="MarkStudents" ToRole="TypesOfReporting" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="IdRole" />
+          </Key>
+          <Property Name="IdRole" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Logined" Relationship="Self.FK__Logined__IdRole__398D8EEE" FromRole="Roles" ToRole="Logined" />
+        </EntityType>
+        <EntityType Name="Specializations">
+          <Key>
+            <PropertyRef Name="IdSpecialization" />
+          </Key>
+          <Property Name="IdSpecialization" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Specialization" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdFaculty" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Facultes" Relationship="Self.FK__Specializ__IdFac__412EB0B6" FromRole="Specializations" ToRole="Facultes" />
+          <NavigationProperty Name="Groups" Relationship="Self.FK__Groups__IdSpecia__47DBAE45" FromRole="Specializations" ToRole="Groups" />
+          <NavigationProperty Name="Students" Relationship="Self.FK__Students__IdSpec__66603565" FromRole="Specializations" ToRole="Students" />
+          <NavigationProperty Name="StudyPlan" Relationship="Self.FK__StudyPlan__IdSpe__7A672E12" FromRole="Specializations" ToRole="StudyPlan" />
+        </EntityType>
+        <EntityType Name="Students">
+          <Key>
+            <PropertyRef Name="IdStudent" />
+          </Key>
+          <Property Name="IdStudent" Type="Int32" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NameStudent" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IdGender" Type="Int32" Nullable="false" />
+          <Property Name="IdSpecialization" Type="Int32" Nullable="false" />
+          <Property Name="IdKurs" Type="Int32" Nullable="false" />
+          <Property Name="IdFormOfTraining" Type="Int32" Nullable="false" />
+          <Property Name="IdGroup" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="FormOfTrainings" Relationship="Self.FK__Students__IdForm__68487DD7" FromRole="Students" ToRole="FormOfTrainings" />
+          <NavigationProperty Name="Genders" Relationship="Self.FK__Students__IdGend__656C112C" FromRole="Students" ToRole="Genders" />
+          <NavigationProperty Name="Groups" Relationship="Self.FK__Students__IdGrou__693CA210" FromRole="Students" ToRole="Groups" />
+          <NavigationProperty Name="Kurses" Relationship="Self.FK__Students__IdKurs__6754599E" FromRole="Students" ToRole="Kurses" />
+          <NavigationProperty Name="Logined" Relationship="Self.FK_Students_Logined" FromRole="Students" ToRole="Logined" />
+          <NavigationProperty Name="MarkStudents" Relationship="Self.FK__MarkStude__IdStu__08B54D69" FromRole="Students" ToRole="MarkStudents" />
+          <NavigationProperty Name="Specializations" Relationship="Self.FK__Students__IdSpec__66603565" FromRole="Students" ToRole="Specializations" />
+        </EntityType>
+        <EntityType Name="StudyPlan">
+          <Key>
+            <PropertyRef Name="IdEntry" />
+          </Key>
+          <Property Name="IdEntry" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdSpecialization" Type="Int32" Nullable="false" />
+          <Property Name="IdKurs" Type="Int32" Nullable="false" />
+          <Property Name="IdFormOfTraining" Type="Int32" Nullable="false" />
+          <Property Name="IdGroup" Type="Int32" Nullable="false" />
+          <Property Name="IdDiscipline" Type="Int32" Nullable="false" />
+          <Property Name="Lecture" Type="Int32" Nullable="false" />
+          <Property Name="Practice" Type="Int32" Nullable="false" />
+          <Property Name="IdTypeOfReporting" Type="Int32" Nullable="false" />
+          <Property Name="Reporting" Type="Double" Nullable="false" />
+          <Property Name="General" Type="Double" Nullable="false" />
+          <Property Name="IdTeacher" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Disciplines" Relationship="Self.FK__StudyPlan__IdDis__7E37BEF6" FromRole="StudyPlan" ToRole="Disciplines" />
+          <NavigationProperty Name="FormOfTrainings" Relationship="Self.FK__StudyPlan__IdFor__7C4F7684" FromRole="StudyPlan" ToRole="FormOfTrainings" />
+          <NavigationProperty Name="Groups" Relationship="Self.FK__StudyPlan__IdGro__7D439ABD" FromRole="StudyPlan" ToRole="Groups" />
+          <NavigationProperty Name="Kurses" Relationship="Self.FK__StudyPlan__IdKur__7B5B524B" FromRole="StudyPlan" ToRole="Kurses" />
+          <NavigationProperty Name="Specializations" Relationship="Self.FK__StudyPlan__IdSpe__7A672E12" FromRole="StudyPlan" ToRole="Specializations" />
+          <NavigationProperty Name="Teachers" Relationship="Self.FK__StudyPlan__IdTea__00200768" FromRole="StudyPlan" ToRole="Teachers" />
+          <NavigationProperty Name="TypesOfReporting" Relationship="Self.FK__StudyPlan__IdTyp__7F2BE32F" FromRole="StudyPlan" ToRole="TypesOfReporting" />
+        </EntityType>
+        <EntityType Name="Teachers">
+          <Key>
+            <PropertyRef Name="IdTeacher" />
+          </Key>
+          <Property Name="IdTeacher" Type="Int32" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NameTeacher" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IdGender" Type="Int32" Nullable="false" />
+          <Property Name="IdDepartment" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Departments" Relationship="Self.FK__Teachers__IdDepa__6D0D32F4" FromRole="Teachers" ToRole="Departments" />
+          <NavigationProperty Name="Genders" Relationship="Self.FK__Teachers__IdGend__6C190EBB" FromRole="Teachers" ToRole="Genders" />
+          <NavigationProperty Name="Lessons" Relationship="Self.FK__Lessons__IdTeach__05D8E0BE" FromRole="Teachers" ToRole="Lessons" />
+          <NavigationProperty Name="Logined" Relationship="Self.FK_Teachers_Logined" FromRole="Teachers" ToRole="Logined" />
+          <NavigationProperty Name="MarkStudents" Relationship="Self.FK__MarkStude__IdTea__0C85DE4D" FromRole="Teachers" ToRole="MarkStudents" />
+          <NavigationProperty Name="StudyPlan" Relationship="Self.FK__StudyPlan__IdTea__00200768" FromRole="Teachers" ToRole="StudyPlan" />
+        </EntityType>
+        <EntityType Name="TypesOfLesson">
+          <Key>
+            <PropertyRef Name="IdTypeOfLesson" />
+          </Key>
+          <Property Name="IdTypeOfLesson" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeOfLesson" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Lessons" Relationship="Self.FK__Lessons__IdTypeO__04E4BC85" FromRole="TypesOfLesson" ToRole="Lessons" />
+        </EntityType>
+        <EntityType Name="TypesOfReporting">
+          <Key>
+            <PropertyRef Name="IdTypeOfReporting" />
+          </Key>
+          <Property Name="IdTypeOfReporting" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeOfReporting" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Marks" Relationship="Self.FK__Marks__IdTypeOfR__73BA3083" FromRole="TypesOfReporting" ToRole="Marks" />
+          <NavigationProperty Name="MarkStudents" Relationship="Self.FK__MarkStude__IdTyp__0A9D95DB" FromRole="TypesOfReporting" ToRole="MarkStudents" />
+          <NavigationProperty Name="StudyPlan" Relationship="Self.FK__StudyPlan__IdTyp__7F2BE32F" FromRole="TypesOfReporting" ToRole="StudyPlan" />
+        </EntityType>
+        <Association Name="FK__Departmen__IdFac__3E52440B">
+          <End Role="Facultes" Type="Self.Facultes" Multiplicity="1" />
+          <End Role="Departments" Type="Self.Departments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facultes">
+              <PropertyRef Name="IdFaculty" />
+            </Principal>
+            <Dependent Role="Departments">
+              <PropertyRef Name="IdFaculty" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Teachers__IdDepa__6D0D32F4">
+          <End Role="Departments" Type="Self.Departments" Multiplicity="1" />
+          <End Role="Teachers" Type="Self.Teachers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departments">
+              <PropertyRef Name="IdDepartment" />
+            </Principal>
+            <Dependent Role="Teachers">
+              <PropertyRef Name="IdDepartment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Lessons__IdDisci__03F0984C">
+          <End Role="Disciplines" Type="Self.Disciplines" Multiplicity="1" />
+          <End Role="Lessons" Type="Self.Lessons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disciplines">
+              <PropertyRef Name="IdDiscipline" />
+            </Principal>
+            <Dependent Role="Lessons">
+              <PropertyRef Name="IdDiscipline" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MarkStude__IdDis__09A971A2">
+          <End Role="Disciplines" Type="Self.Disciplines" Multiplicity="1" />
+          <End Role="MarkStudents" Type="Self.MarkStudents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disciplines">
+              <PropertyRef Name="IdDiscipline" />
+            </Principal>
+            <Dependent Role="MarkStudents">
+              <PropertyRef Name="IdDiscipline" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudyPlan__IdDis__7E37BEF6">
+          <End Role="Disciplines" Type="Self.Disciplines" Multiplicity="1" />
+          <End Role="StudyPlan" Type="Self.StudyPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disciplines">
+              <PropertyRef Name="IdDiscipline" />
+            </Principal>
+            <Dependent Role="StudyPlan">
+              <PropertyRef Name="IdDiscipline" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Specializ__IdFac__412EB0B6">
+          <End Role="Facultes" Type="Self.Facultes" Multiplicity="1" />
+          <End Role="Specializations" Type="Self.Specializations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facultes">
+              <PropertyRef Name="IdFaculty" />
+            </Principal>
+            <Dependent Role="Specializations">
+              <PropertyRef Name="IdFaculty" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Groups__IdFormOf__49C3F6B7">
+          <End Role="FormOfTrainings" Type="Self.FormOfTrainings" Multiplicity="1" />
+          <End Role="Groups" Type="Self.Groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FormOfTrainings">
+              <PropertyRef Name="IdFormOfTraining" />
+            </Principal>
+            <Dependent Role="Groups">
+              <PropertyRef Name="IdFormOfTraining" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Students__IdForm__68487DD7">
+          <End Role="FormOfTrainings" Type="Self.FormOfTrainings" Multiplicity="1" />
+          <End Role="Students" Type="Self.Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FormOfTrainings">
+              <PropertyRef Name="IdFormOfTraining" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="IdFormOfTraining" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudyPlan__IdFor__7C4F7684">
+          <End Role="FormOfTrainings" Type="Self.FormOfTrainings" Multiplicity="1" />
+          <End Role="StudyPlan" Type="Self.StudyPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FormOfTrainings">
+              <PropertyRef Name="IdFormOfTraining" />
+            </Principal>
+            <Dependent Role="StudyPlan">
+              <PropertyRef Name="IdFormOfTraining" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Students__IdGend__656C112C">
+          <End Role="Genders" Type="Self.Genders" Multiplicity="1" />
+          <End Role="Students" Type="Self.Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genders">
+              <PropertyRef Name="IdGender" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="IdGender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Teachers__IdGend__6C190EBB">
+          <End Role="Genders" Type="Self.Genders" Multiplicity="1" />
+          <End Role="Teachers" Type="Self.Teachers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genders">
+              <PropertyRef Name="IdGender" />
+            </Principal>
+            <Dependent Role="Teachers">
+              <PropertyRef Name="IdGender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Groups__IdKurs__48CFD27E">
+          <End Role="Kurses" Type="Self.Kurses" Multiplicity="1" />
+          <End Role="Groups" Type="Self.Groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kurses">
+              <PropertyRef Name="IdKurs" />
+            </Principal>
+            <Dependent Role="Groups">
+              <PropertyRef Name="IdKurs" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Groups__IdSpecia__47DBAE45">
+          <End Role="Specializations" Type="Self.Specializations" Multiplicity="1" />
+          <End Role="Groups" Type="Self.Groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Specializations">
+              <PropertyRef Name="IdSpecialization" />
+            </Principal>
+            <Dependent Role="Groups">
+              <PropertyRef Name="IdSpecialization" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Lessons__IdGroup__02FC7413">
+          <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
+          <End Role="Lessons" Type="Self.Lessons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="IdGroup" />
+            </Principal>
+            <Dependent Role="Lessons">
+              <PropertyRef Name="IdGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Students__IdGrou__693CA210">
+          <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
+          <End Role="Students" Type="Self.Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="IdGroup" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="IdGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudyPlan__IdGro__7D439ABD">
+          <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
+          <End Role="StudyPlan" Type="Self.StudyPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="IdGroup" />
+            </Principal>
+            <Dependent Role="StudyPlan">
+              <PropertyRef Name="IdGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Students__IdKurs__6754599E">
+          <End Role="Kurses" Type="Self.Kurses" Multiplicity="1" />
+          <End Role="Students" Type="Self.Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kurses">
+              <PropertyRef Name="IdKurs" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="IdKurs" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudyPlan__IdKur__7B5B524B">
+          <End Role="Kurses" Type="Self.Kurses" Multiplicity="1" />
+          <End Role="StudyPlan" Type="Self.StudyPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kurses">
+              <PropertyRef Name="IdKurs" />
+            </Principal>
+            <Dependent Role="StudyPlan">
+              <PropertyRef Name="IdKurs" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Lessons__IdTeach__05D8E0BE">
+          <End Role="Teachers" Type="Self.Teachers" Multiplicity="1" />
+          <End Role="Lessons" Type="Self.Lessons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teachers">
+              <PropertyRef Name="IdTeacher" />
+            </Principal>
+            <Dependent Role="Lessons">
+              <PropertyRef Name="IdTeacher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Lessons__IdTypeO__04E4BC85">
+          <End Role="TypesOfLesson" Type="Self.TypesOfLesson" Multiplicity="1" />
+          <End Role="Lessons" Type="Self.Lessons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypesOfLesson">
+              <PropertyRef Name="IdTypeOfLesson" />
+            </Principal>
+            <Dependent Role="Lessons">
+              <PropertyRef Name="IdTypeOfLesson" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Logined__IdRole__398D8EEE">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Logined" Type="Self.Logined" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="IdRole" />
+            </Principal>
+            <Dependent Role="Logined">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Students_Logined">
+          <End Role="Logined" Type="Self.Logined" Multiplicity="1" />
+          <End Role="Students" Type="Self.Students" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Logined">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="IdStudent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Teachers_Logined">
+          <End Role="Logined" Type="Self.Logined" Multiplicity="1" />
+          <End Role="Teachers" Type="Self.Teachers" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Logined">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="Teachers">
+              <PropertyRef Name="IdTeacher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Marks__IdTypeOfR__73BA3083">
+          <End Role="TypesOfReporting" Type="Self.TypesOfReporting" Multiplicity="1" />
+          <End Role="Marks" Type="Self.Marks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypesOfReporting">
+              <PropertyRef Name="IdTypeOfReporting" />
+            </Principal>
+            <Dependent Role="Marks">
+              <PropertyRef Name="IdTypeOfReporting" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MarkStude__IdMar__0B91BA14">
+          <End Role="Marks" Type="Self.Marks" Multiplicity="1" />
+          <End Role="MarkStudents" Type="Self.MarkStudents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marks">
+              <PropertyRef Name="IdMark" />
+            </Principal>
+            <Dependent Role="MarkStudents">
+              <PropertyRef Name="IdMark" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MarkStude__IdStu__08B54D69">
+          <End Role="Students" Type="Self.Students" Multiplicity="1" />
+          <End Role="MarkStudents" Type="Self.MarkStudents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="IdStudent" />
+            </Principal>
+            <Dependent Role="MarkStudents">
+              <PropertyRef Name="IdStudent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MarkStude__IdTea__0C85DE4D">
+          <End Role="Teachers" Type="Self.Teachers" Multiplicity="1" />
+          <End Role="MarkStudents" Type="Self.MarkStudents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teachers">
+              <PropertyRef Name="IdTeacher" />
+            </Principal>
+            <Dependent Role="MarkStudents">
+              <PropertyRef Name="IdTeacher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MarkStude__IdTyp__0A9D95DB">
+          <End Role="TypesOfReporting" Type="Self.TypesOfReporting" Multiplicity="1" />
+          <End Role="MarkStudents" Type="Self.MarkStudents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypesOfReporting">
+              <PropertyRef Name="IdTypeOfReporting" />
+            </Principal>
+            <Dependent Role="MarkStudents">
+              <PropertyRef Name="IdTypeOfReporting" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Students__IdSpec__66603565">
+          <End Role="Specializations" Type="Self.Specializations" Multiplicity="1" />
+          <End Role="Students" Type="Self.Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Specializations">
+              <PropertyRef Name="IdSpecialization" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="IdSpecialization" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudyPlan__IdSpe__7A672E12">
+          <End Role="Specializations" Type="Self.Specializations" Multiplicity="1" />
+          <End Role="StudyPlan" Type="Self.StudyPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Specializations">
+              <PropertyRef Name="IdSpecialization" />
+            </Principal>
+            <Dependent Role="StudyPlan">
+              <PropertyRef Name="IdSpecialization" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudyPlan__IdTea__00200768">
+          <End Role="Teachers" Type="Self.Teachers" Multiplicity="1" />
+          <End Role="StudyPlan" Type="Self.StudyPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teachers">
+              <PropertyRef Name="IdTeacher" />
+            </Principal>
+            <Dependent Role="StudyPlan">
+              <PropertyRef Name="IdTeacher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudyPlan__IdTyp__7F2BE32F">
+          <End Role="TypesOfReporting" Type="Self.TypesOfReporting" Multiplicity="1" />
+          <End Role="StudyPlan" Type="Self.StudyPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypesOfReporting">
+              <PropertyRef Name="IdTypeOfReporting" />
+            </Principal>
+            <Dependent Role="StudyPlan">
+              <PropertyRef Name="IdTypeOfReporting" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DataBaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Departments" EntityType="Self.Departments" />
+          <EntitySet Name="Disciplines" EntityType="Self.Disciplines" />
+          <EntitySet Name="Facultes" EntityType="Self.Facultes" />
+          <EntitySet Name="FormOfTrainings" EntityType="Self.FormOfTrainings" />
+          <EntitySet Name="Genders" EntityType="Self.Genders" />
+          <EntitySet Name="Groups" EntityType="Self.Groups" />
+          <EntitySet Name="Kurses" EntityType="Self.Kurses" />
+          <EntitySet Name="Lessons" EntityType="Self.Lessons" />
+          <EntitySet Name="Logined" EntityType="Self.Logined" />
+          <EntitySet Name="Marks" EntityType="Self.Marks" />
+          <EntitySet Name="MarkStudents" EntityType="Self.MarkStudents" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" />
+          <EntitySet Name="Specializations" EntityType="Self.Specializations" />
+          <EntitySet Name="Students" EntityType="Self.Students" />
+          <EntitySet Name="StudyPlan" EntityType="Self.StudyPlan" />
+          <EntitySet Name="Teachers" EntityType="Self.Teachers" />
+          <EntitySet Name="TypesOfLesson" EntityType="Self.TypesOfLesson" />
+          <EntitySet Name="TypesOfReporting" EntityType="Self.TypesOfReporting" />
+          <AssociationSet Name="FK__Departmen__IdFac__3E52440B" Association="Self.FK__Departmen__IdFac__3E52440B">
+            <End Role="Facultes" EntitySet="Facultes" />
+            <End Role="Departments" EntitySet="Departments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Teachers__IdDepa__6D0D32F4" Association="Self.FK__Teachers__IdDepa__6D0D32F4">
+            <End Role="Departments" EntitySet="Departments" />
+            <End Role="Teachers" EntitySet="Teachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Lessons__IdDisci__03F0984C" Association="Self.FK__Lessons__IdDisci__03F0984C">
+            <End Role="Disciplines" EntitySet="Disciplines" />
+            <End Role="Lessons" EntitySet="Lessons" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MarkStude__IdDis__09A971A2" Association="Self.FK__MarkStude__IdDis__09A971A2">
+            <End Role="Disciplines" EntitySet="Disciplines" />
+            <End Role="MarkStudents" EntitySet="MarkStudents" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudyPlan__IdDis__7E37BEF6" Association="Self.FK__StudyPlan__IdDis__7E37BEF6">
+            <End Role="Disciplines" EntitySet="Disciplines" />
+            <End Role="StudyPlan" EntitySet="StudyPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Specializ__IdFac__412EB0B6" Association="Self.FK__Specializ__IdFac__412EB0B6">
+            <End Role="Facultes" EntitySet="Facultes" />
+            <End Role="Specializations" EntitySet="Specializations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Groups__IdFormOf__49C3F6B7" Association="Self.FK__Groups__IdFormOf__49C3F6B7">
+            <End Role="FormOfTrainings" EntitySet="FormOfTrainings" />
+            <End Role="Groups" EntitySet="Groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Students__IdForm__68487DD7" Association="Self.FK__Students__IdForm__68487DD7">
+            <End Role="FormOfTrainings" EntitySet="FormOfTrainings" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudyPlan__IdFor__7C4F7684" Association="Self.FK__StudyPlan__IdFor__7C4F7684">
+            <End Role="FormOfTrainings" EntitySet="FormOfTrainings" />
+            <End Role="StudyPlan" EntitySet="StudyPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Students__IdGend__656C112C" Association="Self.FK__Students__IdGend__656C112C">
+            <End Role="Genders" EntitySet="Genders" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Teachers__IdGend__6C190EBB" Association="Self.FK__Teachers__IdGend__6C190EBB">
+            <End Role="Genders" EntitySet="Genders" />
+            <End Role="Teachers" EntitySet="Teachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Groups__IdKurs__48CFD27E" Association="Self.FK__Groups__IdKurs__48CFD27E">
+            <End Role="Kurses" EntitySet="Kurses" />
+            <End Role="Groups" EntitySet="Groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Groups__IdSpecia__47DBAE45" Association="Self.FK__Groups__IdSpecia__47DBAE45">
+            <End Role="Specializations" EntitySet="Specializations" />
+            <End Role="Groups" EntitySet="Groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Lessons__IdGroup__02FC7413" Association="Self.FK__Lessons__IdGroup__02FC7413">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="Lessons" EntitySet="Lessons" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Students__IdGrou__693CA210" Association="Self.FK__Students__IdGrou__693CA210">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudyPlan__IdGro__7D439ABD" Association="Self.FK__StudyPlan__IdGro__7D439ABD">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="StudyPlan" EntitySet="StudyPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Students__IdKurs__6754599E" Association="Self.FK__Students__IdKurs__6754599E">
+            <End Role="Kurses" EntitySet="Kurses" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudyPlan__IdKur__7B5B524B" Association="Self.FK__StudyPlan__IdKur__7B5B524B">
+            <End Role="Kurses" EntitySet="Kurses" />
+            <End Role="StudyPlan" EntitySet="StudyPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Lessons__IdTeach__05D8E0BE" Association="Self.FK__Lessons__IdTeach__05D8E0BE">
+            <End Role="Teachers" EntitySet="Teachers" />
+            <End Role="Lessons" EntitySet="Lessons" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Lessons__IdTypeO__04E4BC85" Association="Self.FK__Lessons__IdTypeO__04E4BC85">
+            <End Role="TypesOfLesson" EntitySet="TypesOfLesson" />
+            <End Role="Lessons" EntitySet="Lessons" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Logined__IdRole__398D8EEE" Association="Self.FK__Logined__IdRole__398D8EEE">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Logined" EntitySet="Logined" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Students_Logined" Association="Self.FK_Students_Logined">
+            <End Role="Logined" EntitySet="Logined" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teachers_Logined" Association="Self.FK_Teachers_Logined">
+            <End Role="Logined" EntitySet="Logined" />
+            <End Role="Teachers" EntitySet="Teachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Marks__IdTypeOfR__73BA3083" Association="Self.FK__Marks__IdTypeOfR__73BA3083">
+            <End Role="TypesOfReporting" EntitySet="TypesOfReporting" />
+            <End Role="Marks" EntitySet="Marks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MarkStude__IdMar__0B91BA14" Association="Self.FK__MarkStude__IdMar__0B91BA14">
+            <End Role="Marks" EntitySet="Marks" />
+            <End Role="MarkStudents" EntitySet="MarkStudents" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MarkStude__IdStu__08B54D69" Association="Self.FK__MarkStude__IdStu__08B54D69">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="MarkStudents" EntitySet="MarkStudents" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MarkStude__IdTea__0C85DE4D" Association="Self.FK__MarkStude__IdTea__0C85DE4D">
+            <End Role="Teachers" EntitySet="Teachers" />
+            <End Role="MarkStudents" EntitySet="MarkStudents" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MarkStude__IdTyp__0A9D95DB" Association="Self.FK__MarkStude__IdTyp__0A9D95DB">
+            <End Role="TypesOfReporting" EntitySet="TypesOfReporting" />
+            <End Role="MarkStudents" EntitySet="MarkStudents" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Students__IdSpec__66603565" Association="Self.FK__Students__IdSpec__66603565">
+            <End Role="Specializations" EntitySet="Specializations" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudyPlan__IdSpe__7A672E12" Association="Self.FK__StudyPlan__IdSpe__7A672E12">
+            <End Role="Specializations" EntitySet="Specializations" />
+            <End Role="StudyPlan" EntitySet="StudyPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudyPlan__IdTea__00200768" Association="Self.FK__StudyPlan__IdTea__00200768">
+            <End Role="Teachers" EntitySet="Teachers" />
+            <End Role="StudyPlan" EntitySet="StudyPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudyPlan__IdTyp__7F2BE32F" Association="Self.FK__StudyPlan__IdTyp__7F2BE32F">
+            <End Role="TypesOfReporting" EntitySet="TypesOfReporting" />
+            <End Role="StudyPlan" EntitySet="StudyPlan" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="DataBaseEntities">
+          <EntitySetMapping Name="Departments">
+            <EntityTypeMapping TypeName="Model.Departments">
+              <MappingFragment StoreEntitySet="Departments">
+                <ScalarProperty Name="IdDepartment" ColumnName="IdDepartment" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="IdFaculty" ColumnName="IdFaculty" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Disciplines">
+            <EntityTypeMapping TypeName="Model.Disciplines">
+              <MappingFragment StoreEntitySet="Disciplines">
+                <ScalarProperty Name="IdDiscipline" ColumnName="IdDiscipline" />
+                <ScalarProperty Name="Discipline" ColumnName="Discipline" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Facultes">
+            <EntityTypeMapping TypeName="Model.Facultes">
+              <MappingFragment StoreEntitySet="Facultes">
+                <ScalarProperty Name="IdFaculty" ColumnName="IdFaculty" />
+                <ScalarProperty Name="Faculty" ColumnName="Faculty" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FormOfTrainings">
+            <EntityTypeMapping TypeName="Model.FormOfTrainings">
+              <MappingFragment StoreEntitySet="FormOfTrainings">
+                <ScalarProperty Name="IdFormOfTraining" ColumnName="IdFormOfTraining" />
+                <ScalarProperty Name="FormOfTraining" ColumnName="FormOfTraining" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genders">
+            <EntityTypeMapping TypeName="Model.Genders">
+              <MappingFragment StoreEntitySet="Genders">
+                <ScalarProperty Name="IdGender" ColumnName="IdGender" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Groups">
+            <EntityTypeMapping TypeName="Model.Groups">
+              <MappingFragment StoreEntitySet="Groups">
+                <ScalarProperty Name="IdGroup" ColumnName="IdGroup" />
+                <ScalarProperty Name="NameGroup" ColumnName="NameGroup" />
+                <ScalarProperty Name="IdSpecialization" ColumnName="IdSpecialization" />
+                <ScalarProperty Name="IdKurs" ColumnName="IdKurs" />
+                <ScalarProperty Name="IdFormOfTraining" ColumnName="IdFormOfTraining" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kurses">
+            <EntityTypeMapping TypeName="Model.Kurses">
+              <MappingFragment StoreEntitySet="Kurses">
+                <ScalarProperty Name="IdKurs" ColumnName="IdKurs" />
+                <ScalarProperty Name="Kurs" ColumnName="Kurs" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lessons">
+            <EntityTypeMapping TypeName="Model.Lessons">
+              <MappingFragment StoreEntitySet="Lessons">
+                <ScalarProperty Name="IdLesson" ColumnName="IdLesson" />
+                <ScalarProperty Name="IdGroup" ColumnName="IdGroup" />
+                <ScalarProperty Name="IdDiscipline" ColumnName="IdDiscipline" />
+                <ScalarProperty Name="IdTypeOfLesson" ColumnName="IdTypeOfLesson" />
+                <ScalarProperty Name="IdTeacher" ColumnName="IdTeacher" />
+                <ScalarProperty Name="DateLesson" ColumnName="DateLesson" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Logined">
+            <EntityTypeMapping TypeName="Model.Logined">
+              <MappingFragment StoreEntitySet="Logined">
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="LoginUser" ColumnName="LoginUser" />
+                <ScalarProperty Name="PasswordUser" ColumnName="PasswordUser" />
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Marks">
+            <EntityTypeMapping TypeName="Model.Marks">
+              <MappingFragment StoreEntitySet="Marks">
+                <ScalarProperty Name="IdMark" ColumnName="IdMark" />
+                <ScalarProperty Name="Mark" ColumnName="Mark" />
+                <ScalarProperty Name="IdTypeOfReporting" ColumnName="IdTypeOfReporting" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MarkStudents">
+            <EntityTypeMapping TypeName="Model.MarkStudents">
+              <MappingFragment StoreEntitySet="MarkStudents">
+                <ScalarProperty Name="IdEntry" ColumnName="IdEntry" />
+                <ScalarProperty Name="IdStudent" ColumnName="IdStudent" />
+                <ScalarProperty Name="IdDiscipline" ColumnName="IdDiscipline" />
+                <ScalarProperty Name="IdTypeOfReporting" ColumnName="IdTypeOfReporting" />
+                <ScalarProperty Name="DateReporting" ColumnName="DateReporting" />
+                <ScalarProperty Name="General" ColumnName="General" />
+                <ScalarProperty Name="IdMark" ColumnName="IdMark" />
+                <ScalarProperty Name="IdTeacher" ColumnName="IdTeacher" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="Model.Roles">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+                <ScalarProperty Name="RoleUser" ColumnName="RoleUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Specializations">
+            <EntityTypeMapping TypeName="Model.Specializations">
+              <MappingFragment StoreEntitySet="Specializations">
+                <ScalarProperty Name="IdSpecialization" ColumnName="IdSpecialization" />
+                <ScalarProperty Name="Specialization" ColumnName="Specialization" />
+                <ScalarProperty Name="IdFaculty" ColumnName="IdFaculty" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="Model.Students">
+              <MappingFragment StoreEntitySet="Students">
+                <ScalarProperty Name="IdStudent" ColumnName="IdStudent" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="NameStudent" ColumnName="NameStudent" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="IdGender" ColumnName="IdGender" />
+                <ScalarProperty Name="IdSpecialization" ColumnName="IdSpecialization" />
+                <ScalarProperty Name="IdKurs" ColumnName="IdKurs" />
+                <ScalarProperty Name="IdFormOfTraining" ColumnName="IdFormOfTraining" />
+                <ScalarProperty Name="IdGroup" ColumnName="IdGroup" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudyPlan">
+            <EntityTypeMapping TypeName="Model.StudyPlan">
+              <MappingFragment StoreEntitySet="StudyPlan">
+                <ScalarProperty Name="IdEntry" ColumnName="IdEntry" />
+                <ScalarProperty Name="IdSpecialization" ColumnName="IdSpecialization" />
+                <ScalarProperty Name="IdKurs" ColumnName="IdKurs" />
+                <ScalarProperty Name="IdFormOfTraining" ColumnName="IdFormOfTraining" />
+                <ScalarProperty Name="IdGroup" ColumnName="IdGroup" />
+                <ScalarProperty Name="IdDiscipline" ColumnName="IdDiscipline" />
+                <ScalarProperty Name="Lecture" ColumnName="Lecture" />
+                <ScalarProperty Name="Practice" ColumnName="Practice" />
+                <ScalarProperty Name="IdTypeOfReporting" ColumnName="IdTypeOfReporting" />
+                <ScalarProperty Name="Reporting" ColumnName="Reporting" />
+                <ScalarProperty Name="General" ColumnName="General" />
+                <ScalarProperty Name="IdTeacher" ColumnName="IdTeacher" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teachers">
+            <EntityTypeMapping TypeName="Model.Teachers">
+              <MappingFragment StoreEntitySet="Teachers">
+                <ScalarProperty Name="IdTeacher" ColumnName="IdTeacher" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="NameTeacher" ColumnName="NameTeacher" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="IdGender" ColumnName="IdGender" />
+                <ScalarProperty Name="IdDepartment" ColumnName="IdDepartment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypesOfLesson">
+            <EntityTypeMapping TypeName="Model.TypesOfLesson">
+              <MappingFragment StoreEntitySet="TypesOfLesson">
+                <ScalarProperty Name="IdTypeOfLesson" ColumnName="IdTypeOfLesson" />
+                <ScalarProperty Name="TypeOfLesson" ColumnName="TypeOfLesson" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypesOfReporting">
+            <EntityTypeMapping TypeName="Model.TypesOfReporting">
+              <MappingFragment StoreEntitySet="TypesOfReporting">
+                <ScalarProperty Name="IdTypeOfReporting" ColumnName="IdTypeOfReporting" />
+                <ScalarProperty Name="TypeOfReporting" ColumnName="TypeOfReporting" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
