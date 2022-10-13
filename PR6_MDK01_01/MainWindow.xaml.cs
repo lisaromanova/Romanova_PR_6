@@ -28,7 +28,6 @@ namespace PR6_MDK01_01
             InitializeComponent();
             DataBaseClass.connect = new DataBaseEntities();
             FrameClass.frmLoad = frmMain;
-            
         }
 
         private void btnAuto_Click(object sender, RoutedEventArgs e)

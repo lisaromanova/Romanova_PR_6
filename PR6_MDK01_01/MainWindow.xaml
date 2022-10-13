@@ -5,17 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PR6_MDK01_01"
         mc:Ignorable="d"
-        Title="Университет" Icon="\Resources\logotip.png" Height="650" Width="800">
+        Title="Университет" Icon="\Resources\logotip.png" Height="550" Width="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="80"/>
+            <RowDefinition Height="140"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <StackPanel HorizontalAlignment="Center" Grid.Row="0" Orientation="Horizontal">
-            <Image Source="\Resources\logotip.png"/>
-            <TextBlock VerticalAlignment="Center"  Text="Университет" Style="{StaticResource txtHeader}"/>
-            <Button Name="btnAuto" Width="100" Height="50" Content="Авторизация" Click="btnAuto_Click"/>
-            <Button Name="btnReg" Width="100" Height="50" Content="Регистрация" Click="btnReg_Click"/>
+        <StackPanel Grid.Row="0">
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <Image Width="80" Source="\Resources\logotip.png"/>
+                <TextBlock VerticalAlignment="Center"  Text="Университет" Style="{StaticResource txtHeader}"/>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <Button Name="btnAuto" Style="{StaticResource btnStyle}" Width="170" Height="50" Content="Авторизация" Template="{StaticResource btnTemplate}" Click="btnAuto_Click"/>
+                <Button Name="btnReg" Style="{StaticResource btnStyle}" Width="170" Height="50" Content="Регистрация" Template="{StaticResource btnTemplate}" Click="btnReg_Click"/>
+            </StackPanel>
         </StackPanel>
         <Frame NavigationUIVisibility="Hidden" Grid.Row="1" Name="frmMain"/>
     </Grid>

@@ -14,54 +14,56 @@
                 <RadioButton Name="rbStudent" Checked="rbStudent_Checked">Студент</RadioButton>
                 <RadioButton Name="rbTeacher" Checked="rbTeacher_Checked">Преподаватель</RadioButton>
             </StackPanel>
-            <StackPanel Visibility="Collapsed" Name="CommonData">
-                <GroupBox Header="Фамилия">
-                    <TextBox Name="tbSurname"/>
-                </GroupBox>
-                <GroupBox Header="Имя">
-                    <TextBox Name="tbName"/>
-                </GroupBox>
-                <GroupBox Header="Отчество">
-                    <TextBox Name="tbPatronymic"/>
-                </GroupBox>
-                <GroupBox Header="Дата рождения">
-                    <DatePicker Name="dtBirthday"/>
-                </GroupBox>
-                <GroupBox Header="Пол">
-                    <StackPanel>
-                        <RadioButton Name="rbMan">Мужской</RadioButton>
-                        <RadioButton Name="rbWoman">Женский</RadioButton>
-                    </StackPanel>
-                </GroupBox>
-            </StackPanel>
-            <StackPanel Visibility="Collapsed" Name="TeacherData">
-                <GroupBox Header="Кафедра">
-                    <ComboBox Name="cbDepartmnet" IsEnabled="True" IsReadOnly="True"/>
-                </GroupBox>
-            </StackPanel>
-            <StackPanel Visibility="Collapsed" Name="StudentData">
-                <GroupBox Header="Специальность">
-                    <ComboBox Name="cbSpecialization" IsEnabled="True" IsReadOnly="True"/>
-                </GroupBox>
-                <GroupBox Header="Курс">
-                    <ComboBox Name="cbKurs" IsEnabled="True" IsReadOnly="True"/>
-                </GroupBox>
-                <GroupBox Header="Форма обучения">
-                    <ComboBox Name="cbFormOfTraining" IsEnabled="True" IsReadOnly="True"/>
-                </GroupBox>
-                <GroupBox Header="Группа">
-                    <ComboBox Name="cbGroup" IsEnabled="True" IsReadOnly="True"/>
-                </GroupBox>
-            </StackPanel>
-            <StackPanel Visibility="Collapsed"  Name="Logined">
-                <GroupBox Header="Логин">
-                    <TextBox Name="tbLogin"/>
-                </GroupBox>
-                <GroupBox Header="Пароль">
-                    <PasswordBox Name="pswPassword"/>
-                </GroupBox>
-            </StackPanel>
-            <Button Visibility="Collapsed" Name="btnReg" Width="180" Content="Зарегистрироваться" Click="btnReg_Click"/>
+            <WrapPanel>
+                <StackPanel Visibility="Collapsed" Name="CommonData">
+                    <GroupBox Style="{StaticResource gpStyle}" Width="200"  Header="Фамилия">
+                        <TextBox Name="tbSurname"/>
+                    </GroupBox>
+                    <GroupBox Style="{StaticResource gpStyle}" Width="200"  Header="Имя">
+                        <TextBox Name="tbName"/>
+                    </GroupBox>
+                    <GroupBox Style="{StaticResource gpStyle}" Header="Отчество">
+                        <TextBox Name="tbPatronymic"/>
+                    </GroupBox>
+                    <GroupBox Style="{StaticResource gpStyle}" Width="200"  Header="Дата рождения">
+                        <DatePicker Name="dtBirthday"/>
+                    </GroupBox>
+                    <GroupBox Style="{StaticResource gpStyle}" Width="200"  Header="Пол">
+                        <StackPanel>
+                            <RadioButton Name="rbMan">Мужской</RadioButton>
+                            <RadioButton Name="rbWoman">Женский</RadioButton>
+                        </StackPanel>
+                    </GroupBox>
+                </StackPanel>
+                <StackPanel Visibility="Collapsed" Name="TeacherData">
+                    <GroupBox Style="{StaticResource gpStyle}" Width="200"  Header="Кафедра">
+                        <ComboBox Name="cbDepartmnet" IsEditable="True"/>
+                    </GroupBox>
+                </StackPanel>
+                <StackPanel Visibility="Collapsed" Name="StudentData">
+                    <GroupBox Style="{StaticResource gpStyle}" Width="200"  Header="Специальность">
+                        <ComboBox Name="cbSpecialization" IsEditable="True" IsReadOnly="True"/>
+                    </GroupBox>
+                    <GroupBox Style="{StaticResource gpStyle}" Width="200"  Header="Курс">
+                        <ComboBox Name="cbKurs" IsEditable="True" IsReadOnly="True"/>
+                    </GroupBox>
+                    <GroupBox Style="{StaticResource gpStyle}" Width="200"  Header="Форма обучения">
+                        <ComboBox Name="cbFormOfTraining" IsEditable="True" IsReadOnly="True"/>
+                    </GroupBox>
+                    <GroupBox Style="{StaticResource gpStyle}" Width="200"  Header="Группа">
+                        <ComboBox Name="cbGroup" IsEditable="True" IsReadOnly="True"/>
+                    </GroupBox>
+                </StackPanel>
+                <StackPanel Visibility="Collapsed"  Name="Logined">
+                    <GroupBox Style="{StaticResource gpStyle}" Width="200"  Header="Логин">
+                        <TextBox Name="tbLogin"/>
+                    </GroupBox>
+                    <GroupBox Style="{StaticResource gpStyle}" Width="200"  Header="Пароль">
+                        <PasswordBox Name="pswPassword"/>
+                    </GroupBox>
+                </StackPanel>
+            </WrapPanel>
+            <Button Visibility="Collapsed" Template="{StaticResource btnTemplate}" Name="btnReg" Width="200" Content="Зарегистрироваться" Click="btnReg_Click"/>
         </StackPanel>
     </Grid>
 </Page>

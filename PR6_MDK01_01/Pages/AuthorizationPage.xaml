@@ -7,16 +7,16 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AuthorizationPage">
-    <Grid>
+    <Grid VerticalAlignment="Center">
         <StackPanel>
-            <TextBlock HorizontalAlignment="Center" Text="Авторизация"/>
-            <GroupBox Header="Логин">
-                <TextBox Name="tbLogin"/>
+            <TextBlock Style="{StaticResource txtHeader}" HorizontalAlignment="Center" Text="Авторизация"/>
+            <GroupBox Style="{StaticResource gpStyle}" Header="Логин">
+                <TextBox Margin="5" BorderBrush="Black" Name="tbLogin"/>
             </GroupBox>
-            <GroupBox Header="Пароль">
-                <PasswordBox Name="pswPassword"/>
+            <GroupBox Style="{StaticResource gpStyle}" Header="Пароль">
+                <PasswordBox Margin="5" BorderBrush="Black" Name="pswPassword"/>
             </GroupBox>
-            <Button Name="btnAuto" Width="100" Content="Войти" Click="btnAuto_Click"/>
+            <Button Name="btnAuto" Style="{StaticResource btnStyle}" Template="{StaticResource btnTemplate}" Width="140" Content="Войти" Click="btnAuto_Click"/>
         </StackPanel>
     </Grid>
 </Page>
