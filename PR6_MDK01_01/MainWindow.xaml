@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PR6_MDK01_01"
         mc:Ignorable="d"
-        Title="Университет" Icon="\Resources\logotip.png" Height="550" Width="800">
+        Title="Университет" Icon="\Resources\logotip.png" Height="650" Width="850">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="140"/>
@@ -16,7 +16,7 @@
                 <Image Width="80" Source="\Resources\logotip.png"/>
                 <TextBlock VerticalAlignment="Center"  Text="Университет" Style="{StaticResource txtHeader}"/>
             </StackPanel>
-            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+            <StackPanel Name="buttons" HorizontalAlignment="Center" Orientation="Horizontal">
                 <Button Name="btnAuto" Style="{StaticResource btnStyle}" Width="170" Height="50" Content="Авторизация" Template="{StaticResource btnTemplate}" Click="btnAuto_Click"/>
                 <Button Name="btnReg" Style="{StaticResource btnStyle}" Width="170" Height="50" Content="Регистрация" Template="{StaticResource btnTemplate}" Click="btnReg_Click"/>
             </StackPanel>

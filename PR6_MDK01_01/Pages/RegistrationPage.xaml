@@ -7,12 +7,14 @@
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="800"
       Title="RegistrationPage">
-    <Grid>
+    <Grid >
         <StackPanel Margin="10">
             <StackPanel>
-                <TextBlock HorizontalAlignment="Center" Text="Регистрация"/>
-                <RadioButton Name="rbStudent" Checked="rbStudent_Checked">Студент</RadioButton>
-                <RadioButton Name="rbTeacher" Checked="rbTeacher_Checked">Преподаватель</RadioButton>
+                <TextBlock Style="{StaticResource txtHeader1}" HorizontalAlignment="Center" Text="Регистрация"/>
+                <StackPanel Orientation="Horizontal">
+                <RadioButton Margin="5" Name="rbStudent" Checked="rbStudent_Checked">Студент</RadioButton>
+                    <RadioButton Margin="5" Name="rbTeacher" Checked="rbTeacher_Checked">Преподаватель</RadioButton>
+                </StackPanel>
             </StackPanel>
             <WrapPanel>
                 <StackPanel Visibility="Collapsed" Name="CommonData">
@@ -59,7 +61,7 @@
                         <TextBox Name="tbLogin"/>
                     </GroupBox>
                     <GroupBox Style="{StaticResource gpStyle}" Header="Пароль">
-                        <PasswordBox Name="pswPassword"/>
+                        <PasswordBox PasswordChar="*" Name="pswPassword"/>
                     </GroupBox>
                 </StackPanel>
             </WrapPanel>

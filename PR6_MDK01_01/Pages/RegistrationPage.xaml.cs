@@ -256,7 +256,7 @@ namespace PR6_MDK01_01.Pages
 
                         if (rbStudent.IsChecked == true)
                         {
-                            if (IsClearStudent(cbDepartmnet.SelectedIndex, cbKurs.SelectedIndex, cbFormOfTraining.SelectedIndex, cbGroup.SelectedIndex))
+                            if (IsClearStudent(cbSpecialization.SelectedIndex, cbKurs.SelectedIndex, cbFormOfTraining.SelectedIndex, cbGroup.SelectedIndex))
                             {
                                 Logined log = new Logined()
                                 {

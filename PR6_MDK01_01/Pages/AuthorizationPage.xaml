@@ -9,12 +9,12 @@
       Title="AuthorizationPage">
     <Grid VerticalAlignment="Center">
         <StackPanel>
-            <TextBlock Style="{StaticResource txtHeader}" HorizontalAlignment="Center" Text="Авторизация"/>
+            <TextBlock Style="{StaticResource txtHeader1}" HorizontalAlignment="Center" Text="Авторизация"/>
             <GroupBox Style="{StaticResource gpStyle}" Header="Логин">
-                <TextBox Margin="5" BorderBrush="Black" Name="tbLogin"/>
+                <TextBox Name="tbLogin"/>
             </GroupBox>
             <GroupBox Style="{StaticResource gpStyle}" Header="Пароль">
-                <PasswordBox Margin="5" BorderBrush="Black" Name="pswPassword"/>
+                <PasswordBox PasswordChar="*" Name="pswPassword"/>
             </GroupBox>
             <Button Name="btnAuto" Style="{StaticResource btnStyle}" Template="{StaticResource btnTemplate}" Width="140" Content="Войти" Click="btnAuto_Click"/>
         </StackPanel>
