@@ -8,7 +8,7 @@
       d:DesignHeight="600" d:DesignWidth="800"
       Title="RegistrationPage">
     <Grid>
-        <StackPanel>
+        <StackPanel Margin="10">
             <StackPanel>
                 <TextBlock HorizontalAlignment="Center" Text="Регистрация"/>
                 <RadioButton Name="rbStudent" Checked="rbStudent_Checked">Студент</RadioButton>
@@ -16,19 +16,19 @@
             </StackPanel>
             <WrapPanel>
                 <StackPanel Visibility="Collapsed" Name="CommonData">
-                    <GroupBox Style="{StaticResource gpStyle}" Width="200"  Header="Фамилия">
+                    <GroupBox Style="{StaticResource gpStyle}" Header="Фамилия">
                         <TextBox Name="tbSurname"/>
                     </GroupBox>
-                    <GroupBox Style="{StaticResource gpStyle}" Width="200"  Header="Имя">
+                    <GroupBox Style="{StaticResource gpStyle}" Header="Имя">
                         <TextBox Name="tbName"/>
                     </GroupBox>
                     <GroupBox Style="{StaticResource gpStyle}" Header="Отчество">
                         <TextBox Name="tbPatronymic"/>
                     </GroupBox>
-                    <GroupBox Style="{StaticResource gpStyle}" Width="200"  Header="Дата рождения">
+                    <GroupBox Style="{StaticResource gpStyle}" Header="Дата рождения">
                         <DatePicker Name="dtBirthday"/>
                     </GroupBox>
-                    <GroupBox Style="{StaticResource gpStyle}" Width="200"  Header="Пол">
+                    <GroupBox Style="{StaticResource gpStyle}" Header="Пол">
                         <StackPanel>
                             <RadioButton Name="rbMan">Мужской</RadioButton>
                             <RadioButton Name="rbWoman">Женский</RadioButton>
@@ -36,34 +36,34 @@
                     </GroupBox>
                 </StackPanel>
                 <StackPanel Visibility="Collapsed" Name="TeacherData">
-                    <GroupBox Style="{StaticResource gpStyle}" Width="200"  Header="Кафедра">
-                        <ComboBox Name="cbDepartmnet" IsEditable="True"/>
+                    <GroupBox Style="{StaticResource gpStyle}" Header="Кафедра">
+                        <ComboBox Name="cbDepartmnet" IsEditable="True" IsReadOnly="True"/>
                     </GroupBox>
                 </StackPanel>
                 <StackPanel Visibility="Collapsed" Name="StudentData">
-                    <GroupBox Style="{StaticResource gpStyle}" Width="200"  Header="Специальность">
+                    <GroupBox Style="{StaticResource gpStyle}" Header="Специальность">
                         <ComboBox Name="cbSpecialization" IsEditable="True" IsReadOnly="True"/>
                     </GroupBox>
-                    <GroupBox Style="{StaticResource gpStyle}" Width="200"  Header="Курс">
+                    <GroupBox Style="{StaticResource gpStyle}" Header="Курс">
                         <ComboBox Name="cbKurs" IsEditable="True" IsReadOnly="True"/>
                     </GroupBox>
-                    <GroupBox Style="{StaticResource gpStyle}" Width="200"  Header="Форма обучения">
+                    <GroupBox Style="{StaticResource gpStyle}" Header="Форма обучения">
                         <ComboBox Name="cbFormOfTraining" IsEditable="True" IsReadOnly="True"/>
                     </GroupBox>
-                    <GroupBox Style="{StaticResource gpStyle}" Width="200"  Header="Группа">
+                    <GroupBox Style="{StaticResource gpStyle}" Header="Группа">
                         <ComboBox Name="cbGroup" IsEditable="True" IsReadOnly="True"/>
                     </GroupBox>
                 </StackPanel>
                 <StackPanel Visibility="Collapsed"  Name="Logined">
-                    <GroupBox Style="{StaticResource gpStyle}" Width="200"  Header="Логин">
+                    <GroupBox Style="{StaticResource gpStyle}" Header="Логин">
                         <TextBox Name="tbLogin"/>
                     </GroupBox>
-                    <GroupBox Style="{StaticResource gpStyle}" Width="200"  Header="Пароль">
+                    <GroupBox Style="{StaticResource gpStyle}" Header="Пароль">
                         <PasswordBox Name="pswPassword"/>
                     </GroupBox>
                 </StackPanel>
             </WrapPanel>
-            <Button Visibility="Collapsed" Template="{StaticResource btnTemplate}" Name="btnReg" Width="200" Content="Зарегистрироваться" Click="btnReg_Click"/>
+            <Button Style="{StaticResource btnStyle}" Visibility="Collapsed" Template="{StaticResource btnTemplate}" Name="btnReg" Width="200" Content="Зарегистрироваться" Click="btnReg_Click" Cursor="Hand"/>
         </StackPanel>
     </Grid>
 </Page>

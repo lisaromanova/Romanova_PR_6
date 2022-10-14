@@ -244,74 +244,74 @@ namespace PR6_MDK01_01.Pages
                 {
                     if (PasswordCheck(pswPassword.Password))
                     {
-                        //int gender = 0;
-                        //if (rbMan.IsChecked == true)
-                        //{
-                        //    gender = 1;
-                        //}
-                        //else
-                        //{
-                        //    gender = 2;
-                        //}
+                        int gender = 0;
+                        if (rbMan.IsChecked == true)
+                        {
+                            gender = 1;
+                        }
+                        else
+                        {
+                            gender = 2;
+                        }
 
-                        //if (rbStudent.IsChecked == true)
-                        //{
-                        //    if (IsClearStudent(cbDepartmnet.SelectedIndex, cbKurs.SelectedIndex, cbFormOfTraining.SelectedIndex, cbGroup.SelectedIndex))
-                        //    {
-                        //        Logined log = new Logined()
-                        //        {
-                        //            LoginUser = tbLogin.Text,
-                        //            PasswordUser = pswPassword.Password.GetHashCode(),
-                        //            IdRole = 2
-                        //        };
-                        //        DataBaseClass.connect.Logined.Add(log);
-                        //        DataBaseClass.connect.SaveChanges();
-                        //        Students student = new Students()
-                        //        {
-                        //            IdStudent = log.IdUser,
-                        //            Surname = tbSurname.Text,
-                        //            NameStudent = tbName.Text,
-                        //            Patronymic = tbPatronymic.Text,
-                        //            Birthday = (DateTime)dtBirthday.SelectedDate,
-                        //            IdGender = gender,
-                        //            IdSpecialization = (int)cbSpecialization.SelectedValue,
-                        //            IdKurs = (int)cbKurs.SelectedValue,
-                        //            IdFormOfTraining = (int)cbFormOfTraining.SelectedValue,
-                        //            IdGroup = (int)cbGroup.SelectedValue,
-                        //        };
+                        if (rbStudent.IsChecked == true)
+                        {
+                            if (IsClearStudent(cbDepartmnet.SelectedIndex, cbKurs.SelectedIndex, cbFormOfTraining.SelectedIndex, cbGroup.SelectedIndex))
+                            {
+                                Logined log = new Logined()
+                                {
+                                    LoginUser = tbLogin.Text,
+                                    PasswordUser = pswPassword.Password.GetHashCode(),
+                                    IdRole = 2
+                                };
+                                DataBaseClass.connect.Logined.Add(log);
+                                DataBaseClass.connect.SaveChanges();
+                                Students student = new Students()
+                                {
+                                    IdStudent = log.IdUser,
+                                    Surname = tbSurname.Text,
+                                    NameStudent = tbName.Text,
+                                    Patronymic = tbPatronymic.Text,
+                                    Birthday = (DateTime)dtBirthday.SelectedDate,
+                                    IdGender = gender,
+                                    IdSpecialization = (int)cbSpecialization.SelectedValue,
+                                    IdKurs = (int)cbKurs.SelectedValue,
+                                    IdFormOfTraining = (int)cbFormOfTraining.SelectedValue,
+                                    IdGroup = (int)cbGroup.SelectedValue,
+                                };
 
-                        //        DataBaseClass.connect.Students.Add(student);
-                        //        DataBaseClass.connect.SaveChanges();
-                        //        MessageBox.Show("Успешная регистрация!", "Регистрация", MessageBoxButton.OK, MessageBoxImage.Information);
-                        //    }
-                        //}
-                        //else
-                        //{
-                        //    if (IsClearTeacher(cbDepartmnet.SelectedIndex))
-                        //    {
-                        //        Logined log = new Logined()
-                        //        {
-                        //            LoginUser = tbLogin.Text,
-                        //            PasswordUser = pswPassword.Password.GetHashCode(),
-                        //            IdRole = 3
-                        //        };
-                        //        DataBaseClass.connect.Logined.Add(log);
-                        //        DataBaseClass.connect.SaveChanges();
-                        //        Teachers teacher = new Teachers()
-                        //        {
-                        //            IdTeacher = log.IdUser,
-                        //            Surname = tbSurname.Text,
-                        //            NameTeacher = tbName.Text,
-                        //            Patronymic = tbPatronymic.Text,
-                        //            Birthday = (DateTime)dtBirthday.SelectedDate,
-                        //            IdGender = gender,
-                        //            IdDepartment = (int)cbDepartmnet.SelectedValue
-                        //        };
-                        //        DataBaseClass.connect.Teachers.Add(teacher);
-                        //        DataBaseClass.connect.SaveChanges();
-                        //        MessageBox.Show("Успешная регистрация!", "Регистрация", MessageBoxButton.OK, MessageBoxImage.Information);
-                        //    }
-                        //}
+                                DataBaseClass.connect.Students.Add(student);
+                                DataBaseClass.connect.SaveChanges();
+                                MessageBox.Show("Успешная регистрация!", "Регистрация", MessageBoxButton.OK, MessageBoxImage.Information);
+                            }
+                        }
+                        else
+                        {
+                            if (IsClearTeacher(cbDepartmnet.SelectedIndex))
+                            {
+                                Logined log = new Logined()
+                                {
+                                    LoginUser = tbLogin.Text,
+                                    PasswordUser = pswPassword.Password.GetHashCode(),
+                                    IdRole = 3
+                                };
+                                DataBaseClass.connect.Logined.Add(log);
+                                DataBaseClass.connect.SaveChanges();
+                                Teachers teacher = new Teachers()
+                                {
+                                    IdTeacher = log.IdUser,
+                                    Surname = tbSurname.Text,
+                                    NameTeacher = tbName.Text,
+                                    Patronymic = tbPatronymic.Text,
+                                    Birthday = (DateTime)dtBirthday.SelectedDate,
+                                    IdGender = gender,
+                                    IdDepartment = (int)cbDepartmnet.SelectedValue
+                                };
+                                DataBaseClass.connect.Teachers.Add(teacher);
+                                DataBaseClass.connect.SaveChanges();
+                                MessageBox.Show("Успешная регистрация!", "Регистрация", MessageBoxButton.OK, MessageBoxImage.Information);
+                            }
+                        }
                     }
                 }
             }
