@@ -77,10 +77,10 @@ namespace PR6_MDK01_01.Pages
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
-            dgTeachers.ItemsSource = lstTeacher;
             cbSearch.SelectedIndex = -1;
             cbGender.SelectedIndex = -1;
             txtSearch.Text = "";
+            dgTeachers.ItemsSource = lstTeacher;
         }
 
         private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)

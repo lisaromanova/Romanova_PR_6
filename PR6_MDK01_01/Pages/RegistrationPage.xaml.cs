@@ -44,17 +44,17 @@ namespace PR6_MDK01_01.Pages
 
         static bool IsClear(string surname, string name, string patronymic, string date, bool man, bool woman, string login, string pasword)
         {
-            if (surname != "")
+            if (Regex.IsMatch(surname, "^[А-Я][а-я]+$"))
             {
-                if (name != "")
+                if (Regex.IsMatch(name, "^[А-Я][а-я]+$"))
                 {
-                    if (patronymic != "")
+                    if (Regex.IsMatch(patronymic, "^[А-Я][а-я]+$"))
                     {
                         if (date != "")
                         {
                             if (man || woman)
                             {
-                                if (login != "")
+                                if (Regex.IsMatch(login, "^[a-z]{3,}$"))
                                 {
                                     if (pasword != "")
                                     {
@@ -68,7 +68,7 @@ namespace PR6_MDK01_01.Pages
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Заполните поле Логин", "Регистрация", MessageBoxButton.OK, MessageBoxImage.Error);
+                                    MessageBox.Show("Введите Логин корректно", "Регистрация", MessageBoxButton.OK, MessageBoxImage.Error);
                                     return false;
                                 }
                             }
@@ -86,19 +86,19 @@ namespace PR6_MDK01_01.Pages
                     }
                     else
                     {
-                        MessageBox.Show("Заполните поле Отчество", "Регистрация", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show("Введите Отчество корректно", "Регистрация", MessageBoxButton.OK, MessageBoxImage.Error);
                         return false;
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Заполните поле Имя", "Регистрация", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Введите Имя корректно", "Регистрация", MessageBoxButton.OK, MessageBoxImage.Error);
                     return false;
                 }
             }
             else
             {
-                MessageBox.Show("Заполните поле Фамилия", "Регистрация", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Введите Фамилию корректно", "Регистрация", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
         }
@@ -188,17 +188,13 @@ namespace PR6_MDK01_01.Pages
 
         bool PasswordCheck(string password)
         {
-            Regex r = new Regex("\\d");
-            if(r.Matches(password).Count >= 2)
+            if(Regex.Matches(password, "\\d").Count >= 2)
             {
-                r = new Regex("[A-Z]");
-                if(r.Matches(password).Count >= 1)
+                if(Regex.Matches(password, "[A-Z]").Count >= 1)
                 {
-                    r = new Regex("[a-z]");
-                    if (r.Matches(password).Count >= 3)
+                    if (Regex.Matches(password, "[a-z]").Count >= 3)
                     {
-                        r = new Regex("[!@#$%^&*()]");
-                        if (r.Matches(password).Count >= 1)
+                        if (Regex.Matches(password, "[!@#$%^&*()]").Count >= 1)
                         {
                             if (password.Length >= 8)
                             {
