@@ -8,7 +8,12 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AdminPage">
     <Grid>
-        <StackPanel >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="72"/>
+            <RowDefinition Height="379*"/>
+        </Grid.RowDefinitions>
+        <Button Grid.RowSpan="2" Name="btnView" Width="200" Height="80" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Click="btnView_Click" Cursor="Hand" />
+        <StackPanel Name="spSort" Visibility="Collapsed" Grid.Row="0" >
             <StackPanel HorizontalAlignment="Center" Margin="5" Orientation="Horizontal">
                 <Button Name="btnAsc"  Width="150" Height="25" Margin="0,0,5,0" Style="{StaticResource btnStyle}" Content="По возрастанию" Click="btnAsc_Click"/>
                 <Button Name="btnDesc" Width="150" Height="25" Margin="5,0,10,0" Style="{StaticResource btnStyle}" Content="По убыванию" Click="btnDesc_Click"/>
@@ -25,7 +30,8 @@
                 </ComboBox>
                 <Button Name="btnClear" Width="100" Height="25" Margin="0,0,10,0" Style="{StaticResource btnStyle}" Content="Сброс" Click="btnClear_Click"/>
             </StackPanel>
-        <DataGrid IsReadOnly="True" Name="dgTeachers" AutoGenerateColumns="False">
+        </StackPanel>
+        <DataGrid Visibility="Collapsed" Grid.Row="1" IsReadOnly="True" Name="dgTeachers" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Фамилия" Binding="{Binding Surname}"/>
                 <DataGridTextColumn Header="Имя" Binding="{Binding NameTeacher}"/>
@@ -36,6 +42,5 @@
                 <DataGridTextColumn Header="Логин" Binding="{Binding Logined.LoginUser}"/>
             </DataGrid.Columns>
         </DataGrid>
-        </StackPanel>
     </Grid>
 </Page>

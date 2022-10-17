@@ -25,6 +25,7 @@ namespace PR6_MDK01_01.Pages
         public AdminPage()
         {
             InitializeComponent();
+            btnView.Content = "Просмотр данных\nо преподавателях";
             dgTeachers.ItemsSource = lstTeacher;
         }
 
@@ -86,6 +87,13 @@ namespace PR6_MDK01_01.Pages
         private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
             Search();
+        }
+
+        private void btnView_Click(object sender, RoutedEventArgs e)
+        {
+            btnView.Visibility = Visibility.Collapsed;
+            spSort.Visibility = Visibility.Visible;
+            dgTeachers.Visibility = Visibility.Visible;
         }
     }
 }

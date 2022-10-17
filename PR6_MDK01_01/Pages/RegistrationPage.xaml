@@ -12,8 +12,8 @@
             <StackPanel>
                 <TextBlock Style="{StaticResource txtHeader1}" HorizontalAlignment="Center" Text="Регистрация"/>
                 <StackPanel Orientation="Horizontal">
-                <RadioButton Margin="5" Name="rbStudent" Checked="rbStudent_Checked">Студент</RadioButton>
-                    <RadioButton Margin="5" Name="rbTeacher" Checked="rbTeacher_Checked">Преподаватель</RadioButton>
+                    <RadioButton FontSize="16" FontFamily="Calibri" Margin="5" Name="rbStudent" Checked="rbStudent_Checked">Студент</RadioButton>
+                    <RadioButton FontSize="16" FontFamily="Calibri" Margin="5" Name="rbTeacher" Checked="rbTeacher_Checked">Преподаватель</RadioButton>
                 </StackPanel>
             </StackPanel>
             <WrapPanel>
@@ -65,7 +65,7 @@
                     </GroupBox>
                 </StackPanel>
             </WrapPanel>
-            <Button Style="{StaticResource btnStyle}" Visibility="Collapsed" Template="{StaticResource btnTemplate}" Name="btnReg" Width="200" Content="Зарегистрироваться" Click="btnReg_Click" Cursor="Hand"/>
+            <Button Margin="0,20,0,0" Style="{StaticResource btnStyle}" Visibility="Collapsed" Template="{StaticResource btnTemplate}" Name="btnReg" Width="200" Content="Зарегистрироваться" Click="btnReg_Click" Cursor="Hand"/>
         </StackPanel>
     </Grid>
 </Page>
