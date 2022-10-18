@@ -66,6 +66,7 @@
     </ApplicationDefinition>
     <Compile Include="Classes\DataBaseClass.cs" />
     <Compile Include="Classes\FrameClass.cs" />
+    <Compile Include="Classes\TeacherPartialClass.cs" />
     <Compile Include="Departments.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -116,6 +117,12 @@
     <Compile Include="Pages\UserPage.xaml.cs">
       <DependentUpon>UserPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ViewLessonsPage.xaml.cs">
+      <DependentUpon>ViewLessonsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ViewTeacherPage.xaml.cs">
+      <DependentUpon>ViewTeacherPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Roles.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -162,6 +169,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\UserPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ViewLessonsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ViewTeacherPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -221,6 +236,8 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\TeacherMan.png" />
+    <Resource Include="Resources\Teacher.png" />
     <Resource Include="Resources\logotip.png" />
   </ItemGroup>
   <ItemGroup>

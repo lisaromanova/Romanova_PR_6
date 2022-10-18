@@ -5,56 +5,56 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="0b35d98ab64345aa8e744b1b7fb4f1f0" Name="Diagram1">
-        <EntityTypeShape EntityType="Model.Departments" Width="1.5" PointX="0.75" PointY="17" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Disciplines" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Facultes" Width="1.5" PointX="1.5" PointY="14" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.FormOfTrainings" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Genders" Width="1.5" PointX="0.75" PointY="19.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Groups" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Kurses" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Lessons" Width="1.5" PointX="5.25" PointY="7.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Logined" Width="1.5" PointX="0.75" PointY="22.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Marks" Width="1.5" PointX="8.25" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.MarkStudents" Width="1.5" PointX="10.5" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Roles" Width="1.5" PointX="1.5" PointY="25.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Specializations" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Students" Width="1.5" PointX="8.25" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.StudyPlan" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Teachers" Width="1.5" PointX="3" PointY="19.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.TypesOfLesson" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.TypesOfReporting" Width="1.5" PointX="3" PointY="28.375" IsExpanded="true" />
-        <AssociationConnector Association="Model.FK__Departmen__IdFac__3E52440B" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK__Teachers__IdDepa__6D0D32F4" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK__Lessons__IdDisci__03F0984C" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK__MarkStude__IdDis__09A971A2" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK__StudyPlan__IdDis__7E37BEF6" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK__Specializ__IdFac__412EB0B6" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK__Groups__IdFormOf__49C3F6B7" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK__Students__IdForm__68487DD7" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK__StudyPlan__IdFor__7C4F7684" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK__Students__IdGend__656C112C" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK__Teachers__IdGend__6C190EBB" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK__Groups__IdKurs__48CFD27E" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK__Groups__IdSpecia__47DBAE45" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK__Lessons__IdGroup__02FC7413" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK__Students__IdGrou__693CA210" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK__StudyPlan__IdGro__7D439ABD" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK__Students__IdKurs__6754599E" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK__StudyPlan__IdKur__7B5B524B" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK__Lessons__IdTeach__05D8E0BE" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK__Lessons__IdTypeO__04E4BC85" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK__Logined__IdRole__398D8EEE" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_Students_Logined" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_Teachers_Logined" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK__Marks__IdTypeOfR__73BA3083" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK__MarkStude__IdMar__0B91BA14" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK__MarkStude__IdStu__08B54D69" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK__MarkStude__IdTea__0C85DE4D" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK__MarkStude__IdTyp__0A9D95DB" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK__Students__IdSpec__66603565" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK__StudyPlan__IdSpe__7A672E12" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK__StudyPlan__IdTea__00200768" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK__StudyPlan__IdTyp__7F2BE32F" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Model.Departments" Width="1.5" PointX="0.75" PointY="16.625" />
+        <EntityTypeShape EntityType="Model.Disciplines" Width="1.5" PointX="3" PointY="10.875" />
+        <EntityTypeShape EntityType="Model.Facultes" Width="1.5" PointX="1.5" PointY="13.625" />
+        <EntityTypeShape EntityType="Model.FormOfTrainings" Width="1.5" PointX="0.75" PointY="3.625" />
+        <EntityTypeShape EntityType="Model.Genders" Width="1.5" PointX="0.75" PointY="26.5" />
+        <EntityTypeShape EntityType="Model.Groups" Width="1.5" PointX="3" PointY="6.625" />
+        <EntityTypeShape EntityType="Model.Kurses" Width="1.5" PointX="0.75" PointY="7.25" />
+        <EntityTypeShape EntityType="Model.Lessons" Width="1.5" PointX="5.25" PointY="1.75" />
+        <EntityTypeShape EntityType="Model.Logined" Width="1.5" PointX="0.75" PointY="19.375" />
+        <EntityTypeShape EntityType="Model.Marks" Width="1.5" PointX="8.25" PointY="12.25" />
+        <EntityTypeShape EntityType="Model.MarkStudents" Width="1.5" PointX="10.5" PointY="6.375" />
+        <EntityTypeShape EntityType="Model.Roles" Width="1.5" PointX="1.5" PointY="23.75" />
+        <EntityTypeShape EntityType="Model.Specializations" Width="1.5" PointX="0.75" PointY="10.375" />
+        <EntityTypeShape EntityType="Model.Students" Width="1.5" PointX="8.25" PointY="6" />
+        <EntityTypeShape EntityType="Model.StudyPlan" Width="1.5" PointX="5.25" PointY="5.875" />
+        <EntityTypeShape EntityType="Model.Teachers" Width="1.5" PointX="3" PointY="18.625" />
+        <EntityTypeShape EntityType="Model.TypesOfLesson" Width="1.5" PointX="3" PointY="3.5" />
+        <EntityTypeShape EntityType="Model.TypesOfReporting" Width="1.5" PointX="6" PointY="12.25" />
+        <AssociationConnector Association="Model.FK__Departmen__IdFac__3E52440B" />
+        <AssociationConnector Association="Model.FK__Teachers__IdDepa__6D0D32F4" />
+        <AssociationConnector Association="Model.FK__Lessons__IdDisci__03F0984C" />
+        <AssociationConnector Association="Model.FK__MarkStude__IdDis__09A971A2" />
+        <AssociationConnector Association="Model.FK__StudyPlan__IdDis__7E37BEF6" />
+        <AssociationConnector Association="Model.FK__Specializ__IdFac__412EB0B6" />
+        <AssociationConnector Association="Model.FK__Groups__IdFormOf__49C3F6B7" />
+        <AssociationConnector Association="Model.FK__Students__IdForm__68487DD7" />
+        <AssociationConnector Association="Model.FK__StudyPlan__IdFor__7C4F7684" />
+        <AssociationConnector Association="Model.FK__Students__IdGend__656C112C" />
+        <AssociationConnector Association="Model.FK__Teachers__IdGend__6C190EBB" />
+        <AssociationConnector Association="Model.FK__Groups__IdKurs__48CFD27E" />
+        <AssociationConnector Association="Model.FK__Groups__IdSpecia__47DBAE45" />
+        <AssociationConnector Association="Model.FK__Lessons__IdGroup__02FC7413" />
+        <AssociationConnector Association="Model.FK__Students__IdGrou__693CA210" />
+        <AssociationConnector Association="Model.FK__StudyPlan__IdGro__7D439ABD" />
+        <AssociationConnector Association="Model.FK__Students__IdKurs__6754599E" />
+        <AssociationConnector Association="Model.FK__StudyPlan__IdKur__7B5B524B" />
+        <AssociationConnector Association="Model.FK__Lessons__IdTeach__05D8E0BE" />
+        <AssociationConnector Association="Model.FK__Lessons__IdTypeO__04E4BC85" />
+        <AssociationConnector Association="Model.FK__Logined__IdRole__398D8EEE" />
+        <AssociationConnector Association="Model.FK_Students_Logined" />
+        <AssociationConnector Association="Model.FK_Teachers_Logined" />
+        <AssociationConnector Association="Model.FK__Marks__IdTypeOfR__73BA3083" />
+        <AssociationConnector Association="Model.FK__MarkStude__IdMar__0B91BA14" />
+        <AssociationConnector Association="Model.FK__MarkStude__IdStu__08B54D69" />
+        <AssociationConnector Association="Model.FK__MarkStude__IdTea__0C85DE4D" />
+        <AssociationConnector Association="Model.FK__MarkStude__IdTyp__0A9D95DB" />
+        <AssociationConnector Association="Model.FK__Students__IdSpec__66603565" />
+        <AssociationConnector Association="Model.FK__StudyPlan__IdSpe__7A672E12" />
+        <AssociationConnector Association="Model.FK__StudyPlan__IdTea__00200768" />
+        <AssociationConnector Association="Model.FK__StudyPlan__IdTyp__7F2BE32F" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -29,6 +29,7 @@ namespace PR6_MDK01_01
         public System.DateTime Birthday { get; set; }
         public int IdGender { get; set; }
         public int IdDepartment { get; set; }
+        public string Photo { get; set; }
     
         public virtual Departments Departments { get; set; }
         public virtual Genders Genders { get; set; }
