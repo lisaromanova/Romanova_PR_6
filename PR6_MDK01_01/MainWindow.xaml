@@ -7,11 +7,15 @@
         mc:Ignorable="d"
         Title="Университет" Icon="\Resources\logotip.png" Height="680" Width="850">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="150"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="140"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0">
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="2">
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                 <Image Width="80" Source="\Resources\logotip.png"/>
                 <TextBlock VerticalAlignment="Center"  Text="Университет" Style="{StaticResource txtHeader}"/>
@@ -21,6 +25,19 @@
                 <Button Name="btnReg" Style="{StaticResource btnStyle}" Width="170" Content="Регистрация" Template="{StaticResource btnTemplate}" Click="btnReg_Click"/>
             </StackPanel>
         </StackPanel>
-        <Frame NavigationUIVisibility="Hidden" Grid.Row="1" Name="frmMain"/>
+        <StackPanel Visibility="Collapsed" Grid.Row="0" Grid.Column="1" Name="spUser">
+            <Menu Background="White">
+                <MenuItem>
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Margin="5" Width="30" Source="\Resources\TeacherMan.png"/>
+                            <TextBlock FontFamily="Calibri" FontSize="16" VerticalAlignment="Center" Foreground="#FF27578D" Name="HeaderMenu"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                    <MenuItem Click="MenuItem_Click" Background="White" Header="Выход"/>
+                </MenuItem>
+            </Menu>
+        </StackPanel>
+        <Frame LoadCompleted="frmMain_LoadCompleted" NavigationUIVisibility="Hidden" Grid.Row="1" Name="frmMain" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>

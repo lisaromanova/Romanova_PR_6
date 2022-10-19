@@ -58,16 +58,20 @@ namespace PR6_MDK01_01.Pages
                 if (log != null)
                 {
                     MessageBox.Show("Успешная авторизация!", "Авторизация", MessageBoxButton.OK, MessageBoxImage.Information);
+                    
                     switch (log.IdRole)
                     {
                         case 1:
                             FrameClass.frmLoad.Navigate(new AdminPage());
+                            Teachers t = DataBaseClass.connect.Teachers.FirstOrDefault(x => x.IdTeacher == log.IdUser);
+                            MainWindow.ShortName = t.ShortName;
                             break;
                         case 2:
                         case 3:
                             FrameClass.frmLoad.Navigate(new UserPage());
                             break;
                     }
+                    MainWindow.Check = true;
                 }
                 else
                 {

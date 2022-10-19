@@ -16,6 +16,13 @@ namespace PR6_MDK01_01
                 return Surname + " " + NameTeacher + " " + Patronymic;
             }
         }
+        public string ShortName
+        {
+            get
+            {
+                return Surname + " " + NameTeacher[0] + ". " + Patronymic[0]+".";
+            }
+        }
 
         public string PhotoPath
         {
