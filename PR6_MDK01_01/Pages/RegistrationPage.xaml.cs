@@ -40,6 +40,9 @@ namespace PR6_MDK01_01.Pages
             cbGroup.ItemsSource = DataBaseClass.connect.Groups.ToList();
             cbGroup.SelectedValuePath = "IdGroup";
             cbGroup.DisplayMemberPath = "NameGroup";
+            cbTitle.ItemsSource = DataBaseClass.connect.Titles.ToList();
+            cbTitle.SelectedValuePath = "IdTitle";
+            cbTitle.DisplayMemberPath = "Title";
         }
 
         static bool IsClear(string surname, string name, string patronymic, string date, bool man, bool woman, string login, string pasword)
@@ -103,11 +106,27 @@ namespace PR6_MDK01_01.Pages
             }
         }
 
-        static bool IsClearTeacher(int department)
+        static bool IsClearTeacher(int department, int title, string bet)
         {
             if(department != -1)
             {
-                return true;
+                if (title != -1)
+                {
+                    if (Regex.IsMatch(bet, "^[0-9]+[,]*[0-9]*$"))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Введите ставку корректно!", "Регистрация", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return false;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Выберите звание из списка", "Регистрация", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return false;
+                }
             }
             else
             {
@@ -283,7 +302,7 @@ namespace PR6_MDK01_01.Pages
                         }
                         else
                         {
-                            if (IsClearTeacher(cbDepartmnet.SelectedIndex))
+                            if (IsClearTeacher(cbDepartmnet.SelectedIndex, cbTitle.SelectedIndex, tbBet.Text))
                             {
                                 Logined log = new Logined()
                                 {
@@ -301,7 +320,9 @@ namespace PR6_MDK01_01.Pages
                                     Patronymic = tbPatronymic.Text,
                                     Birthday = (DateTime)dtBirthday.SelectedDate,
                                     IdGender = gender,
-                                    IdDepartment = (int)cbDepartmnet.SelectedValue
+                                    IdDepartment = (int)cbDepartmnet.SelectedValue,
+                                    IdTitle = (int)cbTitle.SelectedValue,
+                                    Bet = Convert.ToDouble(tbBet.Text)
                                 };
                                 DataBaseClass.connect.Teachers.Add(teacher);
                                 DataBaseClass.connect.SaveChanges();

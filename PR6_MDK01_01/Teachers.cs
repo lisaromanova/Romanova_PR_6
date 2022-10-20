@@ -29,6 +29,8 @@ namespace PR6_MDK01_01
         public System.DateTime Birthday { get; set; }
         public int IdGender { get; set; }
         public int IdDepartment { get; set; }
+        public int IdTitle { get; set; }
+        public double Bet { get; set; }
         public string Photo { get; set; }
     
         public virtual Departments Departments { get; set; }
@@ -40,5 +42,6 @@ namespace PR6_MDK01_01
         public virtual ICollection<MarkStudents> MarkStudents { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StudyPlan> StudyPlan { get; set; }
+        public virtual Titles Titles { get; set; }
     }
 }

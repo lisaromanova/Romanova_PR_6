@@ -157,7 +157,17 @@
           <Property Name="Birthday" Type="date" Nullable="false" />
           <Property Name="IdGender" Type="int" Nullable="false" />
           <Property Name="IdDepartment" Type="int" Nullable="false" />
+          <Property Name="IdTitle" Type="int" Nullable="false" />
+          <Property Name="Bet" Type="float" Nullable="false" />
           <Property Name="Photo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Titles">
+          <Key>
+            <PropertyRef Name="IdTitle" />
+          </Key>
+          <Property Name="IdTitle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cost" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="TypesOfLesson">
           <Key>
@@ -557,6 +567,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Teachers_Titles">
+          <End Role="Titles" Type="Self.Titles" Multiplicity="1" />
+          <End Role="Teachers" Type="Self.Teachers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Titles">
+              <PropertyRef Name="IdTitle" />
+            </Principal>
+            <Dependent Role="Teachers">
+              <PropertyRef Name="IdTitle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Хранилище ModelContainer">
           <EntitySet Name="Departments" EntityType="Self.Departments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Disciplines" EntityType="Self.Disciplines" Schema="dbo" store:Type="Tables" />
@@ -574,6 +596,7 @@
           <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StudyPlan" EntityType="Self.StudyPlan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Teachers" EntityType="Self.Teachers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Titles" EntityType="Self.Titles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TypesOfLesson" EntityType="Self.TypesOfLesson" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TypesOfReporting" EntityType="Self.TypesOfReporting" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Departmen__IdFac__3E52440B" Association="Self.FK__Departmen__IdFac__3E52440B">
@@ -704,6 +727,10 @@
             <End Role="Logined" EntitySet="Logined" />
             <End Role="Teachers" EntitySet="Teachers" />
           </AssociationSet>
+          <AssociationSet Name="FK_Teachers_Titles" Association="Self.FK_Teachers_Titles">
+            <End Role="Titles" EntitySet="Titles" />
+            <End Role="Teachers" EntitySet="Teachers" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -726,6 +753,7 @@
           <EntitySet Name="Students" EntityType="Model.Students" />
           <EntitySet Name="StudyPlan" EntityType="Model.StudyPlan" />
           <EntitySet Name="Teachers" EntityType="Model.Teachers" />
+          <EntitySet Name="Titles" EntityType="Model.Titles" />
           <EntitySet Name="TypesOfLesson" EntityType="Model.TypesOfLesson" />
           <EntitySet Name="TypesOfReporting" EntityType="Model.TypesOfReporting" />
           <AssociationSet Name="FK__Departmen__IdFac__3E52440B" Association="Model.FK__Departmen__IdFac__3E52440B">
@@ -855,6 +883,10 @@
           <AssociationSet Name="FK__StudyPlan__IdTyp__7F2BE32F" Association="Model.FK__StudyPlan__IdTyp__7F2BE32F">
             <End Role="TypesOfReporting" EntitySet="TypesOfReporting" />
             <End Role="StudyPlan" EntitySet="StudyPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teachers_Titles" Association="Model.FK_Teachers_Titles">
+            <End Role="Titles" EntitySet="Titles" />
+            <End Role="Teachers" EntitySet="Teachers" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Departments">
@@ -1063,6 +1095,8 @@
           <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="IdGender" Type="Int32" Nullable="false" />
           <Property Name="IdDepartment" Type="Int32" Nullable="false" />
+          <Property Name="IdTitle" Type="Int32" Nullable="false" />
+          <Property Name="Bet" Type="Double" Nullable="false" />
           <Property Name="Photo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Departments" Relationship="Model.FK__Teachers__IdDepa__6D0D32F4" FromRole="Teachers" ToRole="Departments" />
           <NavigationProperty Name="Genders" Relationship="Model.FK__Teachers__IdGend__6C190EBB" FromRole="Teachers" ToRole="Genders" />
@@ -1070,6 +1104,16 @@
           <NavigationProperty Name="Logined" Relationship="Model.FK_Teachers_Logined" FromRole="Teachers" ToRole="Logined" />
           <NavigationProperty Name="MarkStudents" Relationship="Model.FK__MarkStude__IdTea__0C85DE4D" FromRole="Teachers" ToRole="MarkStudents" />
           <NavigationProperty Name="StudyPlan" Relationship="Model.FK__StudyPlan__IdTea__00200768" FromRole="Teachers" ToRole="StudyPlan" />
+          <NavigationProperty Name="Titles" Relationship="Model.FK_Teachers_Titles" FromRole="Teachers" ToRole="Titles" />
+        </EntityType>
+        <EntityType Name="Titles">
+          <Key>
+            <PropertyRef Name="IdTitle" />
+          </Key>
+          <Property Name="IdTitle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Cost" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Teachers" Relationship="Model.FK_Teachers_Titles" FromRole="Titles" ToRole="Teachers" />
         </EntityType>
         <EntityType Name="TypesOfLesson">
           <Key>
@@ -1473,7 +1517,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <Association Name="FK_Teachers_Titles">
+          <End Type="Model.Titles" Role="Titles" Multiplicity="1" />
+          <End Type="Model.Teachers" Role="Teachers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Titles">
+              <PropertyRef Name="IdTitle" />
+            </Principal>
+            <Dependent Role="Teachers">
+              <PropertyRef Name="IdTitle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1639,6 +1695,8 @@
             <EntityTypeMapping TypeName="Model.Teachers">
               <MappingFragment StoreEntitySet="Teachers">
                 <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Bet" ColumnName="Bet" />
+                <ScalarProperty Name="IdTitle" ColumnName="IdTitle" />
                 <ScalarProperty Name="IdDepartment" ColumnName="IdDepartment" />
                 <ScalarProperty Name="IdGender" ColumnName="IdGender" />
                 <ScalarProperty Name="Birthday" ColumnName="Birthday" />
@@ -1646,6 +1704,15 @@
                 <ScalarProperty Name="NameTeacher" ColumnName="NameTeacher" />
                 <ScalarProperty Name="Surname" ColumnName="Surname" />
                 <ScalarProperty Name="IdTeacher" ColumnName="IdTeacher" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Titles">
+            <EntityTypeMapping TypeName="Model.Titles">
+              <MappingFragment StoreEntitySet="Titles">
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="IdTitle" ColumnName="IdTitle" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

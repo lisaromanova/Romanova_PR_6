@@ -19,9 +19,9 @@ namespace PR6_MDK01_01.Pages
     /// <summary>
     /// Логика взаимодействия для ViewLessonsPage.xaml
     /// </summary>
-    public partial class ViewLessonsPage : Page
+    public partial class ListViewPage : Page
     {
-        public ViewLessonsPage()
+        public ListViewPage()
         {
             InitializeComponent();
             lstView.ItemsSource = DataBaseClass.connect.Teachers.ToList();

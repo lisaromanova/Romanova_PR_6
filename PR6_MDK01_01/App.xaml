@@ -32,7 +32,15 @@
             <Setter Property="Margin" Value="5"/>
             <Setter Property="Foreground" Value="Black"/>
             <Setter Property="Width" Value="250"/>
+            <Setter Property="HeaderTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" FontWeight="Bold" Foreground="#FF27578D"/>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
+        
         <ControlTemplate TargetType="Button" x:Key="btnTemplate">
             <Border Background="White" Margin="10,0,10,0" CornerRadius="30" BorderThickness="3" BorderBrush="#FF27578D">
                 <ContentControl Margin="5" VerticalAlignment="Center" FontWeight="Bold" Foreground="#FF27578D" HorizontalAlignment="Center" Content="{TemplateBinding Content}"/>

@@ -36,7 +36,7 @@ namespace PR6_MDK01_01.Pages
 
         private void btnView2_Click(object sender, RoutedEventArgs e)
         {
-            FrameClass.frmLoad.Navigate(new ViewLessonsPage());
+            FrameClass.frmLoad.Navigate(new ListViewPage());
         }
     }
 }

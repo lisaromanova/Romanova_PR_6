@@ -41,6 +41,7 @@ namespace PR6_MDK01_01
         public virtual DbSet<Students> Students { get; set; }
         public virtual DbSet<StudyPlan> StudyPlan { get; set; }
         public virtual DbSet<Teachers> Teachers { get; set; }
+        public virtual DbSet<Titles> Titles { get; set; }
         public virtual DbSet<TypesOfLesson> TypesOfLesson { get; set; }
         public virtual DbSet<TypesOfReporting> TypesOfReporting { get; set; }
     }

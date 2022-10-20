@@ -41,6 +41,12 @@
                     <GroupBox Style="{StaticResource gpStyle}" Header="Кафедра">
                         <ComboBox Name="cbDepartmnet" IsEditable="True" IsReadOnly="True"/>
                     </GroupBox>
+                    <GroupBox Style="{StaticResource gpStyle}" Header="Звание">
+                        <ComboBox Name="cbTitle" IsEditable="True" IsReadOnly="True"/>
+                    </GroupBox>
+                    <GroupBox Style="{StaticResource gpStyle}" Header="Ставка">
+                        <TextBox Name="tbBet"/>
+                    </GroupBox>
                 </StackPanel>
                 <StackPanel Visibility="Collapsed" Name="StudentData">
                     <GroupBox Style="{StaticResource gpStyle}" Header="Специальность">

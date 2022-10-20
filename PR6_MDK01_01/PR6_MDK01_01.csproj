@@ -117,8 +117,8 @@
     <Compile Include="Pages\UserPage.xaml.cs">
       <DependentUpon>UserPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ViewLessonsPage.xaml.cs">
-      <DependentUpon>ViewLessonsPage.xaml</DependentUpon>
+    <Compile Include="Pages\ListViewPage.xaml.cs">
+      <DependentUpon>ListViewPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ViewTeacherPage.xaml.cs">
       <DependentUpon>ViewTeacherPage.xaml</DependentUpon>
@@ -136,6 +136,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Teachers.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Titles.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="TypesOfLesson.cs">
@@ -172,7 +175,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\ViewLessonsPage.xaml">
+    <Page Include="Pages\ListViewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

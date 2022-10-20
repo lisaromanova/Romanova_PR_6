@@ -61,5 +61,16 @@ namespace PR6_MDK01_01
             }
         }
 
+        public double Salary
+        {
+            get
+            {
+                double sum = 1;
+                sum *= Bet * Titles.Cost;
+                return sum;
+            }
+            
+        }
+
     }
 }
