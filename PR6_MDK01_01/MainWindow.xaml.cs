@@ -60,8 +60,12 @@ namespace PR6_MDK01_01
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            FrameClass.frmLoad.Navigate(new AuthorizationPage());
-            Check = false;
+            MessageBoxResult i = MessageBox.Show("Вы точно хотите выйти из программы?", "Выход из программы", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if(i== MessageBoxResult.Yes)
+            {
+                FrameClass.frmLoad.Navigate(new AuthorizationPage());
+                Check = false;
+            }
         }
     }
 }

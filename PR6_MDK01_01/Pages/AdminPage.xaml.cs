@@ -26,7 +26,7 @@ namespace PR6_MDK01_01.Pages
         {
             InitializeComponent();
             btnView.Content = "Просмотр данных\nо преподавателях";
-            btnView2.Content = "Просмотр данных о\nпроведенных занятиях";
+            btnView2.Content = "Просмотр карточек\nпреподавателей";
         }
 
         private void btnView_Click(object sender, RoutedEventArgs e)

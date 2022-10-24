@@ -26,5 +26,10 @@ namespace PR6_MDK01_01.Pages
             InitializeComponent();
             lstView.ItemsSource = DataBaseClass.connect.Teachers.ToList();
         }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            FrameClass.frmLoad.Navigate(new AdminPage());
+        }
     }
 }

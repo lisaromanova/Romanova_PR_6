@@ -39,6 +39,8 @@
                 <DataGridTextColumn Header="Пол" Binding="{Binding Genders.Gender}"/>
                 <DataGridTextColumn Header="Дата рождения" Binding="{Binding Birthday, StringFormat= dd.MM.yyyy}"/>
                 <DataGridTextColumn Header="Кафедра" Binding="{Binding Departments.Department}"/>
+                <DataGridTextColumn Header="Звание" Binding="{Binding Titles.Title}"/>
+                <DataGridTextColumn Header="Ставка" Binding="{Binding Bet}"/>
                 <DataGridTextColumn Header="Логин" Binding="{Binding Logined.LoginUser}"/>
             </DataGrid.Columns>
         </DataGrid>

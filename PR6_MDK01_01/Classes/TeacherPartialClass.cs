@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 using PR6_MDK01_01.Classes;
 
 namespace PR6_MDK01_01
@@ -13,7 +14,7 @@ namespace PR6_MDK01_01
         {
             get
             {
-                return Surname + " " + NameTeacher + " " + Patronymic;
+                return Surname + " " + NameTeacher + " " + Patronymic+", "+Titles.Title.ToLower();
             }
         }
         public string ShortName
@@ -21,6 +22,21 @@ namespace PR6_MDK01_01
             get
             {
                 return Surname + " " + NameTeacher[0] + ". " + Patronymic[0]+".";
+            }
+        }
+
+        public SolidColorBrush GenderColor
+        {
+            get
+            {
+                if (IdGender == 1)
+                {
+                    return Brushes.LightBlue;
+                }
+                else
+                {
+                    return Brushes.LightPink;
+                }
             }
         }
 
@@ -52,10 +68,10 @@ namespace PR6_MDK01_01
             get
             {
                 List<Lessons> ls = DataBaseClass.connect.Lessons.Where(x=> x.IdTeacher==IdTeacher).ToList();
-                string str="";
+                string str="Проведенные занятия:\n";
                 if(ls.Count==0)
                 {
-                    str = "Нет проведенных занятий\n";
+                    str+= "Нет проведенных занятий\n";
                 }
                 else
                 {
@@ -78,7 +94,6 @@ namespace PR6_MDK01_01
                 sum *= Bet * Titles.Cost;
                 return sum;
             }
-            
         }
 
     }
