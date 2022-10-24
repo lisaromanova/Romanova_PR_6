@@ -53,10 +53,19 @@ namespace PR6_MDK01_01
             {
                 List<Lessons> ls = DataBaseClass.connect.Lessons.Where(x=> x.IdTeacher==IdTeacher).ToList();
                 string str="";
-                foreach(Lessons l in ls)
+                if(ls.Count==0)
                 {
-                    str += l.DateLesson.ToString("dd.MM") + " " + l.Groups.NameGroup + " " + l.Disciplines.Discipline + "\n";
+                    str = "Нет проведенных занятий\n";
                 }
+                else
+                {
+                    foreach (Lessons l in ls)
+                    {
+                        str += l.DateLesson.ToString("dd.MM") + " " + l.Groups.NameGroup + " " + l.Disciplines.Discipline + "\n";
+                    }
+                }
+                
+                str = str.Substring(0, str.Length - 1);
                 return str;
             }
         }

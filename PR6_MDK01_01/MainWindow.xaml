@@ -9,13 +9,13 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="200"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="140"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Grid.ColumnSpan="2">
+        <StackPanel VerticalAlignment="Center"  Grid.Row="0" Grid.ColumnSpan="2">
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                 <Image Width="80" Source="\Resources\logotip.png"/>
                 <TextBlock VerticalAlignment="Center"  Text="Университет" Style="{StaticResource txtHeader}"/>
@@ -25,13 +25,18 @@
                 <Button Name="btnReg" Style="{StaticResource btnStyle}" Width="170" Content="Регистрация" Template="{StaticResource btnTemplate}" Click="btnReg_Click"/>
             </StackPanel>
         </StackPanel>
-        <StackPanel Visibility="Collapsed" Grid.Row="0" Grid.Column="1" Name="spUser">
+        <StackPanel Visibility="Collapsed"  Margin="0,0,20,0" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1" Name="spUser">
             <Menu Background="White">
                 <MenuItem>
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <Image Margin="5" Width="30" Source="\Resources\TeacherMan.png"/>
-                            <TextBlock FontFamily="Calibri" FontSize="16" VerticalAlignment="Center" Foreground="#FF27578D" Name="HeaderMenu"/>
+                            <Image Margin="5,5,15,5" Width="30" Source="\Resources\TeacherMan.png"/>
+                            <!--<Ellipse Margin="5" Width="30" Height="30">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="" Stretch="UniformToFill"/>
+                                </Ellipse.Fill>
+                            </Ellipse>-->
+                            <TextBlock FontFamily="Calibri" FontWeight="Bold" FontSize="18" VerticalAlignment="Center" Foreground="#FF27578D" Name="HeaderMenu"/>
                         </StackPanel>
                     </MenuItem.Header>
                     <MenuItem Click="MenuItem_Click" Background="White" Header="Выход"/>
