@@ -31,5 +31,15 @@ namespace PR6_MDK01_01.Pages
         {
             FrameClass.frmLoad.Navigate(new AdminPage());
         }
+
+        private void btnUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            FrameClass.frmLoad.Navigate(new LessonsPage());
+        }
+
+        private void btnAddPlan_Click(object sender, RoutedEventArgs e)
+        {
+            FrameClass.frmLoad.Navigate(new AddStudyPlanPage());
+        }
     }
 }

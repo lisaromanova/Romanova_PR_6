@@ -9,28 +9,37 @@
       Title="ListViewPage">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
-        <ListView FontSize="16" HorizontalContentAlignment="Stretch" Name="lstView" Grid.Row="0">
+        <Button Grid.Row="0" HorizontalAlignment="Right" Name="btnAddPlan" Width="230" Height="40" Margin="5,0,10,0" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Content="Добавить учебный план" Click="btnAddPlan_Click"/>
+        <ListView FontSize="16" HorizontalContentAlignment="Stretch" Name="lstView" Grid.Row="1">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border Background="{Binding GenderColor}" CornerRadius="10" BorderThickness="2" BorderBrush="#FF27578D">
-                        <StackPanel Margin="10"  Orientation="Horizontal">
-                        <Image Name="photoTeacher" Width="150" Source="{Binding PhotoPath}"/>
-                        <StackPanel Margin="15,0,0,0">
-                            <TextBlock Text="{Binding Fio}"/>
-                            <TextBlock Text="{Binding Birthday, StringFormat={}dd.MM.yyyy}"/>
-                            <TextBlock Text="{Binding Genders.Gender}"/>
-                            <TextBlock Text="{Binding Departments.Department, StringFormat=Кафедра: {0}}"/>
-                            <TextBlock Text="{Binding LessonsTeacher}"/>
-                            <TextBlock Text="{Binding Salary, StringFormat={}Зарплата за месяц: {0}}"/>
-                        </StackPanel>
-                    </StackPanel>
+                        <Grid Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="250"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0" Margin="10"  Orientation="Horizontal">
+                                <Image Name="photoTeacher" Width="150" Source="{Binding PhotoPath}"/>
+                                <StackPanel Margin="15,0,0,0">
+                                    <TextBlock Text="{Binding Fio}"/>
+                                    <TextBlock Text="{Binding Birthday, StringFormat={}dd.MM.yyyy}"/>
+                                    <TextBlock Text="{Binding Genders.Gender}"/>
+                                    <TextBlock Text="{Binding Departments.Department, StringFormat=Кафедра: {0}}"/>
+                                    <TextBlock Text="{Binding LessonsTeacher}"/>
+                                    <TextBlock Text="{Binding Salary, StringFormat={}Зарплата за месяц: {0}}"/>
+                                </StackPanel>
+                            </StackPanel>
+                            <Button Uid="{Binding IdTeacher}" Click="btnUpdate_Click" Margin="10" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Right" Name="btnUpdate" Width="200" Style="{StaticResource btnUpdateStyle}" Content="Изменить занятость"/>
+                        </Grid>
                     </Border>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button Grid.Row="1" Name="btnBack" Width="200" Height="40" Margin="5,0,10,0" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Content="Вернуться в меню" Click="btnBack_Click" Cursor="Hand"/>
+        <Button Grid.Row="2" Name="btnBack" Width="200" Height="40" Margin="5,0,10,0" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Content="Вернуться в меню" Click="btnBack_Click"/>
     </Grid>
 </Page>

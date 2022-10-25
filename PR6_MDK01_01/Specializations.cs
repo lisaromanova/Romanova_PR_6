@@ -19,7 +19,6 @@ namespace PR6_MDK01_01
         {
             this.Groups = new HashSet<Groups>();
             this.Students = new HashSet<Students>();
-            this.StudyPlan = new HashSet<StudyPlan>();
         }
     
         public int IdSpecialization { get; set; }
@@ -31,7 +30,5 @@ namespace PR6_MDK01_01
         public virtual ICollection<Groups> Groups { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Students> Students { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<StudyPlan> StudyPlan { get; set; }
     }
 }

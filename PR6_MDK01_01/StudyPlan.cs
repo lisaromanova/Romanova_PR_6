@@ -15,23 +15,16 @@ namespace PR6_MDK01_01
     public partial class StudyPlan
     {
         public int IdEntry { get; set; }
-        public int IdSpecialization { get; set; }
-        public int IdKurs { get; set; }
-        public int IdFormOfTraining { get; set; }
         public int IdGroup { get; set; }
         public int IdDiscipline { get; set; }
         public int Lecture { get; set; }
         public int Practice { get; set; }
         public int IdTypeOfReporting { get; set; }
-        public double Reporting { get; set; }
         public double General { get; set; }
         public int IdTeacher { get; set; }
     
         public virtual Disciplines Disciplines { get; set; }
-        public virtual FormOfTrainings FormOfTrainings { get; set; }
         public virtual Groups Groups { get; set; }
-        public virtual Kurses Kurses { get; set; }
-        public virtual Specializations Specializations { get; set; }
         public virtual Teachers Teachers { get; set; }
         public virtual TypesOfReporting TypesOfReporting { get; set; }
     }

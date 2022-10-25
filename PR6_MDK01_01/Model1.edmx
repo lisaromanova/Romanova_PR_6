@@ -134,15 +134,11 @@
             <PropertyRef Name="IdEntry" />
           </Key>
           <Property Name="IdEntry" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IdSpecialization" Type="int" Nullable="false" />
-          <Property Name="IdKurs" Type="int" Nullable="false" />
-          <Property Name="IdFormOfTraining" Type="int" Nullable="false" />
           <Property Name="IdGroup" Type="int" Nullable="false" />
           <Property Name="IdDiscipline" Type="int" Nullable="false" />
           <Property Name="Lecture" Type="int" Nullable="false" />
           <Property Name="Practice" Type="int" Nullable="false" />
           <Property Name="IdTypeOfReporting" Type="int" Nullable="false" />
-          <Property Name="Reporting" Type="float" Nullable="false" />
           <Property Name="General" Type="float" Nullable="false" />
           <Property Name="IdTeacher" Type="int" Nullable="false" />
         </EntityType>
@@ -447,18 +443,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__StudyPlan__IdFor__7C4F7684">
-          <End Role="FormOfTrainings" Type="Self.FormOfTrainings" Multiplicity="1" />
-          <End Role="StudyPlan" Type="Self.StudyPlan" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="FormOfTrainings">
-              <PropertyRef Name="IdFormOfTraining" />
-            </Principal>
-            <Dependent Role="StudyPlan">
-              <PropertyRef Name="IdFormOfTraining" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__StudyPlan__IdGro__7D439ABD">
           <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
           <End Role="StudyPlan" Type="Self.StudyPlan" Multiplicity="*" />
@@ -471,30 +455,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__StudyPlan__IdKur__7B5B524B">
-          <End Role="Kurses" Type="Self.Kurses" Multiplicity="1" />
-          <End Role="StudyPlan" Type="Self.StudyPlan" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kurses">
-              <PropertyRef Name="IdKurs" />
-            </Principal>
-            <Dependent Role="StudyPlan">
-              <PropertyRef Name="IdKurs" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__StudyPlan__IdSpe__7A672E12">
-          <End Role="Specializations" Type="Self.Specializations" Multiplicity="1" />
-          <End Role="StudyPlan" Type="Self.StudyPlan" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Specializations">
-              <PropertyRef Name="IdSpecialization" />
-            </Principal>
-            <Dependent Role="StudyPlan">
-              <PropertyRef Name="IdSpecialization" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__StudyPlan__IdTea__00200768">
           <End Role="Teachers" Type="Self.Teachers" Multiplicity="1" />
           <End Role="StudyPlan" Type="Self.StudyPlan" Multiplicity="*" />
@@ -504,18 +464,6 @@
             </Principal>
             <Dependent Role="StudyPlan">
               <PropertyRef Name="IdTeacher" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__StudyPlan__IdTyp__7F2BE32F">
-          <End Role="TypesOfReporting" Type="Self.TypesOfReporting" Multiplicity="1" />
-          <End Role="StudyPlan" Type="Self.StudyPlan" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TypesOfReporting">
-              <PropertyRef Name="IdTypeOfReporting" />
-            </Principal>
-            <Dependent Role="StudyPlan">
-              <PropertyRef Name="IdTypeOfReporting" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -552,6 +500,18 @@
             </Principal>
             <Dependent Role="Students">
               <PropertyRef Name="IdStudent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudyPlan_TypesOfReporting">
+          <End Role="TypesOfReporting" Type="Self.TypesOfReporting" Multiplicity="1" />
+          <End Role="StudyPlan" Type="Self.StudyPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypesOfReporting">
+              <PropertyRef Name="IdTypeOfReporting" />
+            </Principal>
+            <Dependent Role="StudyPlan">
+              <PropertyRef Name="IdTypeOfReporting" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -687,28 +647,12 @@
             <End Role="Disciplines" EntitySet="Disciplines" />
             <End Role="StudyPlan" EntitySet="StudyPlan" />
           </AssociationSet>
-          <AssociationSet Name="FK__StudyPlan__IdFor__7C4F7684" Association="Self.FK__StudyPlan__IdFor__7C4F7684">
-            <End Role="FormOfTrainings" EntitySet="FormOfTrainings" />
-            <End Role="StudyPlan" EntitySet="StudyPlan" />
-          </AssociationSet>
           <AssociationSet Name="FK__StudyPlan__IdGro__7D439ABD" Association="Self.FK__StudyPlan__IdGro__7D439ABD">
             <End Role="Groups" EntitySet="Groups" />
             <End Role="StudyPlan" EntitySet="StudyPlan" />
           </AssociationSet>
-          <AssociationSet Name="FK__StudyPlan__IdKur__7B5B524B" Association="Self.FK__StudyPlan__IdKur__7B5B524B">
-            <End Role="Kurses" EntitySet="Kurses" />
-            <End Role="StudyPlan" EntitySet="StudyPlan" />
-          </AssociationSet>
-          <AssociationSet Name="FK__StudyPlan__IdSpe__7A672E12" Association="Self.FK__StudyPlan__IdSpe__7A672E12">
-            <End Role="Specializations" EntitySet="Specializations" />
-            <End Role="StudyPlan" EntitySet="StudyPlan" />
-          </AssociationSet>
           <AssociationSet Name="FK__StudyPlan__IdTea__00200768" Association="Self.FK__StudyPlan__IdTea__00200768">
             <End Role="Teachers" EntitySet="Teachers" />
-            <End Role="StudyPlan" EntitySet="StudyPlan" />
-          </AssociationSet>
-          <AssociationSet Name="FK__StudyPlan__IdTyp__7F2BE32F" Association="Self.FK__StudyPlan__IdTyp__7F2BE32F">
-            <End Role="TypesOfReporting" EntitySet="TypesOfReporting" />
             <End Role="StudyPlan" EntitySet="StudyPlan" />
           </AssociationSet>
           <AssociationSet Name="FK__Teachers__IdDepa__6D0D32F4" Association="Self.FK__Teachers__IdDepa__6D0D32F4">
@@ -722,6 +666,10 @@
           <AssociationSet Name="FK_Students_Logined" Association="Self.FK_Students_Logined">
             <End Role="Logined" EntitySet="Logined" />
             <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudyPlan_TypesOfReporting" Association="Self.FK_StudyPlan_TypesOfReporting">
+            <End Role="TypesOfReporting" EntitySet="TypesOfReporting" />
+            <End Role="StudyPlan" EntitySet="StudyPlan" />
           </AssociationSet>
           <AssociationSet Name="FK_Teachers_Logined" Association="Self.FK_Teachers_Logined">
             <End Role="Logined" EntitySet="Logined" />
@@ -788,10 +736,6 @@
             <End Role="FormOfTrainings" EntitySet="FormOfTrainings" />
             <End Role="Students" EntitySet="Students" />
           </AssociationSet>
-          <AssociationSet Name="FK__StudyPlan__IdFor__7C4F7684" Association="Model.FK__StudyPlan__IdFor__7C4F7684">
-            <End Role="FormOfTrainings" EntitySet="FormOfTrainings" />
-            <End Role="StudyPlan" EntitySet="StudyPlan" />
-          </AssociationSet>
           <AssociationSet Name="FK__Students__IdGend__656C112C" Association="Model.FK__Students__IdGend__656C112C">
             <End Role="Genders" EntitySet="Genders" />
             <End Role="Students" EntitySet="Students" />
@@ -823,10 +767,6 @@
           <AssociationSet Name="FK__Students__IdKurs__6754599E" Association="Model.FK__Students__IdKurs__6754599E">
             <End Role="Kurses" EntitySet="Kurses" />
             <End Role="Students" EntitySet="Students" />
-          </AssociationSet>
-          <AssociationSet Name="FK__StudyPlan__IdKur__7B5B524B" Association="Model.FK__StudyPlan__IdKur__7B5B524B">
-            <End Role="Kurses" EntitySet="Kurses" />
-            <End Role="StudyPlan" EntitySet="StudyPlan" />
           </AssociationSet>
           <AssociationSet Name="FK__Lessons__IdTeach__05D8E0BE" Association="Model.FK__Lessons__IdTeach__05D8E0BE">
             <End Role="Teachers" EntitySet="Teachers" />
@@ -872,15 +812,11 @@
             <End Role="Specializations" EntitySet="Specializations" />
             <End Role="Students" EntitySet="Students" />
           </AssociationSet>
-          <AssociationSet Name="FK__StudyPlan__IdSpe__7A672E12" Association="Model.FK__StudyPlan__IdSpe__7A672E12">
-            <End Role="Specializations" EntitySet="Specializations" />
-            <End Role="StudyPlan" EntitySet="StudyPlan" />
-          </AssociationSet>
           <AssociationSet Name="FK__StudyPlan__IdTea__00200768" Association="Model.FK__StudyPlan__IdTea__00200768">
             <End Role="Teachers" EntitySet="Teachers" />
             <End Role="StudyPlan" EntitySet="StudyPlan" />
           </AssociationSet>
-          <AssociationSet Name="FK__StudyPlan__IdTyp__7F2BE32F" Association="Model.FK__StudyPlan__IdTyp__7F2BE32F">
+          <AssociationSet Name="FK_StudyPlan_TypesOfReporting" Association="Model.FK_StudyPlan_TypesOfReporting">
             <End Role="TypesOfReporting" EntitySet="TypesOfReporting" />
             <End Role="StudyPlan" EntitySet="StudyPlan" />
           </AssociationSet>
@@ -926,7 +862,6 @@
           <Property Name="FormOfTraining" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Groups" Relationship="Model.FK__Groups__IdFormOf__49C3F6B7" FromRole="FormOfTrainings" ToRole="Groups" />
           <NavigationProperty Name="Students" Relationship="Model.FK__Students__IdForm__68487DD7" FromRole="FormOfTrainings" ToRole="Students" />
-          <NavigationProperty Name="StudyPlan" Relationship="Model.FK__StudyPlan__IdFor__7C4F7684" FromRole="FormOfTrainings" ToRole="StudyPlan" />
         </EntityType>
         <EntityType Name="Genders">
           <Key>
@@ -961,7 +896,6 @@
           <Property Name="Kurs" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Groups" Relationship="Model.FK__Groups__IdKurs__48CFD27E" FromRole="Kurses" ToRole="Groups" />
           <NavigationProperty Name="Students" Relationship="Model.FK__Students__IdKurs__6754599E" FromRole="Kurses" ToRole="Students" />
-          <NavigationProperty Name="StudyPlan" Relationship="Model.FK__StudyPlan__IdKur__7B5B524B" FromRole="Kurses" ToRole="StudyPlan" />
         </EntityType>
         <EntityType Name="Lessons">
           <Key>
@@ -1036,7 +970,6 @@
           <NavigationProperty Name="Facultes" Relationship="Model.FK__Specializ__IdFac__412EB0B6" FromRole="Specializations" ToRole="Facultes" />
           <NavigationProperty Name="Groups" Relationship="Model.FK__Groups__IdSpecia__47DBAE45" FromRole="Specializations" ToRole="Groups" />
           <NavigationProperty Name="Students" Relationship="Model.FK__Students__IdSpec__66603565" FromRole="Specializations" ToRole="Students" />
-          <NavigationProperty Name="StudyPlan" Relationship="Model.FK__StudyPlan__IdSpe__7A672E12" FromRole="Specializations" ToRole="StudyPlan" />
         </EntityType>
         <EntityType Name="Students">
           <Key>
@@ -1065,24 +998,17 @@
             <PropertyRef Name="IdEntry" />
           </Key>
           <Property Name="IdEntry" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdSpecialization" Type="Int32" Nullable="false" />
-          <Property Name="IdKurs" Type="Int32" Nullable="false" />
-          <Property Name="IdFormOfTraining" Type="Int32" Nullable="false" />
           <Property Name="IdGroup" Type="Int32" Nullable="false" />
           <Property Name="IdDiscipline" Type="Int32" Nullable="false" />
           <Property Name="Lecture" Type="Int32" Nullable="false" />
           <Property Name="Practice" Type="Int32" Nullable="false" />
           <Property Name="IdTypeOfReporting" Type="Int32" Nullable="false" />
-          <Property Name="Reporting" Type="Double" Nullable="false" />
           <Property Name="General" Type="Double" Nullable="false" />
           <Property Name="IdTeacher" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Disciplines" Relationship="Model.FK__StudyPlan__IdDis__7E37BEF6" FromRole="StudyPlan" ToRole="Disciplines" />
-          <NavigationProperty Name="FormOfTrainings" Relationship="Model.FK__StudyPlan__IdFor__7C4F7684" FromRole="StudyPlan" ToRole="FormOfTrainings" />
           <NavigationProperty Name="Groups" Relationship="Model.FK__StudyPlan__IdGro__7D439ABD" FromRole="StudyPlan" ToRole="Groups" />
-          <NavigationProperty Name="Kurses" Relationship="Model.FK__StudyPlan__IdKur__7B5B524B" FromRole="StudyPlan" ToRole="Kurses" />
-          <NavigationProperty Name="Specializations" Relationship="Model.FK__StudyPlan__IdSpe__7A672E12" FromRole="StudyPlan" ToRole="Specializations" />
           <NavigationProperty Name="Teachers" Relationship="Model.FK__StudyPlan__IdTea__00200768" FromRole="StudyPlan" ToRole="Teachers" />
-          <NavigationProperty Name="TypesOfReporting" Relationship="Model.FK__StudyPlan__IdTyp__7F2BE32F" FromRole="StudyPlan" ToRole="TypesOfReporting" />
+          <NavigationProperty Name="TypesOfReporting" Relationship="Model.FK_StudyPlan_TypesOfReporting" FromRole="StudyPlan" ToRole="TypesOfReporting" />
         </EntityType>
         <EntityType Name="Teachers">
           <Key>
@@ -1131,7 +1057,7 @@
           <Property Name="TypeOfReporting" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Marks" Relationship="Model.FK__Marks__IdTypeOfR__73BA3083" FromRole="TypesOfReporting" ToRole="Marks" />
           <NavigationProperty Name="MarkStudents" Relationship="Model.FK__MarkStude__IdTyp__0A9D95DB" FromRole="TypesOfReporting" ToRole="MarkStudents" />
-          <NavigationProperty Name="StudyPlan" Relationship="Model.FK__StudyPlan__IdTyp__7F2BE32F" FromRole="TypesOfReporting" ToRole="StudyPlan" />
+          <NavigationProperty Name="StudyPlan" Relationship="Model.FK_StudyPlan_TypesOfReporting" FromRole="TypesOfReporting" ToRole="StudyPlan" />
         </EntityType>
         <Association Name="FK__Departmen__IdFac__3E52440B">
           <End Type="Model.Facultes" Role="Facultes" Multiplicity="1" />
@@ -1229,18 +1155,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__StudyPlan__IdFor__7C4F7684">
-          <End Type="Model.FormOfTrainings" Role="FormOfTrainings" Multiplicity="1" />
-          <End Type="Model.StudyPlan" Role="StudyPlan" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="FormOfTrainings">
-              <PropertyRef Name="IdFormOfTraining" />
-            </Principal>
-            <Dependent Role="StudyPlan">
-              <PropertyRef Name="IdFormOfTraining" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Students__IdGend__656C112C">
           <End Type="Model.Genders" Role="Genders" Multiplicity="1" />
           <End Type="Model.Students" Role="Students" Multiplicity="*" />
@@ -1333,18 +1247,6 @@
               <PropertyRef Name="IdKurs" />
             </Principal>
             <Dependent Role="Students">
-              <PropertyRef Name="IdKurs" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__StudyPlan__IdKur__7B5B524B">
-          <End Type="Model.Kurses" Role="Kurses" Multiplicity="1" />
-          <End Type="Model.StudyPlan" Role="StudyPlan" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kurses">
-              <PropertyRef Name="IdKurs" />
-            </Principal>
-            <Dependent Role="StudyPlan">
               <PropertyRef Name="IdKurs" />
             </Dependent>
           </ReferentialConstraint>
@@ -1481,18 +1383,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__StudyPlan__IdSpe__7A672E12">
-          <End Type="Model.Specializations" Role="Specializations" Multiplicity="1" />
-          <End Type="Model.StudyPlan" Role="StudyPlan" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Specializations">
-              <PropertyRef Name="IdSpecialization" />
-            </Principal>
-            <Dependent Role="StudyPlan">
-              <PropertyRef Name="IdSpecialization" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__StudyPlan__IdTea__00200768">
           <End Type="Model.Teachers" Role="Teachers" Multiplicity="1" />
           <End Type="Model.StudyPlan" Role="StudyPlan" Multiplicity="*" />
@@ -1505,7 +1395,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__StudyPlan__IdTyp__7F2BE32F">
+        <Association Name="FK_StudyPlan_TypesOfReporting">
           <End Type="Model.TypesOfReporting" Role="TypesOfReporting" Multiplicity="1" />
           <End Type="Model.StudyPlan" Role="StudyPlan" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1678,15 +1568,11 @@
               <MappingFragment StoreEntitySet="StudyPlan">
                 <ScalarProperty Name="IdTeacher" ColumnName="IdTeacher" />
                 <ScalarProperty Name="General" ColumnName="General" />
-                <ScalarProperty Name="Reporting" ColumnName="Reporting" />
                 <ScalarProperty Name="IdTypeOfReporting" ColumnName="IdTypeOfReporting" />
                 <ScalarProperty Name="Practice" ColumnName="Practice" />
                 <ScalarProperty Name="Lecture" ColumnName="Lecture" />
                 <ScalarProperty Name="IdDiscipline" ColumnName="IdDiscipline" />
                 <ScalarProperty Name="IdGroup" ColumnName="IdGroup" />
-                <ScalarProperty Name="IdFormOfTraining" ColumnName="IdFormOfTraining" />
-                <ScalarProperty Name="IdKurs" ColumnName="IdKurs" />
-                <ScalarProperty Name="IdSpecialization" ColumnName="IdSpecialization" />
                 <ScalarProperty Name="IdEntry" ColumnName="IdEntry" />
               </MappingFragment>
             </EntityTypeMapping>
