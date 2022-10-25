@@ -13,7 +13,7 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
-        <Button Grid.Row="0" HorizontalAlignment="Right" Name="btnAddPlan" Width="230" Height="40" Margin="5,0,10,0" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Content="Добавить учебный план" Click="btnAddPlan_Click"/>
+        <Button Grid.Row="0" HorizontalAlignment="Right" Name="btnAddPlan" Width="230" Height="40" Margin="5,0,10,0" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Content="Добавить учебный план" Click="btnAddPlan_Click" Cursor="Hand"/>
         <ListView FontSize="16" HorizontalContentAlignment="Stretch" Name="lstView" Grid.Row="1">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -40,6 +40,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button Grid.Row="2" Name="btnBack" Width="200" Height="40" Margin="5,0,10,0" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Content="Вернуться в меню" Click="btnBack_Click"/>
+        <Button Grid.Row="2" Name="btnBack" Width="200" Height="40" Margin="5,0,10,0" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Content="Вернуться в меню" Click="btnBack_Click" Cursor="Hand"/>
     </Grid>
 </Page>

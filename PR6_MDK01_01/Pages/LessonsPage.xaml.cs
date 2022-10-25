@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using PR6_MDK01_01.Classes;
 
 namespace PR6_MDK01_01.Pages
 {
@@ -20,9 +21,12 @@ namespace PR6_MDK01_01.Pages
     /// </summary>
     public partial class LessonsPage : Page
     {
-        public LessonsPage()
+        List<Lessons> list;
+        public LessonsPage(List<Lessons> ls)
         {
             InitializeComponent();
+            list = ls;
+            lbLessons.ItemsSource = list;
         }
     }
 }

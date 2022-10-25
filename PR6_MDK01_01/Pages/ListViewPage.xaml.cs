@@ -34,7 +34,10 @@ namespace PR6_MDK01_01.Pages
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
-            FrameClass.frmLoad.Navigate(new LessonsPage());
+            Button btn = (Button)sender;
+            int index = Convert.ToInt32(btn.Uid);
+            List<Lessons> ls = DataBaseClass.connect.Lessons.Where(x=> x.IdTeacher==index).ToList();
+            FrameClass.frmLoad.Navigate(new LessonsPage(ls));
         }
 
         private void btnAddPlan_Click(object sender, RoutedEventArgs e)

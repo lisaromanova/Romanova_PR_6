@@ -44,33 +44,25 @@ namespace PR6_MDK01_01.Pages
             FrameClass.frmLoad.Navigate(new ListViewPage());
         }
 
-        bool CheckField(int group, int discipline, int type, int teacher)
+        bool CheckField(int group, int type, int teacher)
         {
-            if(group != -1)
+            if (group != -1)
             {
-                if (discipline != -1)
+                if (type != -1)
                 {
-                    if (type != -1)
+                    if (teacher != -1)
                     {
-                        if (teacher != -1)
-                        {
-                            return true;
-                        }
-                        else
-                        {
-                            MessageBox.Show("Выберите преподавателя из списка", "Добавление учебного плана", MessageBoxButton.OK, MessageBoxImage.Error);
-                            return false;
-                        }
+                        return true;
                     }
                     else
                     {
-                        MessageBox.Show("Выберите вид отчетности из списка", "Добавление учебного плана", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show("Выберите преподавателя из списка", "Добавление учебного плана", MessageBoxButton.OK, MessageBoxImage.Error);
                         return false;
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Выберите дисциплину из списка", "Добавление учебного плана", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Выберите вид отчетности из списка", "Добавление учебного плана", MessageBoxButton.OK, MessageBoxImage.Error);
                     return false;
                 }
             }
@@ -94,18 +86,50 @@ namespace PR6_MDK01_01.Pages
             }
         }
 
+        bool CheckDisc(string disc)
+        {
+            if (Regex.IsMatch(disc, "^[А-Я][а-я]+$"))
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("Введите дисциплину корректно или выберите из списка!", "Добавление учебного плана", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+        }
+
+
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            if(CheckField(cbGroup.SelectedIndex, cbDisc.SelectedIndex, cbTypeReport.SelectedIndex, cbTeacher.SelectedIndex))
+            if(CheckField(cbGroup.SelectedIndex, cbTypeReport.SelectedIndex, cbTeacher.SelectedIndex))
             {
                 if (CheckInt(tbLecture.Text, "лекционные"))
                 {
                     if(CheckInt(tbPractice.Text, "практические"))
                     {
+                        int Iddisc = 0;
+                        Disciplines disciplines = DataBaseClass.connect.Disciplines.FirstOrDefault(x => x.Discipline == cbDisc.Text);
+                        if (disciplines == null)
+                        {
+                            if(CheckDisc(cbDisc.Text))
+                            {
+                                Disciplines d = new Disciplines()
+                                {
+                                    Discipline = cbDisc.Text
+                                };
+                                DataBaseClass.connect.Disciplines.Add(d);
+                                Iddisc = d.IdDiscipline;
+                            }
+                        }
+                        else
+                        {
+                            Iddisc = (int)cbDisc.SelectedValue;
+                        }
                         StudyPlan st = new StudyPlan()
                         {
                             IdGroup = (int)cbGroup.SelectedValue,
-                            IdDiscipline = (int)cbDisc.SelectedValue,
+                            IdDiscipline = Iddisc,
                             Lecture = Convert.ToInt32(tbLecture.Text),
                             Practice = Convert.ToInt32(tbPractice.Text),
                             IdTypeOfReporting = (int)cbTypeReport.SelectedValue,
