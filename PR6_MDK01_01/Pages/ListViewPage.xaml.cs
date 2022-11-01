@@ -36,8 +36,8 @@ namespace PR6_MDK01_01.Pages
         {
             Button btn = (Button)sender;
             int index = Convert.ToInt32(btn.Uid);
-            List<Lessons> ls = DataBaseClass.connect.Lessons.Where(x=> x.IdTeacher==index).ToList();
-            FrameClass.frmLoad.Navigate(new LessonsPage(ls));
+            Teachers teacher = DataBaseClass.connect.Teachers.FirstOrDefault(x=> x.IdTeacher==index);
+            FrameClass.frmLoad.Navigate(new LessonsPage(teacher));
         }
 
         private void btnAddPlan_Click(object sender, RoutedEventArgs e)

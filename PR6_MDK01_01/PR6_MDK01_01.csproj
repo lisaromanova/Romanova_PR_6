@@ -105,6 +105,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Pages\AddLessonPage.xaml.cs">
+      <DependentUpon>AddLessonPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\AddStudyPlanPage.xaml.cs">
       <DependentUpon>AddStudyPlanPage.xaml</DependentUpon>
     </Compile>
@@ -165,6 +168,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\AddLessonPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\AddStudyPlanPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
