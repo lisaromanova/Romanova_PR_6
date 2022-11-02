@@ -7,7 +7,6 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AddLessonPage">
-
     <Grid>
         <StackPanel VerticalAlignment="Center">
             <TextBlock Style="{StaticResource txtHeader1}" Text="Добавление занятия"/>
@@ -18,26 +17,26 @@
                 <StackPanel Margin="0,10,0,0" HorizontalAlignment="Center" Orientation="Horizontal">
                     <StackPanel Margin="0,0,20,0">
                         <GroupBox Style="{StaticResource gpStyle}" Header="Выберите группу">
-                            <ComboBox Name="cbGroup" IsReadOnly="True" IsEditable="True"/>
+                            <ComboBox Name="cbGroup" IsReadOnly="True" IsEditable="True" SelectionChanged="cbGroup_SelectionChanged"/>
                         </GroupBox>
                         <GroupBox Margin="0,10,0,10" Style="{StaticResource gpStyle}" Header="Выберите дисциплину">
-                        <ComboBox Name="cbDisc" IsEditable="True"/>
-                    </GroupBox>
-                </StackPanel>
+                            <ComboBox Visibility="Hidden" Name="cbDisc" IsEditable="True"/>
+                        </GroupBox>
+                    </StackPanel>
                     <StackPanel Margin="0,0,20,0">
-                    <GroupBox Style="{StaticResource gpStyle}" Header="Выберите вид занятия">
-                        <ComboBox Name="cbTypeLesson" IsEditable="True"/>
-                    </GroupBox>
-                    <GroupBox Margin="0,10,0,10" Style="{StaticResource gpStyle}" Header="Выберите дату занятия">
-                        <DatePicker Name="dtLesson" />
-                    </GroupBox>
+                        <GroupBox Style="{StaticResource gpStyle}" Header="Выберите вид занятия">
+                            <ComboBox Name="cbTypeLesson" IsEditable="True"/>
+                        </GroupBox>
+                        <GroupBox Margin="0,10,0,10" Style="{StaticResource gpStyle}" Header="Выберите дату занятия">
+                            <DatePicker Name="dtLesson" />
+                        </GroupBox>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Margin="0,20,0,0" HorizontalAlignment="Center" Orientation="Horizontal">
+                    <Button Name="btnAdd" Width="200" Height="40" Margin="5,0,10,0" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Content="Добавить запись"/>
+                    <Button Name="btnBack" Width="200" Height="40" Margin="5,0,10,0" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Content="Вернуться в меню" Click="btnBack_Click" Cursor="Hand"/>
                 </StackPanel>
             </StackPanel>
-            <StackPanel Margin="0,20,0,0" HorizontalAlignment="Center" Orientation="Horizontal">
-                <Button Name="btnAdd" Width="200" Height="40" Margin="5,0,10,0" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Content="Добавить запись"/>
-                <Button Name="btnBack" Width="200" Height="40" Margin="5,0,10,0" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Content="Вернуться в меню" Click="btnBack_Click" Cursor="Hand"/>
-            </StackPanel>
-        </StackPanel>
         </StackPanel>
     </Grid>
 </Page>
