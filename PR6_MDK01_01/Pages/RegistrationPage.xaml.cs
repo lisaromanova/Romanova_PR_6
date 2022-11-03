@@ -311,7 +311,6 @@ namespace PR6_MDK01_01.Pages
                                     IdRole = 3
                                 };
                                 DataBaseClass.connect.Logined.Add(log);
-                                DataBaseClass.connect.SaveChanges();
                                 Teachers teacher = new Teachers()
                                 {
                                     IdTeacher = log.IdUser,

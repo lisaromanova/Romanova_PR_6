@@ -14,12 +14,12 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="80"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Text="Проведенные занятия" Style="{StaticResource txtHeader1}"/>
+        <TextBlock Grid.Row="0" Name="txtTeacher" Text="Проведенные занятия преподавателя " Style="{StaticResource txtHeader1}"/>
         <ListBox Grid.Row="1" Name="lbLessons">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Margin="0,0,10,0" Text="{Binding DateLesson}"/>
+                        <TextBlock Margin="0,0,10,0" Text="{Binding DateLesson, StringFormat={}dd.MM.yyyy}"/>
                         <TextBlock Margin="0,0,10,0" Text="{Binding Groups.NameGroup}"/>
                         <TextBlock Margin="0,0,10,0" Text="{Binding Disciplines.Discipline}"/>
                         <TextBlock Margin="0,0,10,0" Text="{Binding TypesOfLesson.TypeOfLesson}"/>

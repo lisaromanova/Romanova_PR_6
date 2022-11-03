@@ -29,6 +29,7 @@ namespace PR6_MDK01_01.Pages
             teacher = ls;
             list = DataBaseClass.connect.Lessons.Where(x=> x.IdTeacher==ls.IdTeacher).ToList();
             lbLessons.ItemsSource = list;
+            txtTeacher.Text += ls.ShortName;
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
