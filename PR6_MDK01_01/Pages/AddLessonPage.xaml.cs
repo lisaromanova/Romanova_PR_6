@@ -53,25 +53,25 @@ namespace PR6_MDK01_01.Pages
                         }
                         else
                         {
-                            MessageBox.Show("Выберите дату", "Добавление занятия", MessageBoxButton.OK, MessageBoxImage.Error);
+                            MessageBox.Show("Выберите дату!", "Добавление занятия", MessageBoxButton.OK, MessageBoxImage.Error);
                             return false;
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Выберите вид занятия из списка", "Добавление занятия", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show("Выберите вид занятия из списка!", "Добавление занятия", MessageBoxButton.OK, MessageBoxImage.Error);
                         return false;
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Выберите вид отчетности из списка", "Добавление занятия", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Выберите вид отчетности из списка!", "Добавление занятия", MessageBoxButton.OK, MessageBoxImage.Error);
                     return false;
                 }
             }
             else
             {
-                MessageBox.Show("Выберите группу из списка", "Добавление занятия", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Выберите группу из списка!", "Добавление занятия", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
         }

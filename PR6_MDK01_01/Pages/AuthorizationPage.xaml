@@ -11,10 +11,10 @@
         <StackPanel VerticalAlignment="Center">
             <TextBlock Style="{StaticResource txtHeader1}" HorizontalAlignment="Center" Text="Авторизация"/>
             <GroupBox FontSize="20" Width="300" Style="{StaticResource gpStyle}" Header="Логин">
-                <TextBox Name="tbLogin"/>
+                <TextBox Padding="2" Name="tbLogin"/>
             </GroupBox>
             <GroupBox FontSize="20" Width="300" Style="{StaticResource gpStyle}" Header="Пароль">
-                <PasswordBox PasswordChar="*" Name="pswPassword"/>
+                <PasswordBox Padding="2" PasswordChar="*" Name="pswPassword"/>
             </GroupBox>
             <Button FontSize="20" Margin="0,30,0,0" Name="btnAuto" Style="{StaticResource btnStyle}" Template="{StaticResource btnTemplate}" Width="140" Content="Войти" Click="btnAuto_Click" Cursor="Hand"/>
         </StackPanel>

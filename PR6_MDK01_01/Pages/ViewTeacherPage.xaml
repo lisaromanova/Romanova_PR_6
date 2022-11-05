@@ -15,8 +15,8 @@
         </Grid.RowDefinitions>
         <StackPanel Name="spSort" Grid.Row="0" >
             <StackPanel HorizontalAlignment="Center" Margin="5" Orientation="Horizontal">
-                <Button Name="btnAsc"  Width="150" Height="25" Margin="0,0,5,0" Style="{StaticResource btnStyle}" Content="По возрастанию" Click="btnAsc_Click"/>
-                <Button Name="btnDesc" Width="150" Height="25" Margin="5,0,10,0" Style="{StaticResource btnStyle}" Content="По убыванию" Click="btnDesc_Click"/>
+                <Button Name="btnAsc"  Width="150" Height="25" Margin="0,0,5,0" Style="{StaticResource btnUpdateStyle}" BorderThickness="1" Content="По возрастанию" Click="btnAsc_Click"/>
+                <Button Name="btnDesc" Width="150" Height="25" Margin="5,0,10,0" Style="{StaticResource btnUpdateStyle}" BorderThickness="1" Content="По убыванию" Click="btnDesc_Click"/>
                 <ComboBox Height="25" Margin="0,0,10,0" Width="200" Name="cbGender" IsEditable="True" IsReadOnly="True" SelectionChanged="cbGender_SelectionChanged">
                     <ComboBoxItem>Мужской</ComboBoxItem>
                     <ComboBoxItem>Женский</ComboBoxItem>
@@ -28,7 +28,7 @@
                     <ComboBoxItem>По фамилии</ComboBoxItem>
                     <ComboBoxItem>По имени</ComboBoxItem>
                 </ComboBox>
-                <Button Name="btnClear" Width="100" Height="25" Margin="0,0,10,0" Style="{StaticResource btnStyle}" Content="Сброс" Click="btnClear_Click"/>
+                <Button Name="btnClear" Width="100" Height="25" Margin="0,0,10,0" Style="{StaticResource btnUpdateStyle}" BorderThickness="1" Content="Сброс" Click="btnClear_Click"/>
             </StackPanel>
         </StackPanel>
         <DataGrid Grid.Row="1" IsReadOnly="True" Name="dgTeachers" AutoGenerateColumns="False">

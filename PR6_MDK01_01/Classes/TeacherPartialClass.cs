@@ -29,13 +29,18 @@ namespace PR6_MDK01_01
         {
             get
             {
-                if (IdGender == 1)
+                switch (IdTitle)
                 {
-                    return Brushes.LightBlue;
-                }
-                else
-                {
-                    return Brushes.LightPink;
+                    case 1:
+                        return (SolidColorBrush)new BrushConverter().ConvertFrom("#FFE5FCFF");
+                    case 2:
+                        return (SolidColorBrush)new BrushConverter().ConvertFrom("#FFF7EAFF");
+                    case 3:
+                        return (SolidColorBrush)new BrushConverter().ConvertFrom("#FFFFFBEA");
+                    case 4:
+                        return (SolidColorBrush)new BrushConverter().ConvertFrom("#FFEEFFEA");
+                    default:
+                        return Brushes.White;
                 }
             }
         }

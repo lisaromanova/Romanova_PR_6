@@ -20,12 +20,12 @@
                         <ComboBox Name="cbDisc" IsEditable="True"/>
                     </GroupBox>
                     <GroupBox Margin="0,10,0,10" Style="{StaticResource gpStyle}" Header="Введите лекционные часы">
-                        <TextBox Name="tbLecture"/>
+                        <TextBox Padding="2" Name="tbLecture"/>
                     </GroupBox>
                 </StackPanel>
                 <StackPanel Margin="20,0,0,0">
                     <GroupBox Style="{StaticResource gpStyle}" Header="Введите практические часы">
-                        <TextBox Name="tbPractice"/>
+                        <TextBox Padding="2" Name="tbPractice"/>
                     </GroupBox>
                     <GroupBox Margin="0,10,0,10" Style="{StaticResource gpStyle}" Header="Выберите вид отчетности">
                         <ComboBox Name="cbTypeReport" IsReadOnly="True" IsEditable="True"/>

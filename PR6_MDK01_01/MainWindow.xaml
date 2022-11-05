@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PR6_MDK01_01"
         mc:Ignorable="d"
-        Title="Университет" Icon="\Resources\logotip.png" Height="680" Width="850">
+        Title="Университет" Icon="\Resources\logotip.png" Height="680" MinHeight="680" Width="850" MinWidth="850">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
