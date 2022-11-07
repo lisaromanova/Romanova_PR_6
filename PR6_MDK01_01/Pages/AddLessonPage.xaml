@@ -17,15 +17,24 @@
                 <StackPanel Margin="0,10,0,0" HorizontalAlignment="Center" Orientation="Horizontal">
                     <StackPanel Margin="0,0,20,0">
                         <GroupBox Style="{StaticResource gpStyle}" Header="Выберите группу">
-                            <ComboBox Name="cbGroup" IsReadOnly="True" IsEditable="True" SelectionChanged="cbGroup_SelectionChanged"/>
+                            <StackPanel>
+                                <ComboBox Name="cbGroup" IsReadOnly="True" IsEditable="True" SelectionChanged="cbGroup_SelectionChanged"/>
+                                <TextBox Visibility="Collapsed" Padding="2" Name="tbGroup" IsReadOnly="True"/>
+                            </StackPanel>
                         </GroupBox>
                         <GroupBox Margin="0,10,0,10" Style="{StaticResource gpStyle}" Header="Выберите дисциплину">
-                            <ComboBox Visibility="Hidden" Name="cbDisc" IsEditable="True" SelectionChanged="cbDisc_SelectionChanged"/>
+                            <StackPanel>
+                                <ComboBox Visibility="Hidden" Name="cbDisc" IsEditable="True" SelectionChanged="cbDisc_SelectionChanged"/>
+                                <TextBox Visibility="Collapsed" Padding="2" Name="tbDisc" IsReadOnly="True"/>
+                            </StackPanel>
                         </GroupBox>
                     </StackPanel>
                     <StackPanel Margin="0,0,20,0">
                         <GroupBox Style="{StaticResource gpStyle}" Header="Выберите вид занятия">
-                            <ComboBox Name="cbTypeLesson" IsEditable="True" Visibility="Hidden"/>
+                            <StackPanel>
+                                <ComboBox Name="cbTypeLesson" IsEditable="True" Visibility="Hidden"/>
+                                <TextBox Visibility="Collapsed" Padding="2" Name="tbTypeOfLesson" IsReadOnly="True"/>
+                            </StackPanel>
                         </GroupBox>
                         <GroupBox Margin="0,10,0,10" Style="{StaticResource gpStyle}" Header="Выберите дату занятия">
                             <DatePicker Name="dtLesson" />

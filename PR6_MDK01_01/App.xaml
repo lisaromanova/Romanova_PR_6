@@ -29,9 +29,9 @@
             <Setter Property="FontFamily" Value="Calibri"/>
             <Setter Property="FontSize" Value="16"/>
             <Setter Property="Height" Value="40"/>
-            <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Background" Value="White"/>
             <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Cursor" Value="Hand"/>
         </Style>
         <Style TargetType="GroupBox" x:Key="gpStyle">
             <Setter Property="BorderBrush" Value="#FF27578D"/>

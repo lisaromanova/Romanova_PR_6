@@ -32,14 +32,15 @@
                             <Run Text="{Binding Disciplines.Discipline}"/>
                         </TextBlock>
                         <TextBlock Margin="0,0,10,0" Text="{Binding TypesOfLesson.TypeOfLesson}"/>
-                        <Button Name="btnDelete" Width="100" Background="White" Content="Удалить"/>
+                        <Button Margin="0,0,10,0" Name="btnDelete" Width="100" Background="White" Content="Удалить" Uid="{Binding IdLesson}" Click="btnDelete_Click" Cursor="Hand"/>
+                        <Button Name="btnUpdate" Width="100" Background="White" Content="Изменить" Uid="{Binding IdLesson}" Click="btnUpdate_Click" Cursor="Hand"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
         <StackPanel Grid.Row="2"  Margin="0,0,0,0" HorizontalAlignment="Center" Orientation="Horizontal">
-            <Button Name="btnAddLesson" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Width="200" Content="Добавить занятость" Click="btnAddLesson_Click" Cursor="Hand"/>
-            <Button Name="btnBack" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Width="150" Content="Вернуться" Click="btnBack_Click" Cursor="Hand"/>
+            <Button Name="btnAddLesson" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Width="200" Content="Добавить занятость" Click="btnAddLesson_Click"/>
+            <Button Name="btnBack" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Width="150" Content="Вернуться" Click="btnBack_Click"/>
         </StackPanel>
     </Grid>
 </Page>

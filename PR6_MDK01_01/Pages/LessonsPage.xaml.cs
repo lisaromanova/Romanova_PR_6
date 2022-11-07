@@ -27,9 +27,14 @@ namespace PR6_MDK01_01.Pages
         {
             InitializeComponent();
             teacher = ls;
-            list = DataBaseClass.connect.Lessons.Where(x=> x.IdTeacher==ls.IdTeacher).ToList();
-            lbLessons.ItemsSource = list;
+            LoadList();
             txtTeacher.Text += ls.ShortName;
+        }
+
+        private void LoadList()
+        {
+            list = DataBaseClass.connect.Lessons.Where(x => x.IdTeacher == teacher.IdTeacher).ToList();
+            lbLessons.ItemsSource = list;
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
@@ -41,6 +46,46 @@ namespace PR6_MDK01_01.Pages
         {
 
             FrameClass.frmLoad.Navigate(new AddLessonPage(teacher));
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                MessageBoxResult i = MessageBox.Show("Вы точно хотите удалить занятие?", "Выход из программы", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (i == MessageBoxResult.Yes)
+                {
+                    Button button = (Button)sender;
+                    int index = Convert.ToInt32(button.Uid);
+                    Lessons lesson = DataBaseClass.connect.Lessons.FirstOrDefault(x => x.IdLesson == index);
+                    StudyPlan stPlan = DataBaseClass.connect.StudyPlan.FirstOrDefault(x => x.IdTeacher == lesson.IdTeacher && x.IdDiscipline == lesson.IdDiscipline && x.IdGroup == lesson.IdGroup);
+                    switch (lesson.IdTypeOfLesson)
+                    {
+                        case 1:
+                            stPlan.Lecture += 2;
+                            break;
+                        case 2:
+                            stPlan.Practice += 2;
+                            break;
+                    }
+                    DataBaseClass.connect.Lessons.Remove(lesson);
+                    DataBaseClass.connect.SaveChanges();
+                    MessageBox.Show("Занятие успешно удалено!", "Удаление занятия", MessageBoxButton.OK, MessageBoxImage.Information);
+                    LoadList();
+                }     
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка!", "Удаление занятия", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+
+        private void btnUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            int index = Convert.ToInt32(button.Uid);
+            Lessons lesson = DataBaseClass.connect.Lessons.FirstOrDefault(x => x.IdLesson == index);
+            FrameClass.frmLoad.Navigate(new AddLessonPage(lesson));
         }
     }
 }

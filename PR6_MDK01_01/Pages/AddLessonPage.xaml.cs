@@ -23,14 +23,38 @@ namespace PR6_MDK01_01.Pages
     {
         Teachers teacher;
         StudyPlan st;
-        public AddLessonPage(Teachers ls)
+        Lessons lesson;
+        public AddLessonPage(Teachers tch)
         {
             InitializeComponent();
-            teacher = ls;
+            teacher = tch;
+            FillComboBox();       
+        }
+
+        private void FillComboBox()
+        {
             tbTeacher.Text = teacher.ShortName;
-            cbGroup.ItemsSource = DataBaseClass.connect.StudyPlan.Where(x => x.IdTeacher == ls.IdTeacher).ToList();
+            cbGroup.ItemsSource = DataBaseClass.connect.StudyPlan.Where(x => x.IdTeacher == teacher.IdTeacher).ToList();
             cbGroup.SelectedValuePath = "IdGroup";
-            cbGroup.DisplayMemberPath = "Groups.NameGroup";           
+            cbGroup.DisplayMemberPath = "Groups.NameGroup";
+        }
+
+        public AddLessonPage(Lessons ls)
+        {
+            InitializeComponent();
+            lesson = ls;
+            teacher = DataBaseClass.connect.Teachers.FirstOrDefault(x=> x.IdTeacher==lesson.IdTeacher);
+            FillComboBox();
+            cbGroup.Visibility = Visibility.Collapsed;
+            cbDisc.Visibility = Visibility.Collapsed;
+            cbTypeLesson.Visibility = Visibility.Collapsed;
+            tbGroup.Visibility = Visibility.Visible;
+            tbDisc.Visibility = Visibility.Visible;
+            tbTypeOfLesson.Visibility = Visibility.Visible;
+            tbGroup.Text = ls.Groups.NameGroup;
+            tbDisc.Text = ls.Disciplines.Discipline;
+            tbTypeOfLesson.Text = ls.TypesOfLesson.TypeOfLesson;
+            dtLesson.SelectedDate = ls.DateLesson;
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
@@ -111,8 +135,7 @@ namespace PR6_MDK01_01.Pages
                 cbDisc.SelectedValuePath = "IdDiscipline";
                 cbDisc.DisplayMemberPath = "Disciplines.Discipline";
                 TypeLesson();
-            }
-            
+            } 
         }
 
         private void cbDisc_SelectionChanged(object sender, SelectionChangedEventArgs e)
