@@ -31,19 +31,11 @@ namespace PR6_MDK01_01.Pages
             FillComboBox();       
         }
 
-        private void FillComboBox()
-        {
-            tbTeacher.Text = teacher.ShortName;
-            cbGroup.ItemsSource = DataBaseClass.connect.StudyPlan.Where(x => x.IdTeacher == teacher.IdTeacher).ToList();
-            cbGroup.SelectedValuePath = "IdGroup";
-            cbGroup.DisplayMemberPath = "Groups.NameGroup";
-        }
-
         public AddLessonPage(Lessons ls)
         {
             InitializeComponent();
             lesson = ls;
-            teacher = DataBaseClass.connect.Teachers.FirstOrDefault(x=> x.IdTeacher==lesson.IdTeacher);
+            teacher = DataBaseClass.connect.Teachers.FirstOrDefault(x => x.IdTeacher == lesson.IdTeacher);
             FillComboBox();
             cbGroup.Visibility = Visibility.Collapsed;
             cbDisc.Visibility = Visibility.Collapsed;
@@ -55,6 +47,18 @@ namespace PR6_MDK01_01.Pages
             tbDisc.Text = ls.Disciplines.Discipline;
             tbTypeOfLesson.Text = ls.TypesOfLesson.TypeOfLesson;
             dtLesson.SelectedDate = ls.DateLesson;
+            txtHeader.Text = "Изменение занятия";
+            btnAdd.Content = "Изменить запись";
+        }
+
+        private void FillComboBox()
+        {
+            tbTeacher.Text = teacher.ShortName;
+            var list = DataBaseClass.connect.StudyPlan.Where(x => x.IdTeacher == teacher.IdTeacher).Select(x=> new {x.IdGroup, x.Groups.NameGroup}).ToList();
+            list = list.Distinct().ToList();
+            cbGroup.ItemsSource = list;
+            cbGroup.SelectedValuePath = "IdGroup";
+            cbGroup.DisplayMemberPath = "NameGroup";
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
@@ -145,28 +149,39 @@ namespace PR6_MDK01_01.Pages
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            if(IsClear(cbGroup.SelectedIndex, cbDisc.SelectedIndex, cbTypeLesson.SelectedIndex, dtLesson.Text))
+            if (lesson == null)
             {
-                Lessons lesson = new Lessons()
+                if (IsClear(cbGroup.SelectedIndex, cbDisc.SelectedIndex, cbTypeLesson.SelectedIndex, dtLesson.Text))
                 {
-                    IdGroup = (int)cbGroup.SelectedValue,
-                    IdDiscipline = (int)cbDisc.SelectedValue,
-                    IdTypeOfLesson = (int)cbTypeLesson.SelectedValue,
-                    IdTeacher = teacher.IdTeacher,
-                    DateLesson = (DateTime)dtLesson.SelectedDate
-                };
-                DataBaseClass.connect.Lessons.Add(lesson);
-                if (lesson.IdTypeOfLesson == 1)
-                {
-                    st.Lecture -= 2;
+
+                    lesson = new Lessons();
+                    lesson.IdGroup = (int)cbGroup.SelectedValue;
+                    lesson.IdDiscipline = (int)cbDisc.SelectedValue;
+                    lesson.IdTypeOfLesson = (int)cbTypeLesson.SelectedValue;
+                    lesson.IdTeacher = teacher.IdTeacher;
+                    lesson.DateLesson = (DateTime)dtLesson.SelectedDate;
+                    DataBaseClass.connect.Lessons.Add(lesson);
+                    if (lesson.IdTypeOfLesson == 1)
+                    {
+                        st.Lecture -= 2;
+                    }
+                    else
+                    {
+                        st.Practice -= 2;
+                    }
+                    DataBaseClass.connect.SaveChanges();
+                    MessageBox.Show("Занятие успешно добавлено!", "Добавление занятия", MessageBoxButton.OK, MessageBoxImage.Information);
+                    FrameClass.frmLoad.Navigate(new LessonsPage(teacher));
                 }
-                else
-                {
-                    st.Practice -= 2;
-                }
-                DataBaseClass.connect.SaveChanges();
-                MessageBox.Show("Занятие успешно добавлено!", "Добавление занятия", MessageBoxButton.OK, MessageBoxImage.Information);
             }
+            else
+            {
+                lesson.DateLesson = (DateTime)dtLesson.SelectedDate;
+                DataBaseClass.connect.SaveChanges();
+                MessageBox.Show("Занятие успешно изменено!", "Изменение занятия", MessageBoxButton.OK, MessageBoxImage.Information);
+                FrameClass.frmLoad.Navigate(new LessonsPage(teacher));
+            }
+           
         }
     }
 }

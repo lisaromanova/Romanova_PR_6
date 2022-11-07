@@ -9,7 +9,7 @@
       Title="AddLessonPage">
     <Grid>
         <StackPanel VerticalAlignment="Center">
-            <TextBlock Style="{StaticResource txtHeader1}" Text="Добавление занятия"/>
+            <TextBlock Style="{StaticResource txtHeader1}" Text="Добавление занятия" Name="txtHeader"/>
             <StackPanel>
                 <GroupBox Style="{StaticResource gpStyle}" Header="Преподаватель">
                     <TextBox Padding="2" Name="tbTeacher" IsReadOnly="True"/>

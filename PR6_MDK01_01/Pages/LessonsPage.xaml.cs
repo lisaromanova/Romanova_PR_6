@@ -34,6 +34,7 @@ namespace PR6_MDK01_01.Pages
         private void LoadList()
         {
             list = DataBaseClass.connect.Lessons.Where(x => x.IdTeacher == teacher.IdTeacher).ToList();
+            list = list.OrderBy(x => x.DateLesson).ToList();
             lbLessons.ItemsSource = list;
         }
 
