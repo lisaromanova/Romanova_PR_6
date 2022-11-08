@@ -13,8 +13,7 @@
             <RowDefinition Height="175"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.RowSpan="2">
-            <Calendar Grid.Row="0" Name="calendarLessons" SelectedDatesChanged="calendarLessons_SelectedDatesChanged"/>
+        <Calendar Grid.Row="0" Name="calendarLessons" SelectedDatesChanged="calendarLessons_SelectedDatesChanged"/>
             <ListBox Grid.Row="1" Name="lbLessons" FontFamily="Calibri" FontSize="16" HorizontalContentAlignment="Center">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
@@ -32,14 +31,13 @@
                             <Run Text="{Binding Disciplines.Discipline}"/>
                             </TextBlock>
                             <TextBlock Margin="0,0,10,0" Text="{Binding TypesOfLesson.TypeOfLesson}"/>
-                            <!--<TextBlock Margin="0,0,10,0">
+                            <TextBlock Margin="0,0,10,0">
                             <Run Text="Преподаватель: " FontWeight="Bold"/>
-                            <Run Text="{Binding Teachers.ShortName}"/>
-                            </TextBlock>-->
+                            <Run Text="{Binding Teachers.ShortName, Mode=OneWay}"/>
+                            </TextBlock>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-        </StackPanel>
     </Grid>
 </Page>

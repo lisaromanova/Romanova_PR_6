@@ -75,9 +75,17 @@ namespace PR6_MDK01_01.Pages
 
         bool CheckInt(string ch, string str)
         {
-            if(Regex.IsMatch(ch, "^\\d+$"))
+            if (Regex.IsMatch(ch, "^\\d+$"))
             {
-                return true;
+                if (Convert.ToInt32(ch)%2==0)
+                {
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show($"Часы должны быть кратны двум!", "Добавление учебного плана", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return false;
+                }
             }
             else
             {
@@ -102,7 +110,7 @@ namespace PR6_MDK01_01.Pages
         bool CheckPlan(int group, int discipline)
         {
             StudyPlan sp = DataBaseClass.connect.StudyPlan.FirstOrDefault(x => x.IdGroup == group && x.IdDiscipline == discipline);
-            if(sp == null)
+            if (sp == null)
             {
                 return true;
             }
@@ -116,46 +124,48 @@ namespace PR6_MDK01_01.Pages
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            if(CheckField(cbGroup.SelectedIndex, cbTypeReport.SelectedIndex, cbTeacher.SelectedIndex))
+            if (CheckField(cbGroup.SelectedIndex, cbTypeReport.SelectedIndex, cbTeacher.SelectedIndex))
             {
                 if (CheckInt(tbLecture.Text, "лекционные"))
                 {
-                    if(CheckInt(tbPractice.Text, "практические"))
+                    if (CheckInt(tbPractice.Text, "практические"))
                     {
-                        int Iddisc = 0;
-                        Disciplines disciplines = DataBaseClass.connect.Disciplines.FirstOrDefault(x => x.Discipline == cbDisc.Text);
-                        if (disciplines == null)
+                        if (CheckDisc(cbDisc.Text))
                         {
-                            if (CheckDisc(cbDisc.Text))
+                            int Iddisc = 0;
+                            Disciplines disciplines = DataBaseClass.connect.Disciplines.FirstOrDefault(x => x.Discipline == cbDisc.Text);
+                            if (disciplines == null)
                             {
+
                                 Disciplines d = new Disciplines()
                                 {
                                     Discipline = cbDisc.Text
                                 };
                                 DataBaseClass.connect.Disciplines.Add(d);
                                 Iddisc = d.IdDiscipline;
+
                             }
-                        }
-                        else
-                        {
-                            Iddisc = (int)cbDisc.SelectedValue;
-                        }
-                        if (CheckPlan((int)cbGroup.SelectedValue, Iddisc))
-                        {
-                            
-                            StudyPlan st = new StudyPlan()
+                            else
                             {
-                                IdGroup = (int)cbGroup.SelectedValue,
-                                IdDiscipline = Iddisc,
-                                Lecture = Convert.ToInt32(tbLecture.Text),
-                                Practice = Convert.ToInt32(tbPractice.Text),
-                                IdTypeOfReporting = (int)cbTypeReport.SelectedValue,
-                                General = Convert.ToInt32(tbLecture.Text) + Convert.ToInt32(tbPractice.Text),
-                                IdTeacher = (int)cbTeacher.SelectedValue
-                            };
-                            DataBaseClass.connect.StudyPlan.Add(st);
-                            DataBaseClass.connect.SaveChanges();
-                            MessageBox.Show("Запись успешно добавлена!", "Добавление учебного плана", MessageBoxButton.OK, MessageBoxImage.Information);
+                                Iddisc = (int)cbDisc.SelectedValue;
+                            }
+                            if (CheckPlan((int)cbGroup.SelectedValue, Iddisc))
+                            {
+
+                                StudyPlan st = new StudyPlan()
+                                {
+                                    IdGroup = (int)cbGroup.SelectedValue,
+                                    IdDiscipline = Iddisc,
+                                    Lecture = Convert.ToInt32(tbLecture.Text),
+                                    Practice = Convert.ToInt32(tbPractice.Text),
+                                    IdTypeOfReporting = (int)cbTypeReport.SelectedValue,
+                                    General = Convert.ToInt32(tbLecture.Text) + Convert.ToInt32(tbPractice.Text),
+                                    IdTeacher = (int)cbTeacher.SelectedValue
+                                };
+                                DataBaseClass.connect.StudyPlan.Add(st);
+                                DataBaseClass.connect.SaveChanges();
+                                MessageBox.Show("Запись успешно добавлена!", "Добавление учебного плана", MessageBoxButton.OK, MessageBoxImage.Information);
+                            }
                         }
                     }
                 }
