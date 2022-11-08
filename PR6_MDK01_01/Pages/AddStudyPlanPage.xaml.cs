@@ -122,26 +122,27 @@ namespace PR6_MDK01_01.Pages
                 {
                     if(CheckInt(tbPractice.Text, "практические"))
                     {
-                        if(CheckPlan((int)cbGroup.SelectedValue, (int)cbDisc.SelectedValue))
+                        int Iddisc = 0;
+                        Disciplines disciplines = DataBaseClass.connect.Disciplines.FirstOrDefault(x => x.Discipline == cbDisc.Text);
+                        if (disciplines == null)
                         {
-                            int Iddisc = 0;
-                            Disciplines disciplines = DataBaseClass.connect.Disciplines.FirstOrDefault(x => x.Discipline == cbDisc.Text);
-                            if (disciplines == null)
+                            if (CheckDisc(cbDisc.Text))
                             {
-                                if (CheckDisc(cbDisc.Text))
+                                Disciplines d = new Disciplines()
                                 {
-                                    Disciplines d = new Disciplines()
-                                    {
-                                        Discipline = cbDisc.Text
-                                    };
-                                    DataBaseClass.connect.Disciplines.Add(d);
-                                    Iddisc = d.IdDiscipline;
-                                }
+                                    Discipline = cbDisc.Text
+                                };
+                                DataBaseClass.connect.Disciplines.Add(d);
+                                Iddisc = d.IdDiscipline;
                             }
-                            else
-                            {
-                                Iddisc = (int)cbDisc.SelectedValue;
-                            }
+                        }
+                        else
+                        {
+                            Iddisc = (int)cbDisc.SelectedValue;
+                        }
+                        if (CheckPlan((int)cbGroup.SelectedValue, Iddisc))
+                        {
+                            
                             StudyPlan st = new StudyPlan()
                             {
                                 IdGroup = (int)cbGroup.SelectedValue,

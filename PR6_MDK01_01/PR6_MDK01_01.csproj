@@ -117,6 +117,9 @@
     <Compile Include="Pages\AuthorizationPage.xaml.cs">
       <DependentUpon>AuthorizationPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\CalendarPage.xaml.cs">
+      <DependentUpon>CalendarPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\LessonsPage.xaml.cs">
       <DependentUpon>LessonsPage.xaml</DependentUpon>
     </Compile>
@@ -181,6 +184,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\AuthorizationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\CalendarPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

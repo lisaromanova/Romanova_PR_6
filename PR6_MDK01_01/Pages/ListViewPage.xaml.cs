@@ -24,7 +24,7 @@ namespace PR6_MDK01_01.Pages
         public ListViewPage()
         {
             InitializeComponent();
-            lstView.ItemsSource = DataBaseClass.connect.Teachers.ToList();
+            lstView.ItemsSource = DataBaseClass.connect.Teachers.OrderBy(x=> x.Surname).ToList();
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)

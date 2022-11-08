@@ -27,6 +27,7 @@ namespace PR6_MDK01_01.Pages
             InitializeComponent();
             btnView.Content = "Просмотр данных\nо преподавателях";
             btnView2.Content = "Просмотр карточек\nпреподавателей";
+            btnView3.Content = "Просмотр занятий";
         }
 
         private void btnView_Click(object sender, RoutedEventArgs e)
@@ -37,6 +38,11 @@ namespace PR6_MDK01_01.Pages
         private void btnView2_Click(object sender, RoutedEventArgs e)
         {
             FrameClass.frmLoad.Navigate(new ListViewPage());
+        }
+
+        private void btnView3_Click(object sender, RoutedEventArgs e)
+        {
+            FrameClass.frmLoad.Navigate(new CalendarPage());
         }
     }
 }

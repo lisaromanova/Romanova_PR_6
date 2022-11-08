@@ -11,6 +11,7 @@
         <StackPanel Grid.RowSpan="2" VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Name="btnView" Width="200" Height="80" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Click="btnView_Click" Cursor="Hand"/>
             <Button Name="btnView2" Width="210" Height="80" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Click="btnView2_Click" Cursor="Hand"/>
+            <Button Name="btnView3" Width="210" Height="80" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Click="btnView3_Click" Cursor="Hand"/>
         </StackPanel>
     </Grid>
 </Page>

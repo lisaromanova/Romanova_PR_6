@@ -72,17 +72,18 @@ namespace PR6_MDK01_01
         {
             get
             {
-                List<Lessons> ls = DataBaseClass.connect.Lessons.Where(x=> x.IdTeacher==IdTeacher).ToList();
-                string str="Проведенные занятия:\n";
+                List<StudyPlan> ls = DataBaseClass.connect.StudyPlan.Where(x=> x.IdTeacher==IdTeacher).ToList();
+                ls = ls.OrderBy(x => x.Groups.NameGroup).ToList();
+                string str="Занятость преподавателя:\n";
                 if(ls.Count==0)
                 {
-                    str+= "Нет проведенных занятий\n";
+                    str+= "Нет занятости преподавателя\n";
                 }
                 else
                 {
-                    foreach (Lessons l in ls)
+                    foreach (StudyPlan l in ls)
                     {
-                        str += l.DateLesson.ToString("dd.MM") + " " + l.Groups.NameGroup + " " + l.Disciplines.Discipline + "\n";
+                        str += l.Groups.NameGroup + " " + l.Disciplines.Discipline + "\n";
                     }
                 }
                 

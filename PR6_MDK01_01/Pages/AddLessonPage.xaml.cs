@@ -135,7 +135,7 @@ namespace PR6_MDK01_01.Pages
             if(cbGroup.SelectedIndex != -1)
             {
                 cbDisc.Visibility = Visibility.Visible;
-                cbDisc.ItemsSource = DataBaseClass.connect.StudyPlan.Where(x => x.IdGroup == (int)cbGroup.SelectedValue && (x.Lecture != 0 || x.Practice != 0)).ToList();
+                cbDisc.ItemsSource = DataBaseClass.connect.StudyPlan.Where(x => x.IdGroup == (int)cbGroup.SelectedValue && x.IdTeacher==teacher.IdTeacher && (x.Lecture != 0 || x.Practice != 0)).ToList();
                 cbDisc.SelectedValuePath = "IdDiscipline";
                 cbDisc.DisplayMemberPath = "Disciplines.Discipline";
                 TypeLesson();
