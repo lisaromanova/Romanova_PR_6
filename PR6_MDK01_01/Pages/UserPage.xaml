@@ -7,8 +7,66 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="UserPage">
-
-    <Grid>
-        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40" Text="Пользователь"/>
+    <Grid Margin="10">
+        <StackPanel>
+            <TextBlock Text="Личный кабинет" Style="{StaticResource txtHeader1}"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Image Name="imgUser" Width="200" Height="200" />
+                <StackPanel Margin="20,0,0,0">
+                    <TextBlock Style="{StaticResource txtUser}">
+                        <Run Text="Фамилия: " FontWeight="Bold"/>
+                        <Run Name="txtSurname"/>
+                    </TextBlock>
+                    <TextBlock Style="{StaticResource txtUser}">
+                        <Run Text="Имя: " FontWeight="Bold"/>
+                        <Run Name="txtName"/>
+                    </TextBlock>
+                    <TextBlock Style="{StaticResource txtUser}">
+                        <Run Text="Отчество: " FontWeight="Bold"/>
+                        <Run Name="txtPatronymic"/>
+                    </TextBlock>
+                    <TextBlock Style="{StaticResource txtUser}">
+                        <Run Text="Дата рождения: " FontWeight="Bold"/>
+                        <Run Name="txtBirthday"/>
+                    </TextBlock>
+                    <TextBlock Style="{StaticResource txtUser}">
+                        <Run Text="Пол: " FontWeight="Bold"/>
+                        <Run Name="txtGender"/>
+                    </TextBlock>
+                    <TextBlock Name="txtSpecialization" Visibility="Collapsed" Style="{StaticResource txtUser}">
+                        <Run Text="Специальность: " FontWeight="Bold"/>
+                        <Run Name="rSpecialization"/>
+                    </TextBlock>
+                    <TextBlock Name="txtKurs" Visibility="Collapsed" Style="{StaticResource txtUser}">
+                        <Run Text="Курс: " FontWeight="Bold"/>
+                        <Run Name="rKurs"/>
+                    </TextBlock>
+                    <TextBlock Name="txtForm" Visibility="Collapsed" Style="{StaticResource txtUser}">
+                        <Run Text="Форма обучения: " FontWeight="Bold"/>
+                        <Run Name="rForm"/>
+                    </TextBlock>
+                    <TextBlock Name="txtGroup" Visibility="Collapsed" Style="{StaticResource txtUser}">
+                        <Run Text="Группа: " FontWeight="Bold"/>
+                        <Run Name="rGroup"/>
+                    </TextBlock>
+                    <TextBlock Name="txtDepartment" Visibility="Collapsed" Style="{StaticResource txtUser}">
+                        <Run Text="Кафедра: " FontWeight="Bold"/>
+                        <Run Name="rDepartment"/>
+                    </TextBlock>
+                    <TextBlock Name="txtTitle" Visibility="Collapsed" Style="{StaticResource txtUser}">
+                        <Run Text="Звание: " FontWeight="Bold"/>
+                        <Run Name="rTitle"/>
+                    </TextBlock>
+                    <TextBlock Name="txtBet" Visibility="Collapsed" Style="{StaticResource txtUser}">
+                        <Run Text="Ставка: " FontWeight="Bold"/>
+                        <Run Name="rBet"/>
+                    </TextBlock>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Margin="0,30,0,0" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Name="btnUpdateData" Width="250" Height="40" Margin="5,0,10,0" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Content="Изменить личные данные" Click="btnUpdateData_Click"/>
+                <Button Name="btnUpdateLogin" Width="260" Height="40" Margin="5,0,10,0" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Content="Изменить данные для входа" Click="btnUpdateLogin_Click" Cursor="Hand"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>

@@ -12,23 +12,13 @@ namespace PR6_MDK01_01
     using System;
     using System.Collections.Generic;
     
-    public partial class Logined
+    public partial class Photos
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Logined()
-        {
-            this.Photos = new HashSet<Photos>();
-        }
-    
+        public int IdPhoto { get; set; }
         public int IdUser { get; set; }
-        public string LoginUser { get; set; }
-        public int PasswordUser { get; set; }
-        public int IdRole { get; set; }
+        public string PhotoPath { get; set; }
+        public byte[] PhotoBinary { get; set; }
     
-        public virtual Roles Roles { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Photos> Photos { get; set; }
-        public virtual Students Students { get; set; }
-        public virtual Teachers Teachers { get; set; }
+        public virtual Logined Logined { get; set; }
     }
 }

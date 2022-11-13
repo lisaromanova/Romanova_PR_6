@@ -49,7 +49,8 @@ namespace PR6_MDK01_01
         {
             get
             {
-                if (Photo == null)
+                List<Photos> photo = DataBaseClass.connect.Photos.Where(x=> x.IdUser==Logined.IdUser).ToList();
+                if (photo.Count == 0)
                 {
                     if (IdGender == 1)
                     {
@@ -63,7 +64,7 @@ namespace PR6_MDK01_01
                 }
                 else
                 {
-                    return Photo;
+                    return photo[0].PhotoPath;
                 }
             }
         }

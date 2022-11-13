@@ -31,7 +31,6 @@ namespace PR6_MDK01_01
         public int IdDepartment { get; set; }
         public int IdTitle { get; set; }
         public double Bet { get; set; }
-        public string Photo { get; set; }
     
         public virtual Departments Departments { get; set; }
         public virtual Genders Genders { get; set; }

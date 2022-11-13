@@ -67,8 +67,14 @@ namespace PR6_MDK01_01.Pages
                             MainWindow.ShortName = t.ShortName;
                             break;
                         case 2:
+                            Students s = DataBaseClass.connect.Students.FirstOrDefault(x => x.IdStudent == log.IdUser);
+                            MainWindow.ShortName = s.ShortName;
+                            FrameClass.frmLoad.Navigate(new UserPage(log));
+                            break;
                         case 3:
-                            FrameClass.frmLoad.Navigate(new UserPage());
+                            Teachers t1 = DataBaseClass.connect.Teachers.FirstOrDefault(x => x.IdTeacher == log.IdUser);
+                            MainWindow.ShortName = t1.ShortName;
+                            FrameClass.frmLoad.Navigate(new UserPage(log));
                             break;
                     }
                     MainWindow.Check = true;

@@ -36,6 +36,7 @@ namespace PR6_MDK01_01
         public virtual DbSet<Logined> Logined { get; set; }
         public virtual DbSet<Marks> Marks { get; set; }
         public virtual DbSet<MarkStudents> MarkStudents { get; set; }
+        public virtual DbSet<Photos> Photos { get; set; }
         public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<Specializations> Specializations { get; set; }
         public virtual DbSet<Students> Students { get; set; }

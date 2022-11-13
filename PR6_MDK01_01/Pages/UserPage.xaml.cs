@@ -20,9 +20,55 @@ namespace PR6_MDK01_01.Pages
     /// </summary>
     public partial class UserPage : Page
     {
-        public UserPage()
+        public UserPage(Logined login)
         {
             InitializeComponent();
+            switch (login.IdRole)
+            {
+                case 1:
+                case 3:
+                    txtDepartment.Visibility = Visibility.Visible;
+                    txtTitle.Visibility = Visibility.Visible;
+                    txtBet.Visibility = Visibility.Visible;
+
+                    txtSurname.Text = login.Teachers.Surname;
+                    txtName.Text = login.Teachers.NameTeacher;
+                    txtPatronymic.Text = login.Teachers.Patronymic;
+                    txtBirthday.Text = login.Teachers.Birthday.ToString("dd.MM.yyyy");
+                    txtGender.Text = login.Teachers.Genders.Gender;
+                    rDepartment.Text = login.Teachers.Departments.Department;
+                    rTitle.Text = login.Teachers.Titles.Title;
+                    rBet.Text = login.Teachers.Bet.ToString();
+                    imgUser.Source = new BitmapImage(new Uri(login.Teachers.PhotoPath, UriKind.Relative));
+                    break;
+                case 2:
+                    txtSpecialization.Visibility = Visibility.Visible;
+                    txtKurs.Visibility = Visibility.Visible;
+                    txtForm.Visibility = Visibility.Visible;
+                    txtGroup.Visibility = Visibility.Visible;
+
+                    txtSurname.Text = login.Students.Surname;
+                    txtName.Text = login.Students.NameStudent;
+                    txtPatronymic.Text = login.Students.Patronymic;
+                    txtBirthday.Text = login.Students.Birthday.ToString("dd.MM.yyyy");
+                    txtGender.Text = login.Students.Genders.Gender;
+                    rSpecialization.Text = login.Students.Specializations.Specialization;
+                    rKurs.Text = login.Students.Kurses.Kurs.ToString();
+                    rForm.Text = login.Students.FormOfTrainings.FormOfTraining;
+                    rGroup.Text = login.Students.Groups.NameGroup;
+                    break;
+            }
+        }
+
+        private void btnUpdateData_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnUpdateLogin_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateLoginWindow updateLogin = new UpdateLoginWindow();
+            updateLogin.ShowDialog();
         }
     }
 }

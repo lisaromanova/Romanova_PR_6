@@ -99,6 +99,15 @@
           <Property Name="IdMark" Type="int" Nullable="false" />
           <Property Name="IdTeacher" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Photos">
+          <Key>
+            <PropertyRef Name="IdPhoto" />
+          </Key>
+          <Property Name="IdPhoto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUser" Type="int" Nullable="false" />
+          <Property Name="PhotoPath" Type="nvarchar(max)" />
+          <Property Name="PhotoBinary" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="Roles">
           <Key>
             <PropertyRef Name="IdRole" />
@@ -155,7 +164,6 @@
           <Property Name="IdDepartment" Type="int" Nullable="false" />
           <Property Name="IdTitle" Type="int" Nullable="false" />
           <Property Name="Bet" Type="float" Nullable="false" />
-          <Property Name="Photo" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Titles">
           <Key>
@@ -359,6 +367,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Photos__IdUser__756D6ECB">
+          <End Role="Logined" Type="Self.Logined" Multiplicity="1" />
+          <End Role="Photos" Type="Self.Photos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Logined">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="Photos">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Specializ__IdFac__412EB0B6">
           <End Role="Facultes" Type="Self.Facultes" Multiplicity="1" />
           <End Role="Specializations" Type="Self.Specializations" Multiplicity="*" />
@@ -551,6 +571,7 @@
           <EntitySet Name="Logined" EntityType="Self.Logined" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Marks" EntityType="Self.Marks" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MarkStudents" EntityType="Self.MarkStudents" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Photos" EntityType="Self.Photos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Specializations" EntityType="Self.Specializations" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
@@ -618,6 +639,10 @@
           <AssociationSet Name="FK__MarkStude__IdTyp__0A9D95DB" Association="Self.FK__MarkStude__IdTyp__0A9D95DB">
             <End Role="TypesOfReporting" EntitySet="TypesOfReporting" />
             <End Role="MarkStudents" EntitySet="MarkStudents" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Photos__IdUser__756D6ECB" Association="Self.FK__Photos__IdUser__756D6ECB">
+            <End Role="Logined" EntitySet="Logined" />
+            <End Role="Photos" EntitySet="Photos" />
           </AssociationSet>
           <AssociationSet Name="FK__Specializ__IdFac__412EB0B6" Association="Self.FK__Specializ__IdFac__412EB0B6">
             <End Role="Facultes" EntitySet="Facultes" />
@@ -696,6 +721,7 @@
           <EntitySet Name="Logined" EntityType="Model.Logined" />
           <EntitySet Name="Marks" EntityType="Model.Marks" />
           <EntitySet Name="MarkStudents" EntityType="Model.MarkStudents" />
+          <EntitySet Name="Photos" EntityType="Model.Photos" />
           <EntitySet Name="Roles" EntityType="Model.Roles" />
           <EntitySet Name="Specializations" EntityType="Model.Specializations" />
           <EntitySet Name="Students" EntityType="Model.Students" />
@@ -779,6 +805,10 @@
           <AssociationSet Name="FK__Logined__IdRole__398D8EEE" Association="Model.FK__Logined__IdRole__398D8EEE">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Logined" EntitySet="Logined" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Photos__IdUser__756D6ECB" Association="Model.FK__Photos__IdUser__756D6ECB">
+            <End Role="Logined" EntitySet="Logined" />
+            <End Role="Photos" EntitySet="Photos" />
           </AssociationSet>
           <AssociationSet Name="FK_Students_Logined" Association="Model.FK_Students_Logined">
             <End Role="Logined" EntitySet="Logined" />
@@ -921,6 +951,7 @@
           <Property Name="PasswordUser" Type="Int32" Nullable="false" />
           <Property Name="IdRole" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Roles" Relationship="Model.FK__Logined__IdRole__398D8EEE" FromRole="Logined" ToRole="Roles" />
+          <NavigationProperty Name="Photos" Relationship="Model.FK__Photos__IdUser__756D6ECB" FromRole="Logined" ToRole="Photos" />
           <NavigationProperty Name="Students" Relationship="Model.FK_Students_Logined" FromRole="Logined" ToRole="Students" />
           <NavigationProperty Name="Teachers" Relationship="Model.FK_Teachers_Logined" FromRole="Logined" ToRole="Teachers" />
         </EntityType>
@@ -951,6 +982,16 @@
           <NavigationProperty Name="Students" Relationship="Model.FK__MarkStude__IdStu__08B54D69" FromRole="MarkStudents" ToRole="Students" />
           <NavigationProperty Name="Teachers" Relationship="Model.FK__MarkStude__IdTea__0C85DE4D" FromRole="MarkStudents" ToRole="Teachers" />
           <NavigationProperty Name="TypesOfReporting" Relationship="Model.FK__MarkStude__IdTyp__0A9D95DB" FromRole="MarkStudents" ToRole="TypesOfReporting" />
+        </EntityType>
+        <EntityType Name="Photos">
+          <Key>
+            <PropertyRef Name="IdPhoto" />
+          </Key>
+          <Property Name="IdPhoto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUser" Type="Int32" Nullable="false" />
+          <Property Name="PhotoPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhotoBinary" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Logined" Relationship="Model.FK__Photos__IdUser__756D6ECB" FromRole="Photos" ToRole="Logined" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -1023,7 +1064,6 @@
           <Property Name="IdDepartment" Type="Int32" Nullable="false" />
           <Property Name="IdTitle" Type="Int32" Nullable="false" />
           <Property Name="Bet" Type="Double" Nullable="false" />
-          <Property Name="Photo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Departments" Relationship="Model.FK__Teachers__IdDepa__6D0D32F4" FromRole="Teachers" ToRole="Departments" />
           <NavigationProperty Name="Genders" Relationship="Model.FK__Teachers__IdGend__6C190EBB" FromRole="Teachers" ToRole="Genders" />
           <NavigationProperty Name="Lessons" Relationship="Model.FK__Lessons__IdTeach__05D8E0BE" FromRole="Teachers" ToRole="Lessons" />
@@ -1287,6 +1327,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Photos__IdUser__756D6ECB">
+          <End Type="Model.Logined" Role="Logined" Multiplicity="1" />
+          <End Type="Model.Photos" Role="Photos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Logined">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="Photos">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Students_Logined">
           <End Type="Model.Logined" Role="Logined" Multiplicity="1" />
           <End Type="Model.Students" Role="Students" Multiplicity="0..1" />
@@ -1530,6 +1582,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Photos">
+            <EntityTypeMapping TypeName="Model.Photos">
+              <MappingFragment StoreEntitySet="Photos">
+                <ScalarProperty Name="PhotoBinary" ColumnName="PhotoBinary" />
+                <ScalarProperty Name="PhotoPath" ColumnName="PhotoPath" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="IdPhoto" ColumnName="IdPhoto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Roles">
             <EntityTypeMapping TypeName="Model.Roles">
               <MappingFragment StoreEntitySet="Roles">
@@ -1580,7 +1642,6 @@
           <EntitySetMapping Name="Teachers">
             <EntityTypeMapping TypeName="Model.Teachers">
               <MappingFragment StoreEntitySet="Teachers">
-                <ScalarProperty Name="Photo" ColumnName="Photo" />
                 <ScalarProperty Name="Bet" ColumnName="Bet" />
                 <ScalarProperty Name="IdTitle" ColumnName="IdTitle" />
                 <ScalarProperty Name="IdDepartment" ColumnName="IdDepartment" />

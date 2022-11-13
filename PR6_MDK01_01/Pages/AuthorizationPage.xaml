@@ -16,7 +16,7 @@
             <GroupBox FontSize="20" Width="300" Style="{StaticResource gpStyle}" Header="Пароль">
                 <PasswordBox Padding="2" PasswordChar="*" Name="pswPassword"/>
             </GroupBox>
-            <Button FontSize="20" Margin="0,30,0,0" Name="btnAuto" Style="{StaticResource btnStyle}" Template="{StaticResource btnTemplate}" Width="140" Content="Войти" Click="btnAuto_Click" Cursor="Hand"/>
+            <Button IsDefault="True" FontSize="20" Margin="0,30,0,0" Name="btnAuto" Style="{StaticResource btnStyle}" Template="{StaticResource btnTemplate}" Width="140" Content="Войти" Click="btnAuto_Click" Cursor="Hand"/>
         </StackPanel>
     </Grid>
 </Page>
