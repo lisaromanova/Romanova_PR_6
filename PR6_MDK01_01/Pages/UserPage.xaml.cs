@@ -20,9 +20,11 @@ namespace PR6_MDK01_01.Pages
     /// </summary>
     public partial class UserPage : Page
     {
+        Logined log;
         public UserPage(Logined login)
         {
             InitializeComponent();
+            log = login;
             switch (login.IdRole)
             {
                 case 1:
@@ -62,12 +64,13 @@ namespace PR6_MDK01_01.Pages
 
         private void btnUpdateData_Click(object sender, RoutedEventArgs e)
         {
-
+            UpdateDataWindow updateData = new UpdateDataWindow(log);
+            updateData.ShowDialog();
         }
 
         private void btnUpdateLogin_Click(object sender, RoutedEventArgs e)
         {
-            UpdateLoginWindow updateLogin = new UpdateLoginWindow();
+            UpdateLoginWindow updateLogin = new UpdateLoginWindow(log);
             updateLogin.ShowDialog();
         }
     }

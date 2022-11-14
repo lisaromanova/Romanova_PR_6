@@ -19,9 +19,11 @@ namespace PR6_MDK01_01
     /// </summary>
     public partial class UpdateLoginWindow : Window
     {
-        public UpdateLoginWindow()
+        Logined log;
+        public UpdateLoginWindow(Logined log)
         {
             InitializeComponent();
+            this.log = log;
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)

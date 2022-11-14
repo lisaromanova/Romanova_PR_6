@@ -5,8 +5,61 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PR6_MDK01_01"
         mc:Ignorable="d"
-        Title="Изменение личных данных" Height="450" Width="800" Icon="Resources\logotip.png">
-    <Grid>
-        
+        Title="Изменение личных данных" Height="500" Width="600" Icon="Resources\logotip.png">
+    <Grid Margin="10">
+        <StackPanel HorizontalAlignment="Center">
+            <TextBlock Style="{StaticResource txtHeader1}" HorizontalAlignment="Center" Text="Изменение личных данных"/>
+                <WrapPanel>
+                <StackPanel>
+                    <GroupBox Style="{StaticResource gpStyle}" Header="Фамилия">
+                        <TextBox Padding="2" Name="tbSurname"/>
+                    </GroupBox>
+                    <GroupBox Style="{StaticResource gpStyle}" Header="Имя">
+                        <TextBox Name="tbName"/>
+                    </GroupBox>
+                    <GroupBox Style="{StaticResource gpStyle}" Header="Отчество">
+                        <TextBox Padding="2" Name="tbPatronymic"/>
+                    </GroupBox>
+                    <GroupBox Style="{StaticResource gpStyle}" Header="Дата рождения">
+                        <DatePicker Name="dtBirthday"/>
+                    </GroupBox>
+                    <GroupBox Style="{StaticResource gpStyle}" Header="Пол">
+                        <StackPanel>
+                            <RadioButton Name="rbMan">Мужской</RadioButton>
+                            <RadioButton Name="rbWoman">Женский</RadioButton>
+                        </StackPanel>
+                    </GroupBox>
+                </StackPanel>
+                <StackPanel Visibility="Collapsed" Name="TeacherData">
+                    <GroupBox Style="{StaticResource gpStyle}" Header="Кафедра">
+                        <ComboBox Name="cbDepartment" IsEditable="True" IsReadOnly="True"/>
+                    </GroupBox>
+                    <GroupBox Style="{StaticResource gpStyle}" Header="Звание">
+                        <ComboBox Name="cbTitle" IsEditable="True" IsReadOnly="True"/>
+                    </GroupBox>
+                    <GroupBox Style="{StaticResource gpStyle}" Header="Ставка">
+                        <TextBox Padding="2" Name="tbBet"/>
+                    </GroupBox>
+                </StackPanel>
+                <StackPanel Visibility="Collapsed" Name="StudentData">
+                    <GroupBox Style="{StaticResource gpStyle}" Header="Специальность">
+                        <ComboBox Name="cbSpecialization" IsEditable="True" IsReadOnly="True"/>
+                    </GroupBox>
+                    <GroupBox Style="{StaticResource gpStyle}" Header="Курс">
+                        <ComboBox Name="cbKurs" IsEditable="True" IsReadOnly="True"/>
+                    </GroupBox>
+                    <GroupBox Style="{StaticResource gpStyle}" Header="Форма обучения">
+                        <ComboBox Name="cbFormOfTraining" IsEditable="True" IsReadOnly="True"/>
+                    </GroupBox>
+                    <GroupBox Style="{StaticResource gpStyle}" Header="Группа">
+                        <ComboBox Name="cbGroup" IsEditable="True" IsReadOnly="True"/>
+                    </GroupBox>
+                </StackPanel>
+            </WrapPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+                <Button Name="btnUpdateData" Width="200" Height="40" Margin="5,0,10,0" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Content="Изменить данные"/>
+                <Button Name="btnBack" Width="150" Height="40" Margin="5,0,10,0" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Content="Отмена" Click="btnBack_Click"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>

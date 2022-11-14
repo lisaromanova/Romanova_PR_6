@@ -21,7 +21,7 @@ namespace PR6_MDK01_01.Pages
     /// </summary>
     public partial class AdminPage : Page
     {
-        
+        Logined log;
         public AdminPage()
         {
             InitializeComponent();
