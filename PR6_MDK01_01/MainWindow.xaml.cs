@@ -25,6 +25,7 @@ namespace PR6_MDK01_01
     {
         public static bool Check=false;
         public static string ShortName = "";
+        public static Logined log;
         public MainWindow()
         {
             InitializeComponent();
@@ -66,6 +67,11 @@ namespace PR6_MDK01_01
                 FrameClass.frmLoad.Navigate(new AuthorizationPage());
                 Check = false;
             }
+        }
+
+        private void menuUser_Click(object sender, RoutedEventArgs e)
+        {
+            FrameClass.frmLoad.Navigate(new UserPage(log));
         }
     }
 }

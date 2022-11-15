@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PR6_MDK01_01.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -58,6 +59,7 @@ namespace PR6_MDK01_01.Pages
                     rKurs.Text = login.Students.Kurses.Kurs.ToString();
                     rForm.Text = login.Students.FormOfTrainings.FormOfTraining;
                     rGroup.Text = login.Students.Groups.NameGroup;
+                    imgUser.Source = new BitmapImage(new Uri(login.Students.PhotoPath, UriKind.Relative));
                     break;
             }
         }
@@ -66,12 +68,14 @@ namespace PR6_MDK01_01.Pages
         {
             UpdateDataWindow updateData = new UpdateDataWindow(log);
             updateData.ShowDialog();
+            FrameClass.frmLoad.Navigate(new UserPage(log));
         }
 
         private void btnUpdateLogin_Click(object sender, RoutedEventArgs e)
         {
             UpdateLoginWindow updateLogin = new UpdateLoginWindow(log);
             updateLogin.ShowDialog();
+            FrameClass.frmLoad.Navigate(new UserPage(log));
         }
     }
 }

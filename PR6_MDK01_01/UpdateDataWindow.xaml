@@ -57,7 +57,7 @@
                 </StackPanel>
             </WrapPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
-                <Button Name="btnUpdateData" Width="200" Height="40" Margin="5,0,10,0" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Content="Изменить данные"/>
+                <Button Name="btnUpdateData" Width="200" Height="40" Margin="5,0,10,0" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Content="Изменить данные" Click="btnUpdateData_Click" Cursor="Hand"/>
                 <Button Name="btnBack" Width="150" Height="40" Margin="5,0,10,0" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Content="Отмена" Click="btnBack_Click"/>
             </StackPanel>
         </StackPanel>

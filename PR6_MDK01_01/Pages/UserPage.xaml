@@ -11,7 +11,10 @@
         <StackPanel>
             <TextBlock Text="Личный кабинет" Style="{StaticResource txtHeader1}"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Image Name="imgUser" Width="200" Height="200" />
+                <StackPanel>
+                <Image Name="imgUser" Width="200" Height="200" Margin="0,0,0,15"/>
+                    <Button Name="btnAddPhoto" Width="250" Height="40" Margin="5,0,10,0" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Content="Добавить фото"/>
+                </StackPanel>
                 <StackPanel Margin="20,0,0,0">
                     <TextBlock Style="{StaticResource txtUser}">
                         <Run Text="Фамилия: " FontWeight="Bold"/>
@@ -64,7 +67,7 @@
                 </StackPanel>
             </StackPanel>
             <StackPanel Margin="0,30,0,0" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Name="btnUpdateData" Width="250" Height="40" Margin="5,0,10,0" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Content="Изменить личные данные" Click="btnUpdateData_Click"/>
+                <Button Name="btnUpdateData" Width="250" Height="40" Margin="5,0,10,0" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Content="Изменить личные данные" Click="btnUpdateData_Click" Cursor="Hand"/>
                 <Button Name="btnUpdateLogin" Width="260" Height="40" Margin="5,0,10,0" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Content="Изменить данные для входа" Click="btnUpdateLogin_Click" Cursor="Hand"/>
             </StackPanel>
         </StackPanel>

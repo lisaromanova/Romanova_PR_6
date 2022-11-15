@@ -31,6 +31,7 @@
                     <MenuItem.Header>
                         <TextBlock FontFamily="Calibri" FontWeight="Bold" FontSize="18" VerticalAlignment="Center" Foreground="#FF27578D" Name="HeaderMenu"/>
                     </MenuItem.Header>
+                    <MenuItem Name="menuUser" Cursor="Hand" FontFamily="Calibri" Margin="5" FontSize="16" Click="menuUser_Click" Background="White" Header="Личный кабинет"/>
                     <MenuItem Cursor="Hand" FontFamily="Calibri" Margin="5" FontSize="16" Click="MenuItem_Click" Background="White" Header="Выход"/>
                 </MenuItem>
             </Menu>

@@ -25,7 +25,7 @@ namespace PR6_MDK01_01.Pages
         {
             InitializeComponent();
             tbLogin.Text = "admin";
-            pswPassword.Password = "admin";
+            pswPassword.Password = "Admin11@";
         }
 
         bool IsClear(string login, string password)
@@ -58,7 +58,7 @@ namespace PR6_MDK01_01.Pages
                 if (log != null)
                 {
                     MessageBox.Show("Успешная авторизация!", "Авторизация", MessageBoxButton.OK, MessageBoxImage.Information);
-                    
+                    MainWindow.log = log;
                     switch (log.IdRole)
                     {
                         case 1:
