@@ -77,5 +77,10 @@ namespace PR6_MDK01_01.Pages
             updateLogin.ShowDialog();
             FrameClass.frmLoad.Navigate(new UserPage(log));
         }
+
+        private void btnAddPhoto_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

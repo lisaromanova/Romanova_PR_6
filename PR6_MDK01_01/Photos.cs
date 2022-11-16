@@ -18,6 +18,7 @@ namespace PR6_MDK01_01
         public int IdUser { get; set; }
         public string PhotoPath { get; set; }
         public byte[] PhotoBinary { get; set; }
+        public Nullable<bool> MainPhoto { get; set; }
     
         public virtual Logined Logined { get; set; }
     }

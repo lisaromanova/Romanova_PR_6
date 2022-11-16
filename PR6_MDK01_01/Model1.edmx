@@ -107,6 +107,7 @@
           <Property Name="IdUser" Type="int" Nullable="false" />
           <Property Name="PhotoPath" Type="nvarchar(max)" />
           <Property Name="PhotoBinary" Type="varbinary(max)" />
+          <Property Name="MainPhoto" Type="bit" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -991,6 +992,7 @@
           <Property Name="IdUser" Type="Int32" Nullable="false" />
           <Property Name="PhotoPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="PhotoBinary" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="MainPhoto" Type="Boolean" />
           <NavigationProperty Name="Logined" Relationship="Model.FK__Photos__IdUser__756D6ECB" FromRole="Photos" ToRole="Logined" />
         </EntityType>
         <EntityType Name="Roles">
@@ -1585,6 +1587,7 @@
           <EntitySetMapping Name="Photos">
             <EntityTypeMapping TypeName="Model.Photos">
               <MappingFragment StoreEntitySet="Photos">
+                <ScalarProperty Name="MainPhoto" ColumnName="MainPhoto" />
                 <ScalarProperty Name="PhotoBinary" ColumnName="PhotoBinary" />
                 <ScalarProperty Name="PhotoPath" ColumnName="PhotoPath" />
                 <ScalarProperty Name="IdUser" ColumnName="IdUser" />
