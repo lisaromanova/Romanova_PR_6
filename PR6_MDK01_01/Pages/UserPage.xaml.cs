@@ -26,12 +26,11 @@ namespace PR6_MDK01_01.Pages
     {
         List<Photos> photos;
         Logined log;
-        
+        Photos mainPhoto;
         public UserPage(Logined login)
         {
             InitializeComponent();
             log = login;
-            Photos mainPhoto=null;
             photos = DataBaseClass.connect.Photos.Where(x => x.IdUser == log.IdUser).ToList();
             foreach (Photos photo in photos)
             {
@@ -163,8 +162,9 @@ namespace PR6_MDK01_01.Pages
 
         private void btnUpdatePhoto_Click(object sender, RoutedEventArgs e)
         {
-            ChoiceWindow choice = new ChoiceWindow(photos);
+            ChoiceWindow choice = new ChoiceWindow(photos, mainPhoto, log);
             choice.ShowDialog();
+            FrameClass.frmLoad.Navigate(new UserPage(log));
         }
     }
 }

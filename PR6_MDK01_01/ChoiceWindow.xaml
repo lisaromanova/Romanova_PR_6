@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PR6_MDK01_01"
         mc:Ignorable="d"
-        Title="Изменение фото" Height="100" Width="600">
+        Title="Изменение фото" Height="100" Width="600" MinHeight="100" MinWidth="600" MaxHeight="100" MaxWidth="600" Icon="Resources\logotip.png">
     <Grid>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Name="btnAddNewPhoto" Width="250" Height="40" Margin="5,0,10,0" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Content="Добавить новое фото" Click="btnAddNewPhoto_Click"/>
