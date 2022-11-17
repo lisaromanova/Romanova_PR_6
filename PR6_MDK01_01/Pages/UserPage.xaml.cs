@@ -1,6 +1,9 @@
-﻿using PR6_MDK01_01.Classes;
+﻿using Microsoft.Win32;
+using PR6_MDK01_01.Classes;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,11 +24,22 @@ namespace PR6_MDK01_01.Pages
     /// </summary>
     public partial class UserPage : Page
     {
+        List<Photos> photos;
         Logined log;
+        
         public UserPage(Logined login)
         {
             InitializeComponent();
             log = login;
+            Photos mainPhoto=null;
+            photos = DataBaseClass.connect.Photos.Where(x => x.IdUser == log.IdUser).ToList();
+            foreach (Photos photo in photos)
+            {
+                if ((bool)photo.MainPhoto)
+                {
+                    mainPhoto = photo;
+                }
+            }
             switch (login.IdRole)
             {
                 case 1:
@@ -42,7 +56,10 @@ namespace PR6_MDK01_01.Pages
                     rDepartment.Text = login.Teachers.Departments.Department;
                     rTitle.Text = login.Teachers.Titles.Title;
                     rBet.Text = login.Teachers.Bet.ToString();
-                    imgUser.Source = new BitmapImage(new Uri(login.Teachers.PhotoPath, UriKind.Relative));
+                    if (mainPhoto==null)
+                    {
+                        imgUser.Source = new BitmapImage(new Uri(login.Teachers.PhotoPath, UriKind.Relative));
+                    }
                     break;
                 case 2:
                     txtSpecialization.Visibility = Visibility.Visible;
@@ -59,7 +76,10 @@ namespace PR6_MDK01_01.Pages
                     rKurs.Text = login.Students.Kurses.Kurs.ToString();
                     rForm.Text = login.Students.FormOfTrainings.FormOfTraining;
                     rGroup.Text = login.Students.Groups.NameGroup;
-                    imgUser.Source = new BitmapImage(new Uri(login.Students.PhotoPath, UriKind.Relative));
+                    if (mainPhoto == null)
+                    {
+                        imgUser.Source = new BitmapImage(new Uri(login.Students.PhotoPath, UriKind.Relative));
+                    }
                     break;
             }
         }
@@ -78,9 +98,73 @@ namespace PR6_MDK01_01.Pages
             FrameClass.frmLoad.Navigate(new UserPage(log));
         }
 
+        void showImage(byte[] Barray, System.Windows.Controls.Image img)
+        {
+            BitmapImage BI = new BitmapImage();
+            using (MemoryStream m = new MemoryStream(Barray))
+            {
+                BI.BeginInit();
+                BI.StreamSource = m;
+                BI.CacheOption = BitmapCacheOption.OnLoad;
+                BI.EndInit();
+            }
+            img.Source = BI;
+            img.Stretch = Stretch.Uniform;
+        }
+
+        void AddPhoto(string path)
+        {
+            Photos photo = new Photos();
+            photo.IdUser = log.IdUser;
+            System.Drawing.Image SDI = System.Drawing.Image.FromFile(path);
+            ImageConverter IC = new ImageConverter();
+            byte[] Barray = (byte[])IC.ConvertTo(SDI, typeof(byte[]));
+            photo.PhotoBinary = Barray;
+            DataBaseClass.connect.Photos.Add(photo);
+            DataBaseClass.connect.SaveChanges();
+        }
+
         private void btnAddPhoto_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                OpenFileDialog OFD = new OpenFileDialog();
+                OFD.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+                OFD.ShowDialog();
+                AddPhoto(OFD.FileName);
+                MessageBox.Show("Фото добавлено!", "Добавление фото", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка!", "Добавление фото", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
 
+        private void btnAddPhotos_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                OpenFileDialog OFD = new OpenFileDialog();
+                OFD.Multiselect = true;
+                if (OFD.ShowDialog() == true)
+                {
+                    foreach (string file in OFD.FileNames)
+                    {
+                        AddPhoto(file);
+                    }
+                    MessageBox.Show("Фото добавлены!", "Добавление фото", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка!", "Добавление фото", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void btnUpdatePhoto_Click(object sender, RoutedEventArgs e)
+        {
+            ChoiceWindow choice = new ChoiceWindow(photos);
+            choice.ShowDialog();
         }
     }
 }
