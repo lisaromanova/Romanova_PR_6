@@ -5,12 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PR6_MDK01_01"
         mc:Ignorable="d"
-        Title="Галерея" Height="400" Width="610">
+        Title="Галерея" Height="450" Width="610" Icon="Resources\logotip.png">
     <Grid>
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Button Name="btnBack" Margin="0,0,20,0" Height="50" Width="120" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Content="Назад"/>
+        <StackPanel  VerticalAlignment="Center" HorizontalAlignment="Center">
+        <StackPanel Orientation="Horizontal">
+            <Button Name="btnBack" Margin="0,0,20,0" Height="50" Width="120" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Content="Назад" Click="btnBack_Click"/>
             <Image Name="imgGallery" Height="300" Width="300"/>
-            <Button Name="btnNext" Margin="20,0,0,0" Height="50" Width="120" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Content="Вперед"/>
+            <Button Name="btnNext" Margin="20,0,0,0" Height="50" Width="120" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Content="Вперед" Click="btnNext_Click"/>
+        </StackPanel>
+        <Button Name="btnChoose" Margin="0,20,0,0" Height="50" Width="200" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Content="Изменить фото" Click="btnChoose_Click"/>
         </StackPanel>
     </Grid>
 </Window>

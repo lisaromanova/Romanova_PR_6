@@ -37,35 +37,39 @@ namespace PR6_MDK01_01
 
         private void btnAddNewPhoto_Click(object sender, RoutedEventArgs e)
         {
-            try
+            OpenFileDialog OFD = new OpenFileDialog();
+            OFD.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+            if ((bool)OFD.ShowDialog())
             {
-                OpenFileDialog OFD = new OpenFileDialog();
-                OFD.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-                OFD.ShowDialog();
-                Photos photo = new Photos();
-                photo.IdUser = log.IdUser;
-                System.Drawing.Image SDI = System.Drawing.Image.FromFile(OFD.FileName);
-                ImageConverter IC = new ImageConverter();
-                byte[] Barray = (byte[])IC.ConvertTo(SDI, typeof(byte[]));
-                photo.PhotoBinary = Barray;
-                if (main != null)
+                try
                 {
-                    main.MainPhoto = null;
+                    Photos photo = new Photos();
+                    photo.IdUser = log.IdUser;
+                    System.Drawing.Image SDI = System.Drawing.Image.FromFile(OFD.FileName);
+                    ImageConverter IC = new ImageConverter();
+                    byte[] Barray = (byte[])IC.ConvertTo(SDI, typeof(byte[]));
+                    photo.PhotoBinary = Barray;
+                    if (main != null)
+                    {
+                        main.MainPhoto = null;
+                    }
+                    photo.MainPhoto = true;
+                    DataBaseClass.connect.Photos.Add(photo);
+                    DataBaseClass.connect.SaveChanges();
+                    MessageBox.Show("Фото добавлено!", "Добавление фото", MessageBoxButton.OK, MessageBoxImage.Information);
+                    this.Close();
                 }
-                photo.MainPhoto = true;
-                DataBaseClass.connect.Photos.Add(photo);
-                DataBaseClass.connect.SaveChanges();
-                MessageBox.Show("Фото добавлено!", "Добавление фото", MessageBoxButton.OK, MessageBoxImage.Information);
+                catch
+                {
+                    MessageBox.Show("Ошибка!", "Добавление фото", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
-            catch
-            {
-                MessageBox.Show("Ошибка!", "Добавление фото", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            
         }
 
         private void btnChooseFromGallery_Click(object sender, RoutedEventArgs e)
         {
-            GalleryWindow gallery = new GalleryWindow();
+            GalleryWindow gallery = new GalleryWindow(listPhotos, main, log);
             this.Hide();
             gallery.ShowDialog();
             this.Close();

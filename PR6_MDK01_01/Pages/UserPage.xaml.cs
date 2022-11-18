@@ -32,13 +32,7 @@ namespace PR6_MDK01_01.Pages
             InitializeComponent();
             log = login;
             photos = DataBaseClass.connect.Photos.Where(x => x.IdUser == log.IdUser).ToList();
-            foreach (Photos photo in photos)
-            {
-                if ((bool)photo.MainPhoto)
-                {
-                    mainPhoto = photo;
-                }
-            }
+            mainPhoto = photos.FirstOrDefault(x => x.MainPhoto == true);
             switch (login.IdRole)
             {
                 case 1:
@@ -59,6 +53,11 @@ namespace PR6_MDK01_01.Pages
                     {
                         imgUser.Source = new BitmapImage(new Uri(login.Teachers.PhotoPath, UriKind.Relative));
                     }
+                    else
+                    {
+                        byte[] Bar = mainPhoto.PhotoBinary;
+                        showImage(Bar, imgUser);
+                    }
                     break;
                 case 2:
                     txtSpecialization.Visibility = Visibility.Visible;
@@ -77,7 +76,12 @@ namespace PR6_MDK01_01.Pages
                     rGroup.Text = login.Students.Groups.NameGroup;
                     if (mainPhoto == null)
                     {
-                        imgUser.Source = new BitmapImage(new Uri(login.Students.PhotoPath, UriKind.Relative));
+                        imgUser.Source = new BitmapImage(new Uri("\\Resources\\Student.png", UriKind.Relative));
+                    }
+                    else
+                    {
+                        byte[] Bar = mainPhoto.PhotoBinary;
+                        showImage(Bar, imgUser);
                     }
                     break;
             }
@@ -125,38 +129,44 @@ namespace PR6_MDK01_01.Pages
 
         private void btnAddPhoto_Click(object sender, RoutedEventArgs e)
         {
-            try
+
+            OpenFileDialog OFD = new OpenFileDialog();
+            OFD.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+            if ((bool)OFD.ShowDialog())
             {
-                OpenFileDialog OFD = new OpenFileDialog();
-                OFD.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-                OFD.ShowDialog();
-                AddPhoto(OFD.FileName);
-                MessageBox.Show("Фото добавлено!", "Добавление фото", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            catch
-            {
-                MessageBox.Show("Ошибка!", "Добавление фото", MessageBoxButton.OK, MessageBoxImage.Error);
+                try
+                {
+                    AddPhoto(OFD.FileName);
+                    MessageBox.Show("Фото добавлено!", "Добавление фото", MessageBoxButton.OK, MessageBoxImage.Information);
+                    FrameClass.frmLoad.Navigate(new UserPage(log));
+                }
+                catch
+                {
+                    MessageBox.Show("Ошибка!", "Добавление фото", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
 
         private void btnAddPhotos_Click(object sender, RoutedEventArgs e)
         {
-            try
+
+            OpenFileDialog OFD = new OpenFileDialog();
+            OFD.Multiselect = true;
+            if (OFD.ShowDialog() == true)
             {
-                OpenFileDialog OFD = new OpenFileDialog();
-                OFD.Multiselect = true;
-                if (OFD.ShowDialog() == true)
+                try
                 {
                     foreach (string file in OFD.FileNames)
                     {
                         AddPhoto(file);
                     }
                     MessageBox.Show("Фото добавлены!", "Добавление фото", MessageBoxButton.OK, MessageBoxImage.Information);
+                    FrameClass.frmLoad.Navigate(new UserPage(log));
                 }
-            }
-            catch
-            {
-                MessageBox.Show("Ошибка!", "Добавление фото", MessageBoxButton.OK, MessageBoxImage.Error);
+                catch
+                {
+                    MessageBox.Show("Ошибка!", "Добавление фото", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
 

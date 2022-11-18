@@ -49,22 +49,13 @@ namespace PR6_MDK01_01
         {
             get
             {
-                List<Photos> photo = DataBaseClass.connect.Photos.Where(x=> x.IdUser==Logined.IdUser).ToList();
-                if (photo.Count == 0)
+                if (IdGender == 1)
                 {
-                    if (IdGender == 1)
-                    {
-                        return "\\Resources\\TeacherMan.png";
-                    }
-                    else
-                    {
-                        return "\\Resources\\Teacher.png";
-                    }
-
+                    return "\\Resources\\TeacherMan.png";
                 }
                 else
                 {
-                    return photo[0].PhotoPath;
+                    return "\\Resources\\Teacher.png";
                 }
             }
         }
