@@ -8,36 +8,38 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CalendarPage">
 
-    <Grid>
+    <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="175"/>
             <RowDefinition Height="1*"/>
+            <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
         <Calendar Grid.Row="0" Name="calendarLessons" SelectedDatesChanged="calendarLessons_SelectedDatesChanged"/>
-            <ListBox Grid.Row="1" Name="lbLessons" FontFamily="Calibri" FontSize="16" HorizontalContentAlignment="Center">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Margin="5" Orientation="Horizontal">
-                            <TextBlock Margin="0,0,10,0">
+        <ListBox Grid.Row="1" Name="lbLessons" FontFamily="Calibri" FontSize="16" HorizontalContentAlignment="Center">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="5" Orientation="Horizontal">
+                        <TextBlock Margin="0,0,10,0">
                             <Run Text="Дата занятия: " FontWeight="Bold"/>
                             <Run Text="{Binding DateLesson, StringFormat={}dd.MM.yyyy}"/>
-                            </TextBlock>
-                            <TextBlock Margin="0,0,10,0" >
+                        </TextBlock>
+                        <TextBlock Margin="0,0,10,0" >
                             <Run Text="Группа: " FontWeight="Bold"/>
                             <Run Text="{Binding Groups.NameGroup}"/>
-                            </TextBlock>
-                            <TextBlock Margin="0,0,10,0">
+                        </TextBlock>
+                        <TextBlock Margin="0,0,10,0">
                             <Run Text="Дисциплина: " FontWeight="Bold"/>
                             <Run Text="{Binding Disciplines.Discipline}"/>
-                            </TextBlock>
-                            <TextBlock Margin="0,0,10,0" Text="{Binding TypesOfLesson.TypeOfLesson}"/>
-                            <TextBlock Margin="0,0,10,0">
+                        </TextBlock>
+                        <TextBlock Margin="0,0,10,0" Text="{Binding TypesOfLesson.TypeOfLesson}"/>
+                        <TextBlock Margin="0,0,10,0">
                             <Run Text="Преподаватель: " FontWeight="Bold"/>
                             <Run Text="{Binding Teachers.ShortName, Mode=OneWay}"/>
-                            </TextBlock>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+                        </TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button Name="btnBack" Grid.Row="2" Width="250" Height="40" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Content="Вернуться в меню" Click="btnBack_Click" Cursor="Hand"/>
     </Grid>
 </Page>

@@ -23,14 +23,13 @@ namespace PR6_MDK01_01
     {
         List<Photos> list;
         Photos mainPhoto;
-        Logined log;
-        int n=0;
-        public GalleryWindow(List<Photos> list, Photos mainPhoto, Logined log)
+        int n = 0;
+
+        public GalleryWindow(List<Photos> list, Photos mainPhoto)
         {
             InitializeComponent();
             this.list = list;
             this.mainPhoto = mainPhoto;
-            this.log = log;
             if (list.Count!=0)
             {
                 byte[] Bar = list[n].PhotoBinary;
@@ -38,7 +37,7 @@ namespace PR6_MDK01_01
             }
         }
 
-        void showImage(byte[] Barray, System.Windows.Controls.Image img)
+        void showImage(byte[] Barray, Image img)
         {
             BitmapImage BI = new BitmapImage();
             using (MemoryStream m = new MemoryStream(Barray))
@@ -84,7 +83,6 @@ namespace PR6_MDK01_01
             photoNew.MainPhoto = true;
             DataBaseClass.connect.SaveChanges();
             MessageBox.Show("Фото изменено!", "Изменение фото", MessageBoxButton.OK, MessageBoxImage.Information);
-            this.Close();
         }
     }
 }

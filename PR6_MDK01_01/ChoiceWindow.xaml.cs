@@ -69,7 +69,7 @@ namespace PR6_MDK01_01
 
         private void btnChooseFromGallery_Click(object sender, RoutedEventArgs e)
         {
-            GalleryWindow gallery = new GalleryWindow(listPhotos, main, log);
+            GalleryWindow gallery = new GalleryWindow(listPhotos, main);
             this.Hide();
             gallery.ShowDialog();
             this.Close();

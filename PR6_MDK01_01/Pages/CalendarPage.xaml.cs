@@ -32,5 +32,10 @@ namespace PR6_MDK01_01.Pages
             List<Lessons> list = DataBaseClass.connect.Lessons.Where(x => x.DateLesson == (DateTime)calendarLessons.SelectedDate).ToList();
             lbLessons.ItemsSource = list;
         }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            FrameClass.frmLoad.Navigate(new AdminPage());
+        }
     }
 }
