@@ -9,11 +9,11 @@
       Title="ListViewPage">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="70"/>
+            <RowDefinition Height="90"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
-        <Button Grid.Row="0" HorizontalAlignment="Right" Name="btnAddPlan" Width="230" Height="40" Margin="5,0,10,0" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Content="Добавить учебный план" Click="btnAddPlan_Click" Cursor="Hand"/>
+        <Button Grid.Row="2" HorizontalAlignment="Right" Name="btnAddPlan" Width="230" Height="40" Margin="5,0,10,0" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Content="Добавить учебный план" Click="btnAddPlan_Click" Cursor="Hand"/>
         <ListView FontSize="16" HorizontalContentAlignment="Stretch" Name="lstView" Grid.Row="1">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -40,6 +40,28 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button Grid.Row="2" Name="btnBack" Width="200" Height="40" Margin="5,0,10,0" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Content="Вернуться в меню" Click="btnBack_Click" Cursor="Hand"/>
+        <Button Grid.Row="2" HorizontalAlignment="Left" Name="btnBack" Width="200" Height="40" Margin="5,0,10,0" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Content="Вернуться в меню" Click="btnBack_Click" Cursor="Hand"/>
+        <StackPanel Grid.Row="0" >
+            <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock  VerticalAlignment="Center"  Text="Кафедра" FontFamily="Calibri" FontSize="16"  Margin="0,0,10,0"/>
+                <ComboBox Name="cbDepartment" Width="200" Height="30" IsReadOnly="True" IsEditable="True" Margin="0,0,10,0"  FontFamily="Calibri" FontSize="16"/>
+                <TextBlock  VerticalAlignment="Center"  Text="ФИО:" FontFamily="Calibri" FontSize="16"  Margin="0,0,10,0"/>
+                <TextBox Name="tbFio" Width="200" Height="30" Margin="0,0,10,0"  FontFamily="Calibri" FontSize="16"/>
+                <CheckBox Name="chbPhoto" VerticalAlignment="Center" FontFamily="Calibri" FontSize="16">Только с фото</CheckBox>
+            </StackPanel>
+            <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock  VerticalAlignment="Center"  Text="Сортировать по параметру:" FontFamily="Calibri" FontSize="16"  Margin="0,0,10,0"/>
+                <ComboBox Name="cbParametr" Width="200" Height="30" IsReadOnly="True" IsEditable="True" Margin="0,0,10,0"  FontFamily="Calibri" FontSize="16">
+                    <ComboBoxItem>Фамилия</ComboBoxItem>
+                    <ComboBoxItem>Имя</ComboBoxItem>
+                    <ComboBoxItem>Дата рождения</ComboBoxItem>
+                </ComboBox>
+                <TextBlock  VerticalAlignment="Center"  Text="в порядке:" FontFamily="Calibri" FontSize="16"  Margin="0,0,10,0"/>
+                <ComboBox Name="cbSort" Width="200" Height="30" IsReadOnly="True" IsEditable="True" Margin="0,0,10,0"  FontFamily="Calibri" FontSize="16">
+                    <ComboBoxItem>По возрастанию</ComboBoxItem>
+                    <ComboBoxItem>По убыванию</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>

@@ -25,6 +25,12 @@ namespace PR6_MDK01_01.Pages
         {
             InitializeComponent();
             lstView.ItemsSource = DataBaseClass.connect.Teachers.OrderBy(x=> x.Surname).ToList();
+            List<Departments> departments = DataBaseClass.connect.Departments.ToList();
+            cbDepartment.Items.Add("Все кафедры");
+            foreach(Departments department in departments)
+            {
+                cbDepartment.Items.Add(department.Department);
+            }
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
