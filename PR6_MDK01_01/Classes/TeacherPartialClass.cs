@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using PR6_MDK01_01.Classes;
 
 namespace PR6_MDK01_01
@@ -15,6 +18,13 @@ namespace PR6_MDK01_01
             get
             {
                 return Surname + " " + NameTeacher + " " + Patronymic+", "+Titles.Title.ToLower();
+            }
+        }
+        public string FioNew
+        {
+            get
+            {
+                return Surname + " " + NameTeacher + " " + Patronymic;
             }
         }
         public string ShortName
@@ -45,17 +55,33 @@ namespace PR6_MDK01_01
             }
         }
 
-        public string PhotoPath
+        public ImageSource PhotoPath
         {
             get
             {
-                if (IdGender == 1)
+                Photos mainPhoto = DataBaseClass.connect.Photos.FirstOrDefault(x => x.IdUser == IdTeacher && x.MainPhoto == true);
+                if(mainPhoto == null)
                 {
-                    return "\\Resources\\TeacherMan.png";
+                    if (IdGender == 1)
+                    {
+                        return new BitmapImage(new Uri("\\Resources\\TeacherMan.png", UriKind.Relative)); 
+                    }
+                    else
+                    {
+                        return new BitmapImage(new Uri("\\Resources\\Teacher.png", UriKind.Relative));
+                    }
                 }
                 else
                 {
-                    return "\\Resources\\Teacher.png";
+                    BitmapImage BI = new BitmapImage();
+                    using (MemoryStream m = new MemoryStream(mainPhoto.PhotoBinary))
+                    {
+                        BI.BeginInit();
+                        BI.StreamSource = m;
+                        BI.CacheOption = BitmapCacheOption.OnLoad;
+                        BI.EndInit();
+                    }
+                    return BI;
                 }
             }
         }

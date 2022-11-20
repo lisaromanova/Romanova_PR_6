@@ -24,12 +24,38 @@ namespace PR6_MDK01_01.Pages
         public ListViewPage()
         {
             InitializeComponent();
-            lstView.ItemsSource = DataBaseClass.connect.Teachers.OrderBy(x=> x.Surname).ToList();
+            lstView.ItemsSource = DataBaseClass.connect.Teachers.ToList();
             List<Departments> departments = DataBaseClass.connect.Departments.ToList();
             cbDepartment.Items.Add("Все кафедры");
             foreach(Departments department in departments)
             {
                 cbDepartment.Items.Add(department.Department);
+            }
+        }
+
+        void Sort()
+        {
+            List<Teachers> teachers = new List<Teachers>();
+            if (cbDepartment.SelectedIndex == 0)
+            {
+                teachers = DataBaseClass.connect.Teachers.ToList();
+            }
+            else
+            {
+                teachers = DataBaseClass.connect.Teachers.Where(x=> x.Departments.Department == (string)cbDepartment.SelectedValue).ToList();
+            }
+            if (!string.IsNullOrWhiteSpace(tbFio.Text))
+            {
+                teachers = teachers.Where(x => x.FioNew.Contains(tbFio.Text)).ToList();
+            }
+            if ((bool)chbPhoto.IsChecked)
+            {
+                List<Photos> photos = DataBaseClass.connect.Photos.Where(x => x.MainPhoto == true).ToList();
+                
+            }
+            if ((cbSort.SelectedIndex != -1) && (cbParametr.SelectedIndex != -1))
+            {
+                
             }
         }
 

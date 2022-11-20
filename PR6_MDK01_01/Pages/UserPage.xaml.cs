@@ -49,15 +49,7 @@ namespace PR6_MDK01_01.Pages
                     rDepartment.Text = login.Teachers.Departments.Department;
                     rTitle.Text = login.Teachers.Titles.Title;
                     rBet.Text = login.Teachers.Bet.ToString();
-                    if (mainPhoto==null)
-                    {
-                        imgUser.Source = new BitmapImage(new Uri(login.Teachers.PhotoPath, UriKind.Relative));
-                    }
-                    else
-                    {
-                        byte[] Bar = mainPhoto.PhotoBinary;
-                        showImage(Bar, imgUser);
-                    }
+                    imgUser.Source = login.Teachers.PhotoPath;
                     break;
                 case 2:
                     txtSpecialization.Visibility = Visibility.Visible;
@@ -74,18 +66,11 @@ namespace PR6_MDK01_01.Pages
                     rKurs.Text = login.Students.Kurses.Kurs.ToString();
                     rForm.Text = login.Students.FormOfTrainings.FormOfTraining;
                     rGroup.Text = login.Students.Groups.NameGroup;
-                    if (mainPhoto == null)
-                    {
-                        imgUser.Source = new BitmapImage(new Uri("\\Resources\\Student.png", UriKind.Relative));
-                    }
-                    else
-                    {
-                        byte[] Bar = mainPhoto.PhotoBinary;
-                        showImage(Bar, imgUser);
-                    }
+                    imgUser.Source = login.Students.PhotoPath;
                     break;
             }
         }
+
 
         private void btnUpdateData_Click(object sender, RoutedEventArgs e)
         {
@@ -99,20 +84,6 @@ namespace PR6_MDK01_01.Pages
             UpdateLoginWindow updateLogin = new UpdateLoginWindow(log);
             updateLogin.ShowDialog();
             FrameClass.frmLoad.Navigate(new UserPage(log));
-        }
-
-        void showImage(byte[] Barray, System.Windows.Controls.Image img)
-        {
-            BitmapImage BI = new BitmapImage();
-            using (MemoryStream m = new MemoryStream(Barray))
-            {
-                BI.BeginInit();
-                BI.StreamSource = m;
-                BI.CacheOption = BitmapCacheOption.OnLoad;
-                BI.EndInit();
-            }
-            img.Source = BI;
-            img.Stretch = Stretch.Uniform;
         }
 
         void AddPhoto(string path)
