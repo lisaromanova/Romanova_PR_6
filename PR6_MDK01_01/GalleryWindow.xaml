@@ -15,6 +15,6 @@
         </StackPanel>
         <Button Name="btnChoose" Margin="0,20,0,0" Height="50" Width="200" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Content="Изменить фото" Click="btnChoose_Click" Cursor="Hand"/>
         </StackPanel>
-        <TextBlock Name="txtEmpty" Visibility="Collapsed" FontSize="40" FontFamily="Calibri" Text="В галерее нету фото" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <TextBlock Name="txtEmpty" Style="{StaticResource txtEmpty}" Text="В галерее нету фото"/>
     </Grid>
 </Window>
