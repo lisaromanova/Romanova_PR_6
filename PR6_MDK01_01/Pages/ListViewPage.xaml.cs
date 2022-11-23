@@ -35,15 +35,12 @@ namespace PR6_MDK01_01.Pages
 
         void Sort()
         {
-            List<Teachers> teachers = new List<Teachers>();
-            if (cbDepartment.SelectedIndex == 0)
+            List<Teachers> teachers = DataBaseClass.connect.Teachers.ToList();
+            if (cbDepartment.SelectedIndex != 0 && cbDepartment.SelectedIndex != -1)
             {
-                teachers = DataBaseClass.connect.Teachers.ToList();
+                teachers = teachers.Where(x => x.Departments.Department == (string)cbDepartment.SelectedValue).ToList();
             }
-            else
-            {
-                teachers = DataBaseClass.connect.Teachers.Where(x=> x.Departments.Department == (string)cbDepartment.SelectedValue).ToList();
-            }
+
             if (!string.IsNullOrWhiteSpace(tbFio.Text))
             {
                 teachers = teachers.Where(x => x.FioNew.Contains(tbFio.Text)).ToList();
