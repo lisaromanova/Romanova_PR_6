@@ -40,24 +40,25 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <TextBlock Name="txtEmpty" Grid.Row="1" Visibility="Collapsed" FontFamily="Calibri" FontSize="40" Text="Записи не найдены" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <Button Grid.Row="2" HorizontalAlignment="Left" Name="btnBack" Width="200" Height="40" Margin="5,0,10,0" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Content="Вернуться в меню" Click="btnBack_Click" Cursor="Hand"/>
         <StackPanel Grid.Row="0" >
             <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Center">
                 <TextBlock  VerticalAlignment="Center"  Text="Кафедра" FontFamily="Calibri" FontSize="16"  Margin="0,0,10,0"/>
-                <ComboBox Name="cbDepartment" Width="200" Height="30" IsReadOnly="True" IsEditable="True" Margin="0,0,10,0"  FontFamily="Calibri" FontSize="16"/>
+                <ComboBox Name="cbDepartment" Width="200" Height="30" IsReadOnly="True" IsEditable="True" Margin="0,0,10,0"  FontFamily="Calibri" FontSize="16" Padding="2" SelectionChanged="cbDepartment_SelectionChanged"/>
                 <TextBlock  VerticalAlignment="Center"  Text="ФИО:" FontFamily="Calibri" FontSize="16"  Margin="0,0,10,0"/>
-                <TextBox Name="tbFio" Width="200" Height="30" Margin="0,0,10,0"  FontFamily="Calibri" FontSize="16"/>
-                <CheckBox Name="chbPhoto" VerticalAlignment="Center" FontFamily="Calibri" FontSize="16">Только с фото</CheckBox>
+                <TextBox Name="tbFio" Width="200" Height="30" Margin="0,0,10,0"  FontFamily="Calibri" FontSize="16" Padding="2" TextChanged="tbFio_TextChanged"/>
+                <CheckBox Name="chbPhoto" VerticalAlignment="Center" FontFamily="Calibri" FontSize="16" Checked="chbPhoto_Checked" Unchecked="chbPhoto_Checked">Только с фото</CheckBox>
             </StackPanel>
             <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Center">
                 <TextBlock  VerticalAlignment="Center"  Text="Сортировать по параметру:" FontFamily="Calibri" FontSize="16"  Margin="0,0,10,0"/>
-                <ComboBox Name="cbParametr" Width="200" Height="30" IsReadOnly="True" IsEditable="True" Margin="0,0,10,0"  FontFamily="Calibri" FontSize="16">
+                <ComboBox Name="cbParametr" Width="200" Height="30" Padding="2" IsReadOnly="True" IsEditable="True" Margin="0,0,10,0"  FontFamily="Calibri" FontSize="16" SelectionChanged="cbDepartment_SelectionChanged">
                     <ComboBoxItem>Фамилия</ComboBoxItem>
-                    <ComboBoxItem>Имя</ComboBoxItem>
                     <ComboBoxItem>Дата рождения</ComboBoxItem>
+                    <ComboBoxItem>Ставка</ComboBoxItem>
                 </ComboBox>
                 <TextBlock  VerticalAlignment="Center"  Text="в порядке:" FontFamily="Calibri" FontSize="16"  Margin="0,0,10,0"/>
-                <ComboBox Name="cbSort" Width="200" Height="30" IsReadOnly="True" IsEditable="True" Margin="0,0,10,0"  FontFamily="Calibri" FontSize="16">
+                <ComboBox Name="cbSort" Width="200" Height="30" IsReadOnly="True" IsEditable="True" Margin="0,0,10,0"  FontFamily="Calibri" FontSize="16" Padding="2" SelectionChanged="cbDepartment_SelectionChanged">
                     <ComboBoxItem>По возрастанию</ComboBoxItem>
                     <ComboBoxItem>По убыванию</ComboBoxItem>
                 </ComboBox>

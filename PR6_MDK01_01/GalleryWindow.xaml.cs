@@ -35,6 +35,14 @@ namespace PR6_MDK01_01
                 byte[] Bar = list[n].PhotoBinary;
                 showImage(Bar, imgGallery);
             }
+            else
+            {
+                txtEmpty.Visibility = Visibility.Visible;
+                btnBack.Visibility = Visibility.Collapsed;
+                btnNext.Visibility = Visibility.Collapsed;
+                imgGallery.Visibility = Visibility.Collapsed;
+                btnChoose.Visibility = Visibility.Collapsed;
+            }
         }
 
         void showImage(byte[] Barray, Image img)

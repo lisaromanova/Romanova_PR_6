@@ -50,12 +50,56 @@ namespace PR6_MDK01_01.Pages
             }
             if ((bool)chbPhoto.IsChecked)
             {
-                List<Photos> photos = DataBaseClass.connect.Photos.Where(x => x.MainPhoto == true).ToList();
-                
+                List<int> photos = DataBaseClass.connect.Photos.Where(x => x.MainPhoto == true).Select(x=> x.IdUser).ToList();
+                teachers = teachers.Where(x => photos.Contains(x.IdTeacher)).ToList();
             }
             if ((cbSort.SelectedIndex != -1) && (cbParametr.SelectedIndex != -1))
             {
-                
+                switch (cbParametr.SelectedIndex)
+                {
+                    case 0:
+                        if (cbSort.SelectedIndex == 0)
+                        {
+                            teachers = teachers.OrderBy(x => x.Surname).ToList();
+                        }
+                        else
+                        {
+                            teachers = teachers.OrderByDescending(x => x.Surname).ToList();
+                        }
+                        break;
+                    case 1:
+                        if (cbSort.SelectedIndex == 0)
+                        {
+                            teachers = teachers.OrderBy(x => x.Birthday).ToList();
+                        }
+                        else
+                        {
+                            teachers = teachers.OrderByDescending(x => x.Birthday).ToList();
+                        }
+                        break;
+                    case 2:
+                        if (cbSort.SelectedIndex == 0)
+                        {
+                            teachers = teachers.OrderBy(x => x.Bet).ToList();
+                        }
+                        else
+                        {
+                            teachers = teachers.OrderByDescending(x => x.Bet).ToList();
+                        }
+                        break;
+                }
+            }
+            
+            if(teachers.Count > 0)
+            {
+                lstView.Visibility = Visibility.Visible;
+                txtEmpty.Visibility = Visibility.Collapsed;
+                lstView.ItemsSource = teachers;
+            }
+            else
+            {
+                lstView.Visibility = Visibility.Collapsed;
+                txtEmpty.Visibility = Visibility.Visible;
             }
         }
 
@@ -75,6 +119,21 @@ namespace PR6_MDK01_01.Pages
         private void btnAddPlan_Click(object sender, RoutedEventArgs e)
         {
             FrameClass.frmLoad.Navigate(new AddStudyPlanPage());
+        }
+
+        private void cbDepartment_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Sort();
+        }
+
+        private void tbFio_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Sort();
+        }
+
+        private void chbPhoto_Checked(object sender, RoutedEventArgs e)
+        {
+            Sort();
         }
     }
 }
