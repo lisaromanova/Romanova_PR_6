@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="680" d:DesignWidth="800"
       Title="UserPage">
-    <Grid Margin="10">
+    <Grid Margin="10" VerticalAlignment="Center">
         <StackPanel>
             <TextBlock Text="Личный кабинет" Style="{StaticResource txtHeader1}"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
@@ -74,6 +74,7 @@
                 <Button Name="btnUpdateData" Width="250" Height="40" Margin="5,0,10,0" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Content="Изменить личные данные" Click="btnUpdateData_Click" Cursor="Hand"/>
                 <Button Name="btnUpdateLogin" Width="260" Height="40" Margin="5,0,10,0" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Content="Изменить данные для входа" Click="btnUpdateLogin_Click" Cursor="Hand"/>
             </StackPanel>
+            <Button Name="btnBack" Width="230" Height="40" Margin="0,20,0,0" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Content="Вернуться в меню" Click="btnBack_Click" Visibility="Collapsed" Cursor="Hand"/>
         </StackPanel>
     </Grid>
 </Page>

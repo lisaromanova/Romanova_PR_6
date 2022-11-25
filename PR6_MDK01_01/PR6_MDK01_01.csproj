@@ -70,6 +70,7 @@
     </Compile>
     <Compile Include="Classes\DataBaseClass.cs" />
     <Compile Include="Classes\FrameClass.cs" />
+    <Compile Include="Classes\Pagination.cs" />
     <Compile Include="Classes\StudentPartialClass.cs" />
     <Compile Include="Classes\TeacherPartialClass.cs" />
     <Compile Include="Departments.cs">

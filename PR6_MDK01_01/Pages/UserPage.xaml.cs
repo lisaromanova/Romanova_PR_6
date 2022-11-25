@@ -33,6 +33,10 @@ namespace PR6_MDK01_01.Pages
             log = login;
             photos = DataBaseClass.connect.Photos.Where(x => x.IdUser == log.IdUser).ToList();
             mainPhoto = photos.FirstOrDefault(x => x.MainPhoto == true);
+            if (log.IdRole == 1)
+            {
+                btnBack.Visibility = Visibility.Visible;
+            }
             switch (login.IdRole)
             {
                 case 1:
@@ -146,6 +150,11 @@ namespace PR6_MDK01_01.Pages
             ChoiceWindow choice = new ChoiceWindow(photos, mainPhoto, log);
             choice.ShowDialog();
             FrameClass.frmLoad.Navigate(new UserPage(log));
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            FrameClass.frmLoad.Navigate(new AdminPage());
         }
     }
 }

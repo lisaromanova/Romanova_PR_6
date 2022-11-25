@@ -64,5 +64,9 @@
                 </ComboBox>
             </StackPanel>
         </StackPanel>
+        <StackPanel Grid.Row="2" HorizontalAlignment="Center" Orientation="Horizontal">
+            <Button Name="btnBackPage" Height="25" FontSize="16" Content="&lt;"/>
+            <Button Name="btnNextPage" Height="25" FontSize="16" Content="&gt;"/>
+        </StackPanel>
     </Grid>
 </Page>
