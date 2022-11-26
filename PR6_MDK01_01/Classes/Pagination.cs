@@ -9,33 +9,35 @@ namespace PR6_MDK01_01.Classes
 {
     internal class Pagination: INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-        static int countitems = 5;
-        public int[] NPage { get; set; } = new int[countitems];
-        public string[] Visible { get; set; } = new string[countitems];
-        public string[] Bold { get; set; } = new string[countitems];
-        int countpages;
-        public int CountPages
+        
+        public event PropertyChangedEventHandler PropertyChanged;  //событие, для изменения значения одного из массивов свойств, описанных ниже
+        static int countitems = 5; //количество объектов для отображения (1 2 3 4 5)
+        public int[] NPage { get; set; } = new int[countitems];// массив с номерами отображаемых страниц    
+        public string[] Visibility { get; set; } = new string[countitems];//массив свойст, отвечающий за видимость номера страницы, Visible - видимый, Hidden - скрытый
+        public string[] Bold { get; set; } = new string[countitems];//массив свойств, отвечающий за выделение номера текущей страницы
+        int countpages;  // переменная, в которой буде храниться количество страниц
+        public int CountPages//свойство в котором хранится общее кол-во страц, при изменении данного свойства будет определяться, скрыт будет номер той или итой страницы или нет (в зависимости об общего кол-ва записей в списке) 
         {
             get => countpages;
             set
             {
                 countpages = value;
-                for(int i = 1; i <= countitems; i++)
+                for (int i = 1; i < countitems; i++)//цикл для определения видимости номеров страниц
                 {
-                    if(CountPages <= i)
+                    if (CountPages <= i)
                     {
-                        Visible[i] = "Hidden";
+                        Visibility[i] = "Hidden";//если страниц меньше, чем кнопок - скрываем лишние
                     }
                     else
                     {
-                        Visible[i] = "Visible";
+                        Visibility[i] = "Visible";// а если их опять стало больше, то показываем назад
                     }
                 }
             }
         }
-        int countpage;
-        public int CountPage
+
+        int countpage;//количество записей на странице
+        public int CountPage  //свойство, в котором хранится количество записей на странице, при изменении данного свойства будет изменяться общее количесво страниц для отображения
         {
             get => countpage;
             set
@@ -43,16 +45,17 @@ namespace PR6_MDK01_01.Classes
                 countpage = value;
                 if (Countlist % value == 0)
                 {
-                    CountPages = Countlist / value;
+                    CountPages = Countlist / value;//определение количества страниц
                 }
                 else
                 {
-                    CountPages = Countlist / value + 1;
+                    CountPages = Countlist / value + 1;//в случае нецелого числа прибавляем 1 к итоговому количеству страниц
                 }
             }
         }
-        int countlist;
-        public int Countlist
+
+        int countlist; // количество записей в списке
+        public int Countlist //свойство, в котором хранится общее количество записей в списке, при изменении данного свойства будет изменяться общее количесво страниц для отображения
         {
             get => countlist;
             set
@@ -60,7 +63,7 @@ namespace PR6_MDK01_01.Classes
                 countlist = value;
                 if (value % CountPage == 0)
                 {
-                    CountPages = value / CountPage;
+                    CountPages = value / CountPage;//определение количества страниц
                 }
                 else
                 {
@@ -68,8 +71,8 @@ namespace PR6_MDK01_01.Classes
                 }
             }
         }
-        int currentpage;
-        public int CurrentPage
+        int currentpage;//текущая страница
+        public int CurrentPage  // свойство, в котором будет хранится текущая страница, при изменении которого будет меняться вся отрисовка меню с номерами страниц
         {
             get => currentpage;
             set
@@ -83,58 +86,44 @@ namespace PR6_MDK01_01.Classes
                 {
                     currentpage = CountPages;
                 }
-                for(int i=0; i<countitems; i++)
+                //отрисовка меню с номерами страниц, рассмотрим три возможных случая                            
+                for (int i = 0; i < countitems; i++)
                 {
-                    if (currentpage < (1 + countitems / 2) || CountPages < countitems)
-                    {
-                        NPage[i] = i + 1;
-                    }
-                    else
-                    {
-                        if (currentpage > CountPages - (countitems / 2 + 1))
-                        {
-                            NPage[i] = CountPages - (countitems - 1) + i;
-                        }
-                        else
-                        {
-                            NPage[i] = currentpage + i - (countitems / 2);
-                        }
-                    }
+                    if (currentpage < (1 + countitems / 2) || CountPages < countitems) NPage[i] = i + 1;//если страница в начале списка
+                    else if (currentpage > CountPages - (countitems / 2 + 1)) NPage[i] = CountPages - (countitems - 1) + i;//если страница в конце списка
+                    else NPage[i] = currentpage + i - (countitems / 2);//если страница в середине списка
                 }
-                for(int i=0; i < countitems; i++)
+                for (int i = 0; i < countitems; i++)//выделяем активную страницу жирным
                 {
-                    if (NPage[i] == currentpage)
-                    {
-                        Bold[i] = "ExtraBold";
-                    }
-                    else
-                    {
-                        Bold[i] = "Regular";
-                    }
+                    if (NPage[i] == currentpage) Bold[i] = "ExtraBold";
+                    else Bold[i] = "Regular";
                 }
+                //вызываем созбытие, связанное с изменением свойств, используемых в привязке на странице
                 PropertyChanged(this, new PropertyChangedEventArgs("NPage"));
-                PropertyChanged(this, new PropertyChangedEventArgs("Visible"));
+                PropertyChanged(this, new PropertyChangedEventArgs("Visibility"));
                 PropertyChanged(this, new PropertyChangedEventArgs("Bold"));
             }
         }
-        public Pagination()
+        public Pagination() // контруктор
         {
-            for(int i=0; i < countitems; i++)
+            for (int i = 0; i < countitems; i++)  // показываем исходное меню ( 1 2 3 4 5)
             {
                 if (i == 0)
                 {
-                    Visible[i] = "Visible";
+                    Visibility[i] = "Visible";
                     Bold[i] = "ExtraBold";
                 }
                 else
                 {
-                    Visible[i] = "Hidden";
+                    Visibility[i] = "Hidden";
                     Bold[i] = "Regular";
                 }
+
                 NPage[i] = i + 1;
+
             }
-            currentpage = 1;
-            countlist = 1;
+            currentpage = 1;  // по умолчанию 1-ая страница будет текущей
+            countlist = 1;  // по умолчанию в общем списке будет только одна запись
         }
     }
 }

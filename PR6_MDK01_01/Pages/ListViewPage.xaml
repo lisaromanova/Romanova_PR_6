@@ -8,13 +8,17 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ListViewPage">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="230"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="90"/>
+            <RowDefinition Height="60"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
-        <Button Grid.Row="2" HorizontalAlignment="Right" Name="btnAddPlan" Width="230" Height="40" Margin="5,0,10,0" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Content="Добавить учебный план" Click="btnAddPlan_Click" Cursor="Hand"/>
-        <ListView FontSize="16" HorizontalContentAlignment="Stretch" Name="lstView" Grid.Row="1">
+        <Button Grid.Row="2" HorizontalAlignment="Right" Name="btnAddPlan" Width="230" Height="40" Grid.ColumnSpan="2" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Content="Добавить учебный план" Click="btnAddPlan_Click" Cursor="Hand"/>
+        <ListView FontSize="16" HorizontalContentAlignment="Stretch" Name="lstView" Grid.Row="1" Grid.Column="1">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border Background="{Binding GenderColor}" CornerRadius="10" BorderThickness="2" BorderBrush="#FF27578D">
@@ -40,33 +44,43 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <TextBlock Name="txtEmpty" Grid.Row="1" Style="{StaticResource txtEmpty}" Text="Записи не найдены"/>
-        <Button Grid.Row="2" HorizontalAlignment="Left" Name="btnBack" Width="200" Height="40" Margin="5,0,10,0" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Content="Вернуться в меню" Click="btnBack_Click" Cursor="Hand"/>
-        <StackPanel Grid.Row="0" >
-            <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock  VerticalAlignment="Center"  Text="Кафедра" FontFamily="Calibri" FontSize="16"  Margin="0,0,10,0"/>
-                <ComboBox Name="cbDepartment" Width="200" Height="30" IsReadOnly="True" IsEditable="True" Margin="0,0,10,0"  FontFamily="Calibri" FontSize="16" Padding="2" SelectionChanged="cbDepartment_SelectionChanged"/>
-                <TextBlock  VerticalAlignment="Center"  Text="ФИО:" FontFamily="Calibri" FontSize="16"  Margin="0,0,10,0"/>
-                <TextBox Name="tbFio" Width="200" Height="30" Margin="0,0,10,0"  FontFamily="Calibri" FontSize="16" Padding="2" TextChanged="tbFio_TextChanged"/>
-                <CheckBox Name="chbPhoto" VerticalAlignment="Center" FontFamily="Calibri" FontSize="16" Checked="chbPhoto_Checked" Unchecked="chbPhoto_Checked">Только с фото</CheckBox>
-            </StackPanel>
-            <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock  VerticalAlignment="Center"  Text="Сортировать по параметру:" FontFamily="Calibri" FontSize="16"  Margin="0,0,10,0"/>
-                <ComboBox Name="cbParametr" Width="200" Height="30" Padding="2" IsReadOnly="True" IsEditable="True" Margin="0,0,10,0"  FontFamily="Calibri" FontSize="16" SelectionChanged="cbDepartment_SelectionChanged">
-                    <ComboBoxItem>Фамилия</ComboBoxItem>
-                    <ComboBoxItem>Дата рождения</ComboBoxItem>
-                    <ComboBoxItem>Ставка</ComboBoxItem>
-                </ComboBox>
-                <TextBlock  VerticalAlignment="Center"  Text="в порядке:" FontFamily="Calibri" FontSize="16"  Margin="0,0,10,0"/>
-                <ComboBox Name="cbSort" Width="200" Height="30" IsReadOnly="True" IsEditable="True" Margin="0,0,10,0"  FontFamily="Calibri" FontSize="16" Padding="2" SelectionChanged="cbDepartment_SelectionChanged">
-                    <ComboBoxItem>По возрастанию</ComboBoxItem>
-                    <ComboBoxItem>По убыванию</ComboBoxItem>
-                </ComboBox>
-            </StackPanel>
+        <TextBlock Name="txtEmpty" Grid.Row="1" Style="{StaticResource txtEmpty}" Text="Записи не найдены" HorizontalAlignment="Left" Margin="400,0,0,0"/>
+        <Button Grid.Row="2" HorizontalAlignment="Left" Name="btnBack" Width="200" Height="40" Grid.ColumnSpan="2" Template="{StaticResource btnTemplate}" Style="{StaticResource btnStyle}" Content="Вернуться в меню" Click="btnBack_Click" Cursor="Hand"/>
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Margin="5" Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock  VerticalAlignment="Center"  Text="Сортировать по параметру:" FontFamily="Calibri" FontSize="16"  Margin="0,0,10,0"/>
+            <ComboBox Name="cbParametr" Width="200" Height="30" Padding="2" IsReadOnly="True" IsEditable="True" Margin="0,0,10,0"  FontFamily="Calibri" FontSize="16" SelectionChanged="cbDepartment_SelectionChanged">
+                <ComboBoxItem>Фамилия</ComboBoxItem>
+                <ComboBoxItem>Дата рождения</ComboBoxItem>
+                <ComboBoxItem>Ставка</ComboBoxItem>
+            </ComboBox>
+            <TextBlock  VerticalAlignment="Center"  Text="в порядке:" FontFamily="Calibri" FontSize="16"  Margin="0,0,10,0"/>
+            <ComboBox Name="cbSort" Width="200" Height="30" IsReadOnly="True" IsEditable="True" Margin="0,0,10,0"  FontFamily="Calibri" FontSize="16" Padding="2" SelectionChanged="cbDepartment_SelectionChanged">
+                <ComboBoxItem>По возрастанию</ComboBoxItem>
+                <ComboBoxItem>По убыванию</ComboBoxItem>
+            </ComboBox>
         </StackPanel>
-        <StackPanel Grid.Row="2" HorizontalAlignment="Center" Orientation="Horizontal">
-            <Button Name="btnBackPage" Height="25" FontSize="16" Content="&lt;"/>
-            <Button Name="btnNextPage" Height="25" FontSize="16" Content="&gt;"/>
+        <StackPanel Grid.Row="2" HorizontalAlignment="Center" Orientation="Horizontal" Grid.ColumnSpan="2">
+            <TextBlock Name="BackPage" Margin="0,0,10,0" Height="25" FontSize="20" Uid="back" Text="&lt;" MouseDown="Page_MouseDown"/>
+            <TextBlock Name="txt1" Margin="0,0,10,0" Height="25" FontSize="20" Uid="1" Text="{Binding Path=NPage[0]}" Visibility="{Binding Path=Visibility[0]}" FontWeight="{Binding Path=Bold[0]}" MouseDown="Page_MouseDown"/>
+            <TextBlock Name="txt2" Margin="0,0,10,0" Height="25" FontSize="20" Uid="2" Text="{Binding Path=NPage[1]}" Visibility="{Binding Path=Visibility[1]}" FontWeight="{Binding Path=Bold[1]}" MouseDown="Page_MouseDown"/>
+            <TextBlock Name="txt3" Margin="0,0,10,0" Height="25" FontSize="20" Uid="3" Text="{Binding Path=NPage[2]}" Visibility="{Binding Path=Visibility[2]}" FontWeight="{Binding Path=Bold[2]}" MouseDown="Page_MouseDown"/>
+            <TextBlock Name="txt4" Margin="0,0,10,0" Height="25" FontSize="20" Uid="4" Text="{Binding Path=NPage[3]}" Visibility="{Binding Path=Visibility[3]}" FontWeight="{Binding Path=Bold[3]}" MouseDown="Page_MouseDown"/>
+            <TextBlock Name="txt5" Margin="0,0,10,0" Height="25" FontSize="20" Uid="5" Text="{Binding Path=NPage[4]}" Visibility="{Binding Path=Visibility[4]}" FontWeight="{Binding Path=Bold[4]}" MouseDown="Page_MouseDown"/>
+            <TextBlock Name="NextPage" Height="25" FontSize="20" Uid="next" Text="&gt;" MouseDown="Page_MouseDown"/>
+        </StackPanel>
+        <StackPanel VerticalAlignment="Top" Grid.Row="1" Grid.Column="0" Margin="5" HorizontalAlignment="Center">
+            <TextBlock  VerticalAlignment="Center"  Text="Кафедра" FontFamily="Calibri" FontSize="16"  Margin="0,0,0,10"/>
+            <ComboBox Name="cbDepartment" Width="200" Height="30" IsReadOnly="True" IsEditable="True" Margin="0,0,0,10"  FontFamily="Calibri" FontSize="16" Padding="2" SelectionChanged="cbDepartment_SelectionChanged"/>
+            <TextBlock  VerticalAlignment="Center"  Text="ФИО:" FontFamily="Calibri" FontSize="16"  Margin="0,0,0,10"/>
+            <TextBox Name="tbFio" Width="200" Height="30" Margin="0,0,0,10"  FontFamily="Calibri" FontSize="16" Padding="2" TextChanged="tbFio_TextChanged"/>
+            <CheckBox Name="chbPhoto" VerticalAlignment="Center" FontFamily="Calibri" FontSize="16" Margin="0,0,0,10" Checked="chbPhoto_Checked" Unchecked="chbPhoto_Checked">Только с фото</CheckBox>
+        </StackPanel>
+        <StackPanel Margin="5" Grid.Row="1" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+            <TextBlock FontFamily="Calibri" FontSize="16"  Margin="0,0,0,10">
+                Количество записей на<LineBreak/>
+                странице:
+            </TextBlock>
+            <TextBox Name="tbCountPage" Width="200" Height="30" Margin="0,0,0,10"  FontFamily="Calibri" FontSize="16" Padding="2" TextChanged="tbCountPage_TextChanged"/>
         </StackPanel>
     </Grid>
 </Page>
