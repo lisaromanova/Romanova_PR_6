@@ -45,7 +45,6 @@ namespace PR6_MDK01_01.Pages
             {
                 teachers = teachers.Where(x => x.Departments.Department == (string)cbDepartment.SelectedValue).ToList();
             }
-
             if (!string.IsNullOrWhiteSpace(tbFio.Text))
             {
                 teachers = teachers.Where(x => x.FioNew.ToLower().Contains(tbFio.Text.ToLower())).ToList();
@@ -91,12 +90,25 @@ namespace PR6_MDK01_01.Pages
                         break;
                 }
             }
-            
-            if(teachers.Count > 0)
+            if (teachers.Count > 0)
             {
                 lstView.Visibility = Visibility.Visible;
                 txtEmpty.Visibility = Visibility.Collapsed;
                 lstView.ItemsSource = teachers;
+                try
+                {
+                    pagination.CountPage = Convert.ToInt32(tbCountPage.Text);
+                }
+                catch
+                {
+                    pagination.CountPage = teachers.Count;
+                }
+                finally
+                {
+                    pagination.Countlist = teachers.Count;
+                    lstView.ItemsSource = teachers.Skip(0).Take(pagination.CountPage).ToList();
+                    pagination.CurrentPage = 1;
+                }
             }
             else
             {
@@ -149,6 +161,12 @@ namespace PR6_MDK01_01.Pages
                 case "next":
                     pagination.CurrentPage++;
                     break;
+                case "first":
+                    pagination.CurrentPage = 1;
+                    break;
+                case "last":
+                    pagination.CurrentPage = pagination.CountPages;
+                    break;
                 default:
                     pagination.CurrentPage = Convert.ToInt32(tb.Text);
                     break;
@@ -158,17 +176,7 @@ namespace PR6_MDK01_01.Pages
 
         private void tbCountPage_TextChanged(object sender, TextChangedEventArgs e)
         {
-            try
-            {
-                pagination.CountPage = Convert.ToInt32(tbCountPage.Text);
-            }
-            catch
-            {
-                pagination.CountPage = teachers.Count;
-            }
-            pagination.Countlist = teachers.Count;
-            lstView.ItemsSource = teachers.Skip(0).Take(pagination.CountPage).ToList();
-            pagination.CurrentPage = 1;
+            Sort();
         }
     }
 }

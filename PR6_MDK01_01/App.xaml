@@ -63,6 +63,14 @@
             <Setter Property="Visibility" Value="Collapsed"/>
         </Style>
 
+        <Style TargetType="TextBlock" x:Key="txtPage">
+            <Setter Property="FontFamily" Value="Calibri"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Margin" Value="0,0,10,0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+
         <ControlTemplate TargetType="Button" x:Key="btnTemplate">
             <Border Background="White" Margin="10,0,10,0" CornerRadius="30" BorderThickness="3" BorderBrush="#FF27578D">
                 <ContentControl Margin="5" VerticalAlignment="Center" FontWeight="Bold" Foreground="#FF27578D" HorizontalAlignment="Center" Content="{TemplateBinding Content}"/>

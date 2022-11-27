@@ -26,7 +26,7 @@ namespace PR6_MDK01_01.Classes
                 {
                     if (CountPages <= i)
                     {
-                        Visibility[i] = "Hidden";//если страниц меньше, чем кнопок - скрываем лишние
+                        Visibility[i] = "Collapsed";//если страниц меньше, чем кнопок - скрываем лишние
                     }
                     else
                     {
@@ -89,14 +89,32 @@ namespace PR6_MDK01_01.Classes
                 //отрисовка меню с номерами страниц, рассмотрим три возможных случая                            
                 for (int i = 0; i < countitems; i++)
                 {
-                    if (currentpage < (1 + countitems / 2) || CountPages < countitems) NPage[i] = i + 1;//если страница в начале списка
-                    else if (currentpage > CountPages - (countitems / 2 + 1)) NPage[i] = CountPages - (countitems - 1) + i;//если страница в конце списка
-                    else NPage[i] = currentpage + i - (countitems / 2);//если страница в середине списка
+                    if (currentpage < (1 + countitems / 2) || CountPages < countitems)
+                    {
+                        NPage[i] = i + 1; //если страница в начале списка
+                    }
+                    else
+                    {
+                        if (currentpage > CountPages - (countitems / 2 + 1))
+                        {
+                            NPage[i] = CountPages - (countitems - 1) + i;//если страница в конце списка
+                        }
+                        else
+                        { 
+                            NPage[i] = currentpage + i - (countitems / 2); //если страница в середине списка
+                        }
+                    }
                 }
                 for (int i = 0; i < countitems; i++)//выделяем активную страницу жирным
                 {
-                    if (NPage[i] == currentpage) Bold[i] = "ExtraBold";
-                    else Bold[i] = "Regular";
+                    if (NPage[i] == currentpage)
+                    {
+                        Bold[i] = "ExtraBold";
+                    }
+                    else
+                    {
+                        Bold[i] = "Regular";
+                    }
                 }
                 //вызываем созбытие, связанное с изменением свойств, используемых в привязке на странице
                 PropertyChanged(this, new PropertyChangedEventArgs("NPage"));
@@ -104,6 +122,7 @@ namespace PR6_MDK01_01.Classes
                 PropertyChanged(this, new PropertyChangedEventArgs("Bold"));
             }
         }
+
         public Pagination() // контруктор
         {
             for (int i = 0; i < countitems; i++)  // показываем исходное меню ( 1 2 3 4 5)
@@ -115,7 +134,7 @@ namespace PR6_MDK01_01.Classes
                 }
                 else
                 {
-                    Visibility[i] = "Hidden";
+                    Visibility[i] = "Collapsed";
                     Bold[i] = "Regular";
                 }
 
