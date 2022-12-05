@@ -59,7 +59,7 @@
                 <ComboBoxItem>По убыванию</ComboBoxItem>
             </ComboBox>
         </StackPanel>
-        <StackPanel Grid.Row="2" HorizontalAlignment="Center" Orientation="Horizontal" Grid.ColumnSpan="2" Height="70" VerticalAlignment="Center">
+        <StackPanel Grid.Row="2" HorizontalAlignment="Center" Orientation="Horizontal" Grid.ColumnSpan="2" VerticalAlignment="Center">
             <TextBlock Name="FirstPage" Style="{StaticResource txtPage}" Uid="first" Text="&lt;|" MouseDown="Page_MouseDown"/>
             <TextBlock Name="BackPage" Style="{StaticResource txtPage}" Uid="back" Text="&lt;" MouseDown="Page_MouseDown"/>
             <TextBlock Name="txt1" Style="{StaticResource txtPage}" Uid="1" Text="{Binding Path=NPage[0]}" Visibility="{Binding Path=Visibility[0]}" FontWeight="{Binding Path=Bold[0]}" MouseDown="Page_MouseDown"/>
