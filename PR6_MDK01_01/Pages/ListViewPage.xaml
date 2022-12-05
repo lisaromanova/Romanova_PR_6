@@ -60,15 +60,15 @@
             </ComboBox>
         </StackPanel>
         <StackPanel Grid.Row="2" HorizontalAlignment="Center" Orientation="Horizontal" Grid.ColumnSpan="2" VerticalAlignment="Center">
-            <TextBlock Name="FirstPage" Style="{StaticResource txtPage}" Uid="first" Text="&lt;|" MouseDown="Page_MouseDown"/>
-            <TextBlock Name="BackPage" Style="{StaticResource txtPage}" Uid="back" Text="&lt;" MouseDown="Page_MouseDown"/>
-            <TextBlock Name="txt1" Style="{StaticResource txtPage}" Uid="1" Text="{Binding Path=NPage[0]}" Visibility="{Binding Path=Visibility[0]}" FontWeight="{Binding Path=Bold[0]}" MouseDown="Page_MouseDown"/>
-            <TextBlock Name="txt2" Style="{StaticResource txtPage}" Uid="2" Text="{Binding Path=NPage[1]}" Visibility="{Binding Path=Visibility[1]}" FontWeight="{Binding Path=Bold[1]}" MouseDown="Page_MouseDown"/>
-            <TextBlock Name="txt3" Style="{StaticResource txtPage}" Uid="3" Text="{Binding Path=NPage[2]}" Visibility="{Binding Path=Visibility[2]}" FontWeight="{Binding Path=Bold[2]}" MouseDown="Page_MouseDown"/>
-            <TextBlock Name="txt4" Style="{StaticResource txtPage}" Uid="4" Text="{Binding Path=NPage[3]}" Visibility="{Binding Path=Visibility[3]}" FontWeight="{Binding Path=Bold[3]}" MouseDown="Page_MouseDown"/>
-            <TextBlock Name="txt5" Style="{StaticResource txtPage}" Uid="5" Text="{Binding Path=NPage[4]}" Visibility="{Binding Path=Visibility[4]}" FontWeight="{Binding Path=Bold[4]}" MouseDown="Page_MouseDown"/>
-            <TextBlock Name="NextPage" Style="{StaticResource txtPage}" Uid="next" Text="&gt;" MouseDown="Page_MouseDown"/>
-            <TextBlock Name="LastPage" Style="{StaticResource txtPage}" Uid="last" Text="|&gt;" MouseDown="Page_MouseDown"/>
+            <TextBlock Style="{StaticResource txtPage}" Uid="first" Text="&lt;|" MouseDown="Page_MouseDown" Cursor="Hand"/>
+            <TextBlock Style="{StaticResource txtPage}" Uid="back" Text="&lt;" MouseDown="Page_MouseDown"/>
+            <TextBlock Style="{StaticResource txtPage}" Uid="1" Text="{Binding Path=NPage[0]}" Visibility="{Binding Path=Visibility[0]}" FontWeight="{Binding Path=Bold[0]}" MouseDown="Page_MouseDown"/>
+            <TextBlock Style="{StaticResource txtPage}" Uid="2" Text="{Binding Path=NPage[1]}" Visibility="{Binding Path=Visibility[1]}" FontWeight="{Binding Path=Bold[1]}" MouseDown="Page_MouseDown"/>
+            <TextBlock Style="{StaticResource txtPage}" Uid="3" Text="{Binding Path=NPage[2]}" Visibility="{Binding Path=Visibility[2]}" FontWeight="{Binding Path=Bold[2]}" MouseDown="Page_MouseDown"/>
+            <TextBlock Style="{StaticResource txtPage}" Uid="4" Text="{Binding Path=NPage[3]}" Visibility="{Binding Path=Visibility[3]}" FontWeight="{Binding Path=Bold[3]}" MouseDown="Page_MouseDown"/>
+            <TextBlock Style="{StaticResource txtPage}" Uid="5" Text="{Binding Path=NPage[4]}" Visibility="{Binding Path=Visibility[4]}" FontWeight="{Binding Path=Bold[4]}" MouseDown="Page_MouseDown"/>
+            <TextBlock Style="{StaticResource txtPage}" Uid="next" Text="&gt;" MouseDown="Page_MouseDown"/>
+            <TextBlock Style="{StaticResource txtPage}" Uid="last" Text="|&gt;" MouseDown="Page_MouseDown" Cursor="Hand"/>
         </StackPanel>
         <StackPanel VerticalAlignment="Top" Grid.Row="1" Grid.Column="0" Margin="5" HorizontalAlignment="Center">
             <TextBlock  VerticalAlignment="Center"  Text="Кафедра" FontFamily="Calibri" FontSize="16"  Margin="0,0,0,10"/>
