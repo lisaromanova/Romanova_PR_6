@@ -73,5 +73,10 @@ namespace PR6_MDK01_01
         {
             FrameClass.frmLoad.Navigate(new UserPage(log));
         }
+
+        private void btnAdvert_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

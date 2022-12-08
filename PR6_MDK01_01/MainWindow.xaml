@@ -23,6 +23,7 @@
             <StackPanel Name="buttons" HorizontalAlignment="Center" Orientation="Horizontal">
                 <Button Name="btnAuto" Style="{StaticResource btnStyle}" Width="170" Content="Авторизация" Template="{StaticResource btnTemplate}" Click="btnAuto_Click"/>
                 <Button Name="btnReg" Style="{StaticResource btnStyle}" Width="170" Content="Регистрация" Template="{StaticResource btnTemplate}" Click="btnReg_Click"/>
+                <Button Name="btnAdvert" Style="{StaticResource btnStyle}" Width="170" Content="Реклама" Template="{StaticResource btnTemplate}" Click="btnAdvert_Click"/>
             </StackPanel>
         </StackPanel>
         <StackPanel Visibility="Collapsed" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1" Name="spUser">
