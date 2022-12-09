@@ -24,6 +24,8 @@ namespace PR6_MDK01_01.Pages
         public AuthorizationPage()
         {
             InitializeComponent();
+            //логин пользователя matveev
+            //пароль пользователя Matveev11@
             tbLogin.Text = "admin";
             pswPassword.Password = "Admin11@";
         }
