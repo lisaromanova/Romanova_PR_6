@@ -43,7 +43,6 @@ namespace PR6_MDK01_01
             FrameClass.frmLoad.Navigate(new RegistrationPage());
         }
 
-
         private void frmMain_LoadCompleted(object sender, NavigationEventArgs e)
         {
             if (Check == true)
@@ -76,7 +75,7 @@ namespace PR6_MDK01_01
 
         private void btnAdvert_Click(object sender, RoutedEventArgs e)
         {
-
+            FrameClass.frmLoad.Navigate(new AdvertPage());
         }
     }
 }
