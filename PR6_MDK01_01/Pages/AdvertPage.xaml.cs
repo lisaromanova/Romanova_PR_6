@@ -74,6 +74,22 @@ namespace PR6_MDK01_01.Pages
             height.RepeatBehavior = RepeatBehavior.Forever;
             height.AutoReverse = true;
             btnSignUp.BeginAnimation (HeightProperty, height);
+
+            DoubleAnimation widthImage = new DoubleAnimation();
+            widthImage.To = 350;
+            widthImage.From = 300;
+            widthImage.Duration = TimeSpan.FromSeconds(3);
+            widthImage.RepeatBehavior = RepeatBehavior.Forever;
+            widthImage.AutoReverse = true;
+            image.BeginAnimation(WidthProperty, widthImage);
+
+            DoubleAnimation heightImage = new DoubleAnimation();
+            heightImage.To = 440;
+            heightImage.From = 390;
+            heightImage.Duration = TimeSpan.FromSeconds(3);
+            heightImage.RepeatBehavior = RepeatBehavior.Forever;
+            heightImage.AutoReverse = true;
+            image.BeginAnimation(HeightProperty, heightImage);
         }
     }
 }

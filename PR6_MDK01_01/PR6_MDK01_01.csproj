@@ -308,6 +308,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\AdvertPhoto.png" />
     <Resource Include="Resources\Screen.png" />
     <Resource Include="Resources\Vector 34.png" />
     <Resource Include="Resources\Student.png" />
