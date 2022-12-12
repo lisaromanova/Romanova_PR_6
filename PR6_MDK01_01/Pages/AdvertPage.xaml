@@ -5,20 +5,28 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PR6_MDK01_01.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="530" d:DesignWidth="900"
       Title="AdvertPage">
 
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="500"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="190"/>
+        </Grid.RowDefinitions>
         <Grid.Background>
             <ImageBrush ImageSource="\Resources\Screen.png"/>
         </Grid.Background>
-        <DockPanel >
-            <StackPanel>
+        <StackPanel Grid.Row="0" Margin="20,0,0,0" Orientation="Horizontal">
+            <Image Source="\Resources\logotip.png" Width="100" Height="100" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <TextBlock Margin="20,0,0,0" VerticalAlignment="Center" Text="Университет" Foreground="#27578D" FontWeight="Bold" FontSize="30" FontFamily="Arial"/>
+        </StackPanel>
+            <StackPanel Grid.Row="1" VerticalAlignment="Center">
                 <StackPanel Margin="20,0,0,0">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="\Resources\logotip.png" Width="100" Height="100" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                        <TextBlock Margin="20,0,0,0" VerticalAlignment="Center" Text="Университет" Foreground="#27578D" FontWeight="Bold" FontSize="30" FontFamily="Arial"/>
-                    </StackPanel>
                     <TextBlock Name="tbHeader" Margin="10,20,0,0" Text="ДЕНЬ ОТКРЫТЫХ ДВЕРЕЙ" FontFamily="Arial" FontSize="30" FontWeight="Bold" Foreground="#27578D"/>
                 </StackPanel>
                 <Border HorizontalAlignment="Left" Margin="0,30,0,0" Width="450">
@@ -27,12 +35,12 @@
                         <ImageBrush ImageSource="\Resources\Vector 34.png"/>
                     </Border.Background>
                 </Border>
-                <TextBlock Margin="30,30,0,0" Text="20 января в 11:00" FontFamily="Arial" FontSize="30" FontWeight="Bold" Foreground="#27578D"/>
-                    <Button Background="#27578D" BorderBrush="Black" Foreground="White" Name="btnSignUp" Margin="0,30,0,0" FontSize="20" Height="45" Content="Записаться" Template="{StaticResource btnTemplateAdvert}" Width="200" />
-                </StackPanel>
-            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Image Name="image" Source="\Resources\AdvertPhoto.png" Width="300" Height="390"/>
+                <TextBlock DockPanel.Dock="Top" Margin="30,30,0,0" Text="20 января в 11:00" FontFamily="Arial" FontSize="30" FontWeight="Bold" Foreground="#27578D"/>
             </StackPanel>
-        </DockPanel>
+            
+        <StackPanel Grid.Column="1" Grid.RowSpan="3" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Image Name="image" Source="\Resources\AdvertPhoto.png" Width="380" Height="480"/>
+        </StackPanel>
+        <Button Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Center" Background="#27578D" BorderBrush="Black" Foreground="White" Name="btnSignUp" Margin="0,30,0,0" FontSize="24" Height="60" Content="Записаться" Template="{StaticResource btnTemplateAdvert}" Width="220" />
     </Grid>
 </Page>

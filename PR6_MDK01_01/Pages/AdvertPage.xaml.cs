@@ -25,7 +25,7 @@ namespace PR6_MDK01_01.Pages
         {
             InitializeComponent();
             DoubleAnimation animation = new DoubleAnimation();
-            animation.To = 40;
+            animation.To = 35;
             animation.From = 30;
             animation.Duration = TimeSpan.FromSeconds(3);
             animation.RepeatBehavior = RepeatBehavior.Forever;
@@ -51,41 +51,45 @@ namespace PR6_MDK01_01.Pages
             background.AutoReverse = true;
             btnSignUp.Background.BeginAnimation(SolidColorBrush.ColorProperty, background);
 
-            //ColorAnimation foreground = new ColorAnimation();
-            //foreground.From = color1;
-            //foreground.To = color3;
-            //foreground.Duration = TimeSpan.FromSeconds(3);
-            //foreground.RepeatBehavior = RepeatBehavior.Forever;
-            //foreground.AutoReverse = true;
-            //btnSignUp.BeginAnimation(ForegroundProperty, foreground);
+            ColorAnimation foreground = new ColorAnimation();
+            foreground.From = color1;
+            foreground.To = color3;
+            foreground.Duration = TimeSpan.FromSeconds(3);
+            foreground.RepeatBehavior = RepeatBehavior.Forever;
+            foreground.AutoReverse = true;
+            //Storyboard.SetTarget(foreground, btnSignUp);
+            //Storyboard.SetTargetProperty(foreground, new PropertyPath(Button.ForegroundProperty));
+            //Storyboard animation1 = new Storyboard();
+            //animation1.Children.Add(foreground);
+            //animation1.Begin();
 
             DoubleAnimation width = new DoubleAnimation();
-            width.To = 240;
-            width.From = 200;
+            width.To = 270;
+            width.From = 220;
             width.Duration = TimeSpan.FromSeconds(3);
             width.RepeatBehavior = RepeatBehavior.Forever;
             width.AutoReverse = true;
             btnSignUp.BeginAnimation(WidthProperty, width);
 
             DoubleAnimation height = new DoubleAnimation();
-            height.To = 55;
-            height.From = 45;
+            height.To = 65;
+            height.From = 60;
             height.Duration = TimeSpan.FromSeconds(3);
             height.RepeatBehavior = RepeatBehavior.Forever;
             height.AutoReverse = true;
-            btnSignUp.BeginAnimation (HeightProperty, height);
+            btnSignUp.BeginAnimation(HeightProperty, height);
 
             DoubleAnimation widthImage = new DoubleAnimation();
-            widthImage.To = 350;
-            widthImage.From = 300;
+            widthImage.To = 430;
+            widthImage.From = 380;
             widthImage.Duration = TimeSpan.FromSeconds(3);
             widthImage.RepeatBehavior = RepeatBehavior.Forever;
             widthImage.AutoReverse = true;
             image.BeginAnimation(WidthProperty, widthImage);
 
             DoubleAnimation heightImage = new DoubleAnimation();
-            heightImage.To = 440;
-            heightImage.From = 390;
+            heightImage.To = 530;
+            heightImage.From = 480;
             heightImage.Duration = TimeSpan.FromSeconds(3);
             heightImage.RepeatBehavior = RepeatBehavior.Forever;
             heightImage.AutoReverse = true;
