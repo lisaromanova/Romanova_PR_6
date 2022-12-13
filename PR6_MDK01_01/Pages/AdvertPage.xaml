@@ -41,6 +41,6 @@
         <StackPanel Grid.Column="1" Grid.RowSpan="3" VerticalAlignment="Center" HorizontalAlignment="Center">
             <Image Name="image" Source="\Resources\AdvertPhoto.png" Width="380" Height="480"/>
         </StackPanel>
-        <Button Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Center" Background="#27578D" BorderBrush="Black" Foreground="White" Name="btnSignUp" Margin="0,30,0,0" FontSize="24" Height="60" Content="Записаться" Template="{StaticResource btnTemplateAdvert}" Width="220" />
+        <Button Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Center" Background="#27578D" Foreground="White" Name="btnSignUp" Margin="0,30,0,0" FontSize="24" Height="60" Content="Записаться" Template="{StaticResource btnTemplateAdvert}" Width="220" />
     </Grid>
 </Page>

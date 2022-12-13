@@ -77,7 +77,7 @@
             </Border>
         </ControlTemplate>
         <ControlTemplate TargetType="Button" x:Key="btnTemplateAdvert">
-            <Border Background="{TemplateBinding Background}" Margin="10,0,10,0" CornerRadius="30" BorderThickness="3" BorderBrush="{TemplateBinding BorderBrush}">
+            <Border Background="{TemplateBinding Background}" Margin="10,0,10,0" CornerRadius="30">
                 <ContentControl Margin="5" VerticalAlignment="Center" FontWeight="Medium" Foreground="{TemplateBinding Foreground}" HorizontalAlignment="Center" Content="{TemplateBinding Content}"/>
             </Border>
         </ControlTemplate>

@@ -32,16 +32,8 @@ namespace PR6_MDK01_01.Pages
             animation.AutoReverse = true;
             tbHeader.BeginAnimation(FontSizeProperty, animation);
 
-            //ColorAnimation colorAnimation = new ColorAnimation();
-            Color color1 = Color.FromRgb(255, 255, 255);
+            Color color1 = Color.FromRgb(34, 0, 200);
             Color color2 = Color.FromRgb(39, 87, 141);
-            Color color3 = Color.FromRgb(0, 0, 0);
-            //colorAnimation.From = color3;
-            //colorAnimation.To = color2;
-            //colorAnimation.Duration = TimeSpan.FromSeconds(3);
-            //colorAnimation.RepeatBehavior = RepeatBehavior.Forever;
-            //colorAnimation.AutoReverse = true;
-            //btnSignUp.BorderBrush.BeginAnimation(SolidColorBrush.ColorProperty, colorAnimation);
 
             ColorAnimation background = new ColorAnimation();
             background.From = color2;
@@ -50,18 +42,6 @@ namespace PR6_MDK01_01.Pages
             background.RepeatBehavior = RepeatBehavior.Forever;
             background.AutoReverse = true;
             btnSignUp.Background.BeginAnimation(SolidColorBrush.ColorProperty, background);
-
-            ColorAnimation foreground = new ColorAnimation();
-            foreground.From = color1;
-            foreground.To = color3;
-            foreground.Duration = TimeSpan.FromSeconds(3);
-            foreground.RepeatBehavior = RepeatBehavior.Forever;
-            foreground.AutoReverse = true;
-            //Storyboard.SetTarget(foreground, btnSignUp);
-            //Storyboard.SetTargetProperty(foreground, new PropertyPath(Button.ForegroundProperty));
-            //Storyboard animation1 = new Storyboard();
-            //animation1.Children.Add(foreground);
-            //animation1.Begin();
 
             DoubleAnimation width = new DoubleAnimation();
             width.To = 270;
@@ -94,6 +74,16 @@ namespace PR6_MDK01_01.Pages
             heightImage.RepeatBehavior = RepeatBehavior.Forever;
             heightImage.AutoReverse = true;
             image.BeginAnimation(HeightProperty, heightImage);
+
+            ThicknessAnimation MA = new ThicknessAnimation();
+            MA.To = new Thickness(50, 50, 50, 50);
+            MA.From = new Thickness(0, 0, 0, 0);
+            MA.Duration = TimeSpan.FromSeconds(3);
+            MA.AutoReverse = true;
+            MA.RepeatBehavior = RepeatBehavior.Forever;
+            MA.AutoReverse = true;
+            btnSignUp.BeginAnimation(MarginProperty, MA);
+
         }
     }
 }
