@@ -27,7 +27,7 @@ namespace PR6_MDK01_01.Pages
             DoubleAnimation animation = new DoubleAnimation();
             animation.To = 35;
             animation.From = 30;
-            animation.Duration = TimeSpan.FromSeconds(3);
+            animation.Duration = TimeSpan.FromSeconds(5);
             animation.RepeatBehavior = RepeatBehavior.Forever;
             animation.AutoReverse = true;
             tbHeader.BeginAnimation(FontSizeProperty, animation);
@@ -38,7 +38,7 @@ namespace PR6_MDK01_01.Pages
             ColorAnimation background = new ColorAnimation();
             background.From = color2;
             background.To = color1;
-            background.Duration = TimeSpan.FromSeconds(3);
+            background.Duration = TimeSpan.FromSeconds(4);
             background.RepeatBehavior = RepeatBehavior.Forever;
             background.AutoReverse = true;
             btnSignUp.Background.BeginAnimation(SolidColorBrush.ColorProperty, background);
@@ -46,7 +46,7 @@ namespace PR6_MDK01_01.Pages
             DoubleAnimation width = new DoubleAnimation();
             width.To = 270;
             width.From = 220;
-            width.Duration = TimeSpan.FromSeconds(3);
+            width.Duration = TimeSpan.FromSeconds(4);
             width.RepeatBehavior = RepeatBehavior.Forever;
             width.AutoReverse = true;
             btnSignUp.BeginAnimation(WidthProperty, width);
@@ -54,7 +54,7 @@ namespace PR6_MDK01_01.Pages
             DoubleAnimation height = new DoubleAnimation();
             height.To = 65;
             height.From = 60;
-            height.Duration = TimeSpan.FromSeconds(3);
+            height.Duration = TimeSpan.FromSeconds(4);
             height.RepeatBehavior = RepeatBehavior.Forever;
             height.AutoReverse = true;
             btnSignUp.BeginAnimation(HeightProperty, height);
@@ -70,15 +70,15 @@ namespace PR6_MDK01_01.Pages
             DoubleAnimation heightImage = new DoubleAnimation();
             heightImage.To = 530;
             heightImage.From = 480;
-            heightImage.Duration = TimeSpan.FromSeconds(3);
+            heightImage.Duration = TimeSpan.FromSeconds(4);
             heightImage.RepeatBehavior = RepeatBehavior.Forever;
             heightImage.AutoReverse = true;
             image.BeginAnimation(HeightProperty, heightImage);
 
             ThicknessAnimation MA = new ThicknessAnimation();
-            MA.To = new Thickness(50, 50, 50, 50);
+            MA.To = new Thickness(30, 30, 30, 30);
             MA.From = new Thickness(0, 0, 0, 0);
-            MA.Duration = TimeSpan.FromSeconds(3);
+            MA.Duration = TimeSpan.FromSeconds(4);
             MA.AutoReverse = true;
             MA.RepeatBehavior = RepeatBehavior.Forever;
             MA.AutoReverse = true;
